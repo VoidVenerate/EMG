@@ -18,36 +18,20 @@
 .music-headset {
   display: flex;
   gap: 2rem;
-  flex: 1 1 100%;
 }
 
 /* Headset 1 - Larger */
-.headset-1 {
-  flex: 2; /* twice the size of headset-2 */
-  background: url("/image-bg.png") 20% center no-repeat;
-  padding: 2rem;
-  border-radius: 61.69px;
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  overflow: hidden;
+.headset-girl-1 {
+  width: 100%;
+}
+.headset-girl-1 img {
+  padding: 0;
   height: 641px;
-  border: 1px solid #FFFFFF33;
 }
 
-.headset-2 {
-  flex: 1;
-  background: url('/image 2-bg.png') left no-repeat;
-  padding: 2rem;
-  border-radius: 53.55px;
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  overflow: hidden;
+.headset-girl-2 img {
+  padding: 0;
   height: 641px;
-  border: 1px solid #FFFFFF33;
 }
 
 /* Headset text */
@@ -68,55 +52,13 @@
   color: #ccc;
   margin-bottom: 2rem;
 }
-
-/* Buttons */
-.headset-1 button,
-.headset-2 button,
-.music-vinyl button {
-  padding: 0.75rem 1.5rem;
-  font-size: 1rem;
-  font-weight: 500;
-  background-color: #282828B2;
-  border: none;
-  border-radius: 100px;
-  color: #fff;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  align-self: flex-start;
-}
-
-.headset-1 button:hover,
-.headset-2 button:hover,
-.music-vinyl button:hover {
-  background-color: #ffaa00;
-  transform: translateY(-2px);
-}
-
-/* Images */
-.headset-1 img,
-.headset-2 img {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  width: 50%; /* adjust as needed */
-  border-radius: 8px;
-}
-
-.headset-2 img {
-  width: 65%; /* smaller headset, bigger image proportionally */
-}
-.music-vinyl {
-  background: url("/image-bg.png") left no-repeat;
-  position: relative;
-  display: grid;
-  grid-template-columns: 2fr 1fr; /* Left = image, Right = text */
+.music-vinyl-engineering img {
   gap: 2rem;
   padding: 0rem;
-  border-radius: 61.69px;
   overflow: hidden;
   width: 100%;
+  max-width: 1420px;
   min-height: 336px;
-  border: 1px solid #FFFFFF33;
 }
 
 /* Left image container */

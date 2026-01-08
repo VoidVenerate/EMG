@@ -17,7 +17,8 @@ button,
 .cancel-btn,
 .delete-btn,
 .video-action-btn,
-.reorder-btn {
+.reorder-btn,
+.feature-btn {
   cursor: pointer;
   transition: all 0.2s ease;
   font-family: 'DM Sans', sans-serif;
@@ -43,10 +44,6 @@ button,
   align-items: center;
   justify-content: center;
   padding: 8px;
-}
-
-.back-btn:hover {
-  color: #00a8ff;
 }
 
 .go-back-btn {
@@ -203,7 +200,7 @@ button,
 
 .info-input:focus {
   outline: none;
-  border-color: #00a8ff;
+  border-color: #FFFFFF33;
   background-color: rgba(255, 255, 255, 0.08);
 }
 
@@ -245,13 +242,13 @@ button,
 }
 
 .save-btn {
-  background-color: #00a8ff;
+  background-color: #FFFFFF0D;
   border: none;
   color: #fff;
 }
 
 .save-btn:hover:not(:disabled) {
-  background-color: #0095e8;
+  background-color: #FFFFFF00;
 }
 
 .save-btn:disabled {
@@ -351,6 +348,64 @@ button,
 }
 
 /* =======================================
+   Song Header with Feature Button
+   ======================================= */
+.song-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+
+.song-header .videos-card-title {
+  margin: 0;
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.feature-btn {
+  background: #FFFFFF0D;
+  border: none;
+  border-radius: 6px;
+  padding: 6px 10px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #FFF;
+  white-space: nowrap;
+  flex-shrink: 0;
+  border: 1px solid #FFFFFF33;
+}
+
+.feature-btn:hover:not(:disabled) {
+  background: #FFFFFF0D;
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+.feature-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.feature-btn svg {
+  flex-shrink: 0;
+}
+
+.videos-card-subtitle {
+  font-size: 13px;
+  color: #888;
+  margin: 0;
+}
+
+/* =======================================
    Videos Grid & Cards
    ======================================= */
 .videos-grid {
@@ -391,12 +446,14 @@ button,
   object-fit: cover;
   filter: brightness(0.3);
 }
+
 .music-thumb-img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   filter: brightness(0.8);
 }
+
 .video-play-icon {
   position: absolute;
   top: 50%;
@@ -654,5 +711,14 @@ button,
   .songs-grid,
   .videos-grid {
     grid-template-columns: 1fr;
+  }
+
+  .song-header {
+    flex-wrap: wrap;
+  }
+
+  .feature-btn {
+    font-size: 11px;
+    padding: 5px 8px;
   }
 }

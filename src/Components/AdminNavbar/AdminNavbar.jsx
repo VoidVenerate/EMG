@@ -129,7 +129,7 @@ const AdminNavbar = () => {
                 </NavLink>
             </li>
             <li>
-                <NavLink to="/newmusic" className="admin-navbar-link">
+                <NavLink to="/admin/new-music" className="admin-navbar-link">
                 <Disc3 />
                 </NavLink>
             </li>

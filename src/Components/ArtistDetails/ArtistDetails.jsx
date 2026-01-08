@@ -6,7 +6,7 @@ import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
 import { LazyLoadImage } from 'react-lazy-load-image-component'
 import 'react-lazy-load-image-component/src/effects/blur.css'
-import { Music, Video, CloudUpload, Trash2, Edit, ExternalLink, ArrowUp, ArrowDown,Youtube } from 'lucide-react'
+import { Music, Video, CloudUpload, Trash2, Edit, ExternalLink, ArrowUp, ArrowDown, Youtube } from 'lucide-react'
 import './ArtistDetails.css'
 import { SkeletonTheme } from 'react-loading-skeleton'
 
@@ -176,6 +176,33 @@ const ArtistDetails = () => {
       setSaving(false)
     }
   }
+
+  const handleFeatureSong = async (songId) => {
+    try {
+      setSaving(true)
+      await axios.post(
+        `https://exodus-va6e.onrender.com/new-music/admin-add?song_id=${songId}`,
+        {},
+        {
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        }
+      )
+
+      toast.success('Song added to new music! ⭐')
+    } catch (error) {
+      console.error(error)
+      if (error.response?.status === 400) {
+        toast.error('Song is already in new music')
+      } else {
+        toast.error(error.response?.data?.detail || 'Failed to add song to new music')
+      }
+    } finally {
+      setSaving(false)
+    }
+  }
+
   const handleReorderVideo = async (videoId, direction) => {
     if (!artist?.videos) return;
 
@@ -264,8 +291,6 @@ const ArtistDetails = () => {
     }
   };
 
-
-
   const handleCancel = () => {
     setEditMode(false)
     setBannerFile(null)
@@ -305,6 +330,7 @@ const ArtistDetails = () => {
       toast.error('Failed to delete video')
     }
   }
+
   const handleDeleteSong = async (songId) => {
     if (!window.confirm('Are you sure you want to delete this song?')) return
 
@@ -327,7 +353,6 @@ const ArtistDetails = () => {
       toast.error('Failed to delete song')
     }
   }
-
 
   if (loading) return <div className="skeleton-container"><SkeletonTheme baseColor="#1a1a1a" highlightColor="#2a2a2a"><Skeleton height={1000} /></SkeletonTheme></div>
 
@@ -563,7 +588,17 @@ const ArtistDetails = () => {
 
                 {/* Song Info & Actions */}
                 <div className="videos-card-footer">
-                  <h4 className="videos-card-title">{song.song_name}</h4>
+                  <div className="song-header">
+                    <h4 className="videos-card-title">{song.song_name}</h4>
+                    <button
+                      className="feature-btn"
+                      onClick={() => handleFeatureSong(song.id)}
+                      disabled={saving}
+                      title="Add to New Music"
+                    >
+                      Add to New
+                    </button>
+                  </div>
                   <p className="videos-card-subtitle">{song.artist_name}</p>
 
                   <div className="videos-card-actions">
@@ -578,7 +613,7 @@ const ArtistDetails = () => {
 
                     <button
                       className="video-action-btn"
-                      onClick={() => navigate(`/artists/:artistId/songs/${song.id}/edit`)}
+                      onClick={() => navigate(`/artists/${artistId}/songs/${song.id}/edit`)}
                     >
                       Edit Song
                     </button>
@@ -602,7 +637,6 @@ const ArtistDetails = () => {
           </div>
         )}
       </section>
-
 
       {/* Videos Section */}
       <section className="content-section">
@@ -667,7 +701,7 @@ const ArtistDetails = () => {
                       </a>
                       <button
                         className="video-action-btn"
-                        onClick={() => navigate(`/admin/artists/videos/${video.id}`)}
+                        onClick={() => navigate(`/admin/artists/${artistId}/videos/${video.id}`)}
                       >
                         Edit Video
                       </button>

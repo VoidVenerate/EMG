@@ -104,6 +104,8 @@
   background: #bc9809;
 }
 
+
+
 /* ===== Copyright ===== */
 .footer-copyright {
   border-top: 1px solid #e5e5e5;
@@ -139,6 +141,50 @@
   }
 
   .footer-subscribe button {
+    width: 100%;
+  }
+}
+/* Add these styles to your Footer.css */
+
+/* Subscribe Form Wrapper */
+.subscribe-form {
+  display: flex;
+  gap: 4px;
+  margin-top: 0.5rem;
+}
+
+.subscribe-form input:disabled,
+.subscribe-form button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Status Messages */
+.subscribe-message {
+  font-size: 14px;
+  font-weight: 500;
+  margin-top: 0.75rem;
+  padding: 0.5rem;
+  border-radius: 6px;
+}
+
+.subscribe-message.success {
+  color: #4CAF50;
+  background: #f1f8f4;
+}
+
+.subscribe-message.error {
+  color: #f44336;
+  background: #fef1f0;
+}
+
+/* Update responsive styles */
+@media (max-width: 768px) {
+  .subscribe-form {
+    flex-direction: column;
+  }
+
+  .subscribe-form button {
     width: 100%;
   }
 }

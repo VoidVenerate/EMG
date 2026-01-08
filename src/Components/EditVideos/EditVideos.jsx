@@ -4,7 +4,7 @@ import toast from 'react-hot-toast'
 import { useParams, useNavigate } from 'react-router-dom'
 
 const EditVideo = () => {
-  const { videoId } = useParams()
+  const { videoId, artistId } = useParams()
   const navigate = useNavigate()
   const token = localStorage.getItem('token')
 
@@ -26,17 +26,25 @@ const EditVideo = () => {
 
   // Fetch existing video data
   useEffect(() => {
+    if (!videoId || !artistId) return
     const fetchVideo = async () => {
       try {
         setFetching(true)
-        const res = await api.get(`/videos/${videoId}`)
+        const res = await api.get(`/artists/${artistId}/videos`)
         const data = res.data
 
+        const foundVideo = data.find(v => String(v.id) === String(videoId))
+        if (!foundVideo) {
+          toast.error('Video not found')
+          navigate(-1)
+          return
+        }
+
         setVideo({
-          video_name: data.video_name || '',
-          video_link: data.video_link || '',
-          artist_name: data.artist_name || '',
-          artist_id: data.artist_id || null,
+          video_name: foundVideo.video_name || '',
+          video_link: foundVideo.video_link || '',
+          artist_name: foundVideo.artist_name || '',
+          artist_id: foundVideo.artist_id || null,
         })
       } catch (err) {
         console.error(err)
@@ -45,9 +53,8 @@ const EditVideo = () => {
         setFetching(false)
       }
     }
-
-    if (videoId) fetchVideo()
-  }, [videoId])
+    fetchVideo()
+  }, [videoId, artistId])
 
   const handleChange = (field, value) => {
     setVideo(prev => ({ ...prev, [field]: value }))

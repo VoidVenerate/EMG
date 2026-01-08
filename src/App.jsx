@@ -24,6 +24,8 @@ import EditSong from './Components/EditSong/EditSong';
 import EditVideo from './Components/EditVideos/EditVideos';
 import Newsletter from './Components/Newsletter/Newsletter';
 import ProfileDark from './Components/ProfileDark/ProfileDark';
+import NewMusic from './Components/NewMusic/NewMusic';
+import UserNewMusic from './Components/UserNewMusic/UserNewMusic';
 
 const App = () => {
   const navigate = useNavigate();
@@ -39,6 +41,7 @@ const App = () => {
         <Route path="/home" element={<Home />} />
         <Route path="/roster" element={<Roster />} />
         <Route path="/roster/artists/:artistId" element={<UserArtistProfile />} />
+        <Route path="/new-music" element={<UserNewMusic />} />
       </Route>
         <Route path='/confirmspot' element={<Spot />} />
 
@@ -80,8 +83,9 @@ const App = () => {
           } />
         <Route path='/admin/artists/:artistId' element={<ArtistDetails/>} />
         <Route path="/artists/:artistId/songs/:songId/edit" element={<EditSong/>} />
-        <Route path='/admin/artists/videos/:videoId' element={<EditVideo/>} />
+        <Route path='/admin/artists/:artistId/videos/:videoId' element={<EditVideo/>} />
         <Route path='/subscriptions' element={<Newsletter/>} />
+        <Route path='/admin/new-music' element={<NewMusic/>} />
         <Route path='/me' element={<ProfileDark/>} />
       </Route>
 

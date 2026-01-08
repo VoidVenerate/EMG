@@ -1,0 +1,221 @@
+.new-music-page {
+  padding: 2rem;
+  color: #fff;
+  margin-left: 5vw;
+  font-family: 'DM Sans', sans-serif;
+  min-height: 100vh;
+}
+
+/* HEADER */
+.new-music-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: #fff;
+}
+
+.new-music-subtitle {
+  font-size: 16px;
+  color: #FFFFFFB2;
+  margin-bottom: 3rem;
+}
+
+/* ERROR */
+.error {
+  color: #ff4444;
+  text-align: center;
+  padding: 1rem;
+  background: rgba(255, 68, 68, 0.1);
+  border-radius: 8px;
+  margin-bottom: 2rem;
+}
+
+/* GRID */
+.new-music-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+/* CARD */
+.music-card {
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* HOVER EFFECT */
+.music-card:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+  background: rgba(255, 255, 255, 0.12);
+}
+
+/* IMAGE WRAPPER */
+.music-image-wrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1;
+  overflow: hidden;
+}
+
+/* IMAGE */
+.music-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.music-card:hover .music-image {
+  transform: scale(1.05);
+}
+
+/* POSITION BADGE */
+.music-position {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: linear-gradient(135deg, #ffd700, #ffed4e);
+  color: #000;
+  font-size: 14px;
+  font-weight: 700;
+  padding: 6px 12px;
+  border-radius: 20px;
+  box-shadow: 0 4px 12px rgba(255, 215, 0, 0.4);
+}
+
+/* MUSIC INFO */
+.music-info {
+  padding: 1.2rem;
+}
+
+.music-song-name {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 0 0 0.4rem 0;
+  color: #fff;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.music-artist-name {
+  font-size: 0.95rem;
+  color: #FFFFFFB2;
+  margin: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* SKELETON CARD */
+.music-card.skeleton {
+  pointer-events: none;
+}
+
+.react-loading-skeleton {
+  animation: shimmer 1.6s infinite linear;
+  background-size: 400% 100%;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 100% 0;
+  }
+  100% {
+    background-position: -100% 0;
+  }
+}
+
+/* EMPTY STATE */
+.empty-state {
+  text-align: center;
+  padding: 4rem 2rem;
+  color: #888;
+}
+
+.empty-state p {
+  font-size: 1.1rem;
+}
+
+/* PAGINATION */
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+  gap: 0.5rem;
+}
+
+.pagination li {
+  list-style: none;
+  padding: 0.4rem 0.7rem;
+  border-radius: 6px;
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.1);
+  transition: all 0.2s ease;
+}
+
+.pagination li:hover:not(.disabled) {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.pagination li.active {
+  background: #d4af37;
+  color: #000;
+  font-weight: 600;
+}
+
+.pagination li.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.page-link {
+  color: #fff;
+  text-decoration: none;
+}
+
+.pagination li.active .page-link {
+  color: #000;
+}
+
+/* RESPONSIVE */
+@media (max-width: 1024px) {
+  .new-music-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .new-music-page {
+    margin-left: 0;
+    padding: 1.5rem;
+  }
+
+  .new-music-title {
+    font-size: 2rem;
+  }
+
+  .new-music-subtitle {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 600px) {
+  .new-music-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .music-song-name {
+    font-size: 1rem;
+  }
+
+  .music-artist-name {
+    font-size: 0.85rem;
+  }
+}

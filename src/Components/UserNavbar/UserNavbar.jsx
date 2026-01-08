@@ -55,7 +55,7 @@ const UserNavbar = () => {
         </li>
         <li>
           <NavLink
-            to="/newmusic"
+            to="/new-music"
             className={({ isActive }) => (isActive ? 'navbar-link active' : 'navbar-link')}
             onClick={() => setMenuOpen(false)}
           >

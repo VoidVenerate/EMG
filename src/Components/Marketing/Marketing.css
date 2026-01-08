@@ -91,7 +91,6 @@
 }
 
 .marketing-section > button:hover {
-  background-color: #FF8800;
   transform: translateY(-2px);
 }
 
