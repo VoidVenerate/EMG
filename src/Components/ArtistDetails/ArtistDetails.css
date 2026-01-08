@@ -1,0 +1,658 @@
+/* =======================================
+   Global Styles
+   ======================================= */
+.artist-details {
+  min-height: 100vh;
+  background-color: #0a0a0a;
+  color: #ffffff;
+  font-family: 'DM Sans', sans-serif;
+  margin-left: 5vw;
+}
+
+/* Links & Buttons */
+button,
+.add-btn,
+.edit-btn,
+.save-btn,
+.cancel-btn,
+.delete-btn,
+.video-action-btn,
+.reorder-btn {
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: 'DM Sans', sans-serif;
+}
+
+/* =======================================
+   Header
+   ======================================= */
+.artist-details-header {
+  padding: 24px 40px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  position: relative;
+}
+
+.back-btn {
+  position: absolute;
+  left: 24px;
+  top: 24px;
+  background: transparent;
+  border: none;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+}
+
+.back-btn:hover {
+  color: #00a8ff;
+}
+
+.go-back-btn {
+  position: absolute;
+  right: 40px;
+  top: 24px;
+  padding: 8px 20px;
+  background-color: transparent;
+  border: 1px solid #333;
+  border-radius: 6px;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.go-back-btn:hover {
+  background-color: #1a1a1a;
+  border-color: #555;
+}
+
+.artist-details-header h1 {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 4px;
+  color: #fff;
+}
+
+.artist-details-header p {
+  font-size: 14px;
+  color: #888;
+}
+
+/* =======================================
+   Banner Section
+   ======================================= */
+.banner-section {
+  position: relative;
+  height: 300px;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.artist-banner {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.3);
+}
+
+.banner-uploads-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.banner-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+  padding: 40px;
+}
+
+/* =======================================
+   Artist Profile
+   ======================================= */
+.artist-profile {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.artist-avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 8px;
+  object-fit: cover;
+  border: 3px solid #fff;
+}
+
+.artist-info h2 {
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.artist-info p {
+  font-size: 16px;
+  color: #ccc;
+}
+
+/* =======================================
+   Info Section
+   ======================================= */
+.info-section {
+  padding: 40px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.info-section h3 {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.section-subtitle {
+  font-size: 13px;
+  color: #888;
+  margin-bottom: 24px;
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-bottom: 24px;
+}
+
+.info-field {
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  padding: 16px;
+}
+
+.info-field label {
+  display: block;
+  font-size: 12px;
+  font-weight: 500;
+  color: #888;
+  margin-bottom: 8px;
+}
+
+.info-value {
+  font-size: 14px;
+  color: #fff;
+}
+
+.info-input {
+  width: 100%;
+  padding: 10px 12px;
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 6px;
+  color: #fff;
+  font-size: 14px;
+}
+
+.info-input:focus {
+  outline: none;
+  border-color: #00a8ff;
+  background-color: rgba(255, 255, 255, 0.08);
+}
+
+.info-input::placeholder {
+  color: #666;
+}
+
+/* Edit buttons */
+.edit-actions {
+  display: flex;
+  gap: 12px;
+}
+
+.edit-btn,
+.cancel-btn,
+.save-btn,
+.delete-btn {
+  padding: 10px 24px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.edit-btn,
+.cancel-btn {
+  background: transparent;
+  border: 1px solid #333;
+  color: #fff;
+}
+
+.edit-btn:hover,
+.cancel-btn:hover {
+  background: #1a1a1a;
+  border-color: #555;
+}
+
+.cancel-btn {
+  color: #888;
+}
+
+.save-btn {
+  background-color: #00a8ff;
+  border: none;
+  color: #fff;
+}
+
+.save-btn:hover:not(:disabled) {
+  background-color: #0095e8;
+}
+
+.save-btn:disabled {
+  background-color: #333;
+  color: #666;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.delete-btn {
+  background-color: transparent;
+  border: 1px solid #ff4444;
+  color: #ff4444;
+}
+
+.delete-btn:hover {
+  background-color: rgba(255,68,68,0.1);
+  border-color: #ff6666;
+}
+
+/* =======================================
+   Content Section (Songs & Videos)
+   ======================================= */
+.content-section {
+  padding: 40px;
+  border-bottom: 1px solid rgba(255,255,255,0.2);
+  margin-bottom: 48px;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 24px;
+}
+
+.section-header h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: #fff;
+}
+
+.add-btn {
+  background: transparent;
+  border: 1px solid #333;
+  color: #fff;
+  padding: 10px 24px;
+  border-radius: 6px;
+}
+
+.add-btn:hover {
+  background-color: #1a1a1a;
+  border-color: #555;
+}
+
+/* =======================================
+   Songs Grid
+   ======================================= */
+.songs-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.song-card {
+  background-color: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 8px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.song-card:hover {
+  background-color: rgba(255,255,255,0.1);
+  transform: translateY(-4px);
+}
+
+.song-card img {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+}
+
+.song-card h4 {
+  font-size: 14px;
+  font-weight: 600;
+  color: #fff;
+  margin: 12px 16px 4px;
+}
+
+.song-card p {
+  font-size: 13px;
+  color: #888;
+  margin: 0 16px 12px;
+}
+
+/* =======================================
+   Videos Grid & Cards
+   ======================================= */
+.videos-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.music-card {
+  position: relative;
+  overflow: hidden;
+  background: transparent;
+  transition: transform 0.2s ease;
+}
+
+.videos-card:hover {
+  transform: translateY(-2px);
+}
+
+.video-thumbnail-wrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16/9;
+  overflow: hidden;
+}
+
+.music-thumbnail-wrapper {
+  position: relative;
+  width: 100%;
+  height: 408px;
+  aspect-ratio: 16/9;
+  overflow: hidden;
+}
+
+.video-thumb-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.3);
+}
+.music-thumb-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.8);
+}
+.video-play-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+.video-play-icon svg {
+  filter: drop-shadow(0 2px 8px rgba(0,0,0,0.3));
+}
+
+/* Reorder Buttons - Top Right */
+.video-reorder-buttons {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  display: flex;
+  gap: 4px;
+  z-index: 10;
+}
+
+.reorder-btn {
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+  color: #fff;
+  backdrop-filter: blur(4px);
+}
+
+.reorder-btn:hover:not(:disabled) {
+  background: rgba(0, 0, 0, 0.9);
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+.reorder-btn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+/* Video Footer */
+.videos-card-footer {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.videos-card-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: #fff;
+  margin: 0;
+}
+
+.videos-card-actions {
+  display: flex;
+  gap: 0px;
+  align-items: center;
+}
+
+.video-action-btn {
+  padding: 8px 12px;
+  font-size: 13px;
+  font-weight: 500;
+  border-radius: 6px;
+  border: 1px solid #FFFFFF33;
+  background: #FFFFFF0D;
+  color: #fff;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  white-space: nowrap;
+  width: 100%;
+  max-width: 136px;
+  margin-right: 8px;
+}
+
+.video-action-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.video-delete-btn {
+  background: transparent;
+  border-color: #FFFFFF33;
+  color: #ff4444;
+  margin-left: auto;
+  align-items: center;
+  justify-content: center;
+  display: inline-flex;
+  height: 100%;
+  max-height: 34px;
+  background: #FFFFFF0D;
+}
+
+.video-delete-btn:hover {
+  background: rgba(255, 68, 68, 0.1);
+  border-color: rgba(255, 68, 68, 0.6);
+}
+
+/* =======================================
+   Artist Image Preview
+   ======================================= */
+.artist-image-preview {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+  aspect-ratio: 445/500;
+  border-radius: 12px;
+  overflow: hidden;
+  background-color: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.2);
+  margin-bottom: 24px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.artist-image-preview:hover {
+  border-color: #555;
+}
+
+.profile-preview {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.6);
+}
+
+.uploads-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.uploads-overlay svg {
+  color: #fff;
+}
+
+.uploads-overlay p {
+  font-size: 14px;
+  font-weight: 500;
+  color: #fff;
+}
+
+.uploads-overlay span {
+  font-size: 12px;
+  color: #888;
+}
+
+/* =======================================
+   Empty State
+   ======================================= */
+.empty-state {
+  background-color: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 12px;
+  padding: 60px 40px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.empty-state h4 {
+  font-size: 18px;
+  color: #fff;
+  margin: 0;
+}
+
+.empty-state p {
+  font-size: 14px;
+  color: #888;
+  max-width: 400px;
+  margin: 0;
+}
+
+.empty-state svg {
+  color: #666;
+  margin-bottom: 8px;
+}
+
+/* =======================================
+   Responsive
+   ======================================= */
+@media (max-width: 1200px) {
+  .videos-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 1024px) {
+  .info-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .songs-grid,
+  .videos-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .artist-details-header,
+  .info-section,
+  .content-section,
+  .banner-overlay {
+    padding: 24px 20px;
+  }
+
+  .artist-profile {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .artist-avatar {
+    width: 80px;
+    height: 80px;
+  }
+
+  .artist-info h2 {
+    font-size: 24px;
+  }
+
+  .go-back-btn {
+    position: static;
+    margin-top: 16px;
+    width: 100%;
+  }
+
+  .section-header {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .add-btn {
+    width: 100%;
+  }
+
+  .info-grid,
+  .songs-grid,
+  .videos-grid {
+    grid-template-columns: 1fr;
+  }
+}

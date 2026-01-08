@@ -1,0 +1,197 @@
+/* ===== Music Section ===== */
+.music-section {
+  width: 100vw;
+  padding: 24px 44px;
+  color: #fff;
+  font-family: 'DM Sans', sans-serif;
+  box-sizing: border-box;
+}
+
+.music-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+}
+
+/* ===== Headset Section ===== */
+.music-headset {
+  display: flex;
+  gap: 2rem;
+  flex: 1 1 100%;
+}
+
+/* Headset 1 - Larger */
+.headset-1 {
+  flex: 2; /* twice the size of headset-2 */
+  background: url("/image-bg.png") 20% center no-repeat;
+  padding: 2rem;
+  border-radius: 61.69px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  overflow: hidden;
+  height: 641px;
+  border: 1px solid #FFFFFF33;
+}
+
+.headset-2 {
+  flex: 1;
+  background: url('/image 2-bg.png') left no-repeat;
+  padding: 2rem;
+  border-radius: 53.55px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  overflow: hidden;
+  height: 641px;
+  border: 1px solid #FFFFFF33;
+}
+
+/* Headset text */
+.header {
+  font-size: 2rem;
+  font-weight: 700;
+  background:
+    linear-gradient(rgba(255, 255, 255),rgb(255 255 255 / 28%));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 1rem;
+  font-size: 68px;
+}
+
+.normal-music-font {
+  font-size: 1.125rem;
+  color: #ccc;
+  margin-bottom: 2rem;
+}
+
+/* Buttons */
+.headset-1 button,
+.headset-2 button,
+.music-vinyl button {
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 500;
+  background-color: #282828B2;
+  border: none;
+  border-radius: 100px;
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  align-self: flex-start;
+}
+
+.headset-1 button:hover,
+.headset-2 button:hover,
+.music-vinyl button:hover {
+  background-color: #ffaa00;
+  transform: translateY(-2px);
+}
+
+/* Images */
+.headset-1 img,
+.headset-2 img {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 50%; /* adjust as needed */
+  border-radius: 8px;
+}
+
+.headset-2 img {
+  width: 65%; /* smaller headset, bigger image proportionally */
+}
+.music-vinyl {
+  background: url("/image-bg.png") left no-repeat;
+  position: relative;
+  display: grid;
+  grid-template-columns: 2fr 1fr; /* Left = image, Right = text */
+  gap: 2rem;
+  padding: 0rem;
+  border-radius: 61.69px;
+  overflow: hidden;
+  width: 100%;
+  min-height: 336px;
+  border: 1px solid #FFFFFF33;
+}
+
+/* Left image container */
+.vinyl-left {
+  z-index: 1; /* above background */
+  display: flex;
+}
+
+.vinyl-left img {
+  width: 100%;
+  border-radius: 8px;
+}
+
+/* Right text container */
+.vinyl-right {
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+
+.music-vinyl .header {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  font-size: 66px;
+}
+
+.music-vinyl .normal-music-font {
+  margin-bottom: 2rem;
+}
+
+.music-vinyl img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 78%;
+  border-radius: 8px;
+  height: 100%;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 1024px) {
+  .music-headset {
+    flex-direction: column;
+  }
+
+  .headset-1, .headset-2 {
+    flex: 1 1 100%;
+  }
+
+  .headset-1 img,
+  .headset-2 img,
+  .music-vinyl img {
+    width: 60%; /* scale down images */
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
+@media (max-width: 768px) {
+  .header {
+    font-size: 1.75rem;
+  }
+
+  .normal-music-font {
+    font-size: 1rem;
+  }
+
+  .headset-1 button,
+  .headset-2 button,
+  .music-vinyl button {
+    font-size: 0.95rem;
+    padding: 0.6rem 1.2rem;
+  }
+}

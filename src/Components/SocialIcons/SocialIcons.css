@@ -1,0 +1,22 @@
+.social-icons {
+  position: fixed;       /* make it sticky */
+  top: 50%;              /* center vertically */
+  right: 0;               /* stick to the left side, change to right: 0 for right side */
+  transform: translateY(-50%); /* adjust for exact vertical centering */
+  display: flex;
+  flex-direction: column; /* stack icons vertically */
+  gap: 36px;             /* space between icons */
+  padding: 24px 44px;
+  z-index: 1000;         /* above other content */
+}
+
+.social-icons a img {
+  width: 20px;           /* icon size */
+  height: 20px;
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.social-icons a:hover img {
+  transform: scale(1.1);       /* subtle hover grow */
+  filter: brightness(1.2);     /* brightens on hover */
+}

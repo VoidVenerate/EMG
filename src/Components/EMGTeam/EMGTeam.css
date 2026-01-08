@@ -1,0 +1,197 @@
+/* EMGTeam.css */
+
+.emg-team-section {
+    background: #000;
+    color: #fff;
+    padding: 40px 20px;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'DM Sans';
+}
+
+.container {
+    max-width: 1200px;
+    width: 100%;
+    padding: 60px 40px;
+    background: linear-gradient(135deg, #000 0%, #0a0a0a 100%);
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.header h2 {
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: #888;
+    margin-bottom: 15px;
+    letter-spacing: 1px;
+}
+
+.header h1 {
+    font-size: 2rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #fff;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.team-card {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid #FFFFFF33;;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.team-card:hover {
+    transform: translateY(-5px);
+}
+
+.card-header {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%);
+    padding: 40px 30px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+.card-header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+        linear-gradient(30deg, #FFFFFF05 12%, transparent 12.5%, transparent 87%, #FFFFFF05 87.5%, #FFFFFF05),
+        linear-gradient(150deg, #FFFFFF05 12%, transparent 12.5%, transparent 87%, #FFFFFF05 87.5%, #FFFFFF05),
+        linear-gradient(30deg, #FFFFFF05 12%, transparent 12.5%, transparent 87%, #FFFFFF05 87.5%, #FFFFFF05),
+        linear-gradient(150deg, #FFFFFF05 12%, transparent 12.5%, transparent 87%, #FFFFFF05 87.5%, #FFFFFF05);
+    background-size: 80px 140px;
+    background-position: 0 0, 0 0, 40px 70px, 40px 70px;
+    opacity: 0.3;
+    pointer-events: none;
+}
+
+.avatar {
+    width: 80px;
+    height: 80px;
+    background: #000;
+    border: 1px solid #FFFFFF33;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    position: relative;
+    z-index: 1;
+}
+
+.avatar svg {
+    width: 40px;
+    height: 40px;
+    fill: #fff;
+}
+
+.name-title {
+    position: relative;
+    z-index: 1;
+}
+
+.name-title h3 {
+    font-size: 1.6rem;
+    font-weight: 600;
+    margin-bottom: 5px;
+    line-height: 1.2;
+}
+
+.card-body {
+    padding: 30px;
+}
+
+.initials {
+    font-size: 32px;
+    font-weight: 600;
+    color: #fff;
+}
+
+.role {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 15px;
+    letter-spacing: 0.5px;
+}
+
+.description {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: #ccc;
+    margin: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 900px) {
+    .team-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .container {
+        padding: 40px 30px;
+    }
+
+    .header h1 {
+        font-size: 1.6rem;
+    }
+}
+
+@media (max-width: 500px) {
+    .container {
+        padding: 30px 20px;
+        border-width: 2px;
+    }
+
+    .card-header {
+        padding: 30px 20px;
+    }
+
+    .card-body {
+        padding: 20px;
+    }
+
+    .avatar {
+        width: 60px;
+        height: 60px;
+    }
+
+    .avatar svg {
+        width: 30px;
+        height: 30px;
+    }
+
+    .name-title h3 {
+        font-size: 1.3rem;
+    }
+
+    .header h2 {
+        font-size: 1rem;
+    }
+
+    .header h1 {
+        font-size: 1.4rem;
+    }
+}

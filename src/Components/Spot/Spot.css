@@ -1,0 +1,159 @@
+/* Full page background */
+.art-form {
+  content: "";
+  min-height: 66vw;
+  inset: 0;
+  padding: 44px;
+
+  background:
+    linear-gradient(
+      rgba(0, 0, 0, 0.65),
+      rgba(0, 0, 0, 0.65)
+    ),
+  url('/spot-bg.jpg') no-repeat center center fixed;
+
+  background-size: cover;
+  z-index: -1;
+  margin: 0;
+  font-family: 'DM Sans';
+}
+.back-btn {
+  position: absolute;
+  top: 18px;
+  left: 18px;
+  width: 44px;
+  height: 44px;
+  background: #FFFFFF0D;
+  color: #fff;
+  border: 1px solid #FFFFFF33;
+  border-radius: 8px;
+  font-size: 24px;
+  cursor: pointer;
+
+  backdrop-filter: blur(8px);
+  transition: 0.2s ease;
+}
+
+.back-btn:hover {
+  background: rgba(255, 255, 255, 0.18);
+}
+
+
+/* Center the form container */
+.artist-form-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 600px;
+  margin: auto;
+  margin-top: 8vw;
+  padding: 2rem;
+  border-radius: 12px;
+  color: #fff;
+
+  /* Glassmorphism style */
+  background: transparent;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 8px 32px 0 rgba(0,0,0,0.37);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+
+  /* Center vertically */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* Heading and description */
+.artist-form-container h2 {
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+}
+
+.artist-form-container p {
+  color: #ccc;
+  margin-bottom: 1.2rem;
+}
+
+/* Form styling */
+.artist-request-form .form-group {
+  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.artist-request-form label {
+  margin-bottom: 0.4rem;
+}
+
+.required {
+  color: red;
+  margin-left: 0.2rem;
+}
+
+/* Inputs */
+.artist-request-form input[type="text"],
+.artist-request-form input[type="email"],
+.artist-request-form input[type="url"] {
+  padding: 0.6rem;
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  backdrop-filter: blur(5px);
+}
+
+/* Service selection */
+.service-title {
+  font-weight: bold;
+  margin-top: 1rem;
+}
+
+.service-subtitle {
+  font-size: 0.9rem;
+  color: #ccc;
+  margin-bottom: 0.8rem;
+}
+
+.service-checkboxes {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.6rem;
+  margin-bottom: 1rem;
+}
+
+.service-checkboxes label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 0.5rem;
+  border-radius: 6px;
+  cursor: pointer;
+  backdrop-filter: blur(5px);
+}
+
+/* Submit button */
+.artist-request-form button {
+  width: 100%;
+  padding: 12px 140px;
+  background-color: #AC8900;
+  color: #fff;
+  border: none;
+  border-radius: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  height: 64px;
+}
+.artist-request-form button:hover {
+  background-color: #bc9809;
+}
+
+.artist-request-form button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Messages */
+.error { color: red; margin-bottom: 0.5rem; }
+.success { color: #00ff99; margin-bottom: 0.5rem; }

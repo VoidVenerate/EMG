@@ -1,0 +1,210 @@
+.admin-navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 80px;
+  background: #0e0e11;
+  display: flex;
+  flex-direction: column;
+  padding: 20px 16px;
+  border-right: 1px solid rgba(255, 255, 255, 0.08);
+  z-index: 1000;
+}
+
+/* TOP GROUP */
+.admin-navbar-top {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  padding-top: 44px;
+}
+
+/* NAV LINKS SPACING */
+.admin-navbar-links {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* BOTTOM GROUP */
+.admin-navbar-bottom {
+  margin-top: auto; /* THIS is the magic line */
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: center;
+}
+
+
+/* ---------- HEADER ---------- */
+.admin-navbar-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.admin-navbar-logo img {
+  width: 56px;
+  object-fit: contain;
+}
+
+/* ---------- HAMBURGER (hidden on desktop) ---------- */
+.hamburger {
+  display: none;
+}
+
+/* ---------- NAV LINKS ---------- */
+.admin-navbar-links {
+  list-style: none;
+  padding: 0;
+  margin: 40px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  align-items: center;
+  justify-content: center;
+}
+
+.admin-navbar-link {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  width: 48px;
+  height: 48px;
+  color: #c9c9d1;
+  text-decoration: none;
+  border-radius: 9px;
+  transition: background 0.2s ease, color 0.2s ease;
+  background: #FFFFFF0D;
+  border: 1px solid #FFFFFF33;
+  justify-content: center;
+}
+
+.admin-navbar-link svg {
+  width: 20px;
+  height: 20px;
+}
+
+.admin-navbar-link:hover {
+  color: #ffffff;
+}
+
+.admin-navbar-link.active {
+  color: #ffffff;
+}
+
+/* ---------- RIGHT / BOTTOM ACTIONS ---------- */
+.admin-navbar-button {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  align-items: center;
+}
+
+
+/* ---------- PROFILE ---------- */
+.profile-container {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.profile-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  cursor: pointer;
+}
+
+.letter-avatar {
+  user-select: none;
+}
+
+/* ---------- DROPDOWN ---------- */
+.profile-dropdown {
+  position: absolute;
+  bottom: 80px;
+  left: 16px;
+  background: #1a1a1f;
+  border-radius: 10px;
+  padding: 8px 0;
+  width: 180px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+.dropdown-item {
+  display: block;
+  padding: 10px 16px;
+  color: #e4e4e7;
+  text-decoration: none;
+}
+
+.dropdown-item:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+/* ---------- LOGOUT ---------- */
+.logout-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #FF00000D;
+  color: #FF0000;
+  border: 1px solid #FF000033;
+  width: 48px;
+  height: 48px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+  justify-content: center;
+}
+
+.logout-btn:hover {
+  background: rgba(255, 107, 107, 0.1);
+}
+
+/* ---------- LOGOUT MODAL ---------- */
+.logout-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logout-modal-content {
+  background: #121218;
+  padding: 24px;
+  border-radius: 14px;
+  width: 300px;
+  text-align: center;
+}
+
+.logout-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.logout-actions button {
+  padding: 10px 16px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+}
+
+.logout-actions button:first-child {
+  background: #6a5acd;
+  color: white;
+}
+
+.logout-actions button:last-child {
+  background: transparent;
+  color: #aaa;
+}

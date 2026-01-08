@@ -1,0 +1,62 @@
+.HomeComp-section {
+  width: 100vw;
+  height: calc(100vh);
+  margin-top: 80px;
+  overflow: hidden;
+  font-family: 'DM Sans';
+}
+
+.home-img {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+/* IMAGE */
+.home-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* DARK GRADIENT FADE (bottom heavy) */
+.home-img::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.9) 0%,
+    rgba(0, 0, 0, 0.6) 30%,
+    rgba(0, 0, 0, 0.25) 55%,
+    rgba(0, 0, 0, 0.05) 75%
+  );
+  z-index: 1;
+}
+
+/* TEXT WRAPPER */
+.home-img h1,
+.home-img p {
+  position: absolute;
+  z-index: 2;
+  text-align: left;
+  left: 3%;
+}
+
+/* TITLE */
+.home-img h1 {
+  bottom: 80px;
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  letter-spacing: 1px;
+  color: #fff;
+}
+
+/* SUBTEXT */
+.home-img p {
+  bottom: 40px;
+  max-width: 100%;
+  font-size: 20px;
+  opacity: 0.9;
+  line-height: 1.4;
+  color: #B7B7B7;
+}

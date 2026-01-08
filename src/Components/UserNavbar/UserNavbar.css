@@ -1,0 +1,209 @@
+/* ===== Navbar Base ===== */
+.navbar {
+  background-color: #0B0B0F;
+  padding: 24px 44px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: 'DM Sans';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+.navbar-logo img {
+  height: 2.5rem;
+}
+
+/* ===== Navigation Links ===== */
+.navbar-links {
+  display: flex;
+  list-style: none;
+  gap: 2rem;
+  margin: 0;
+  padding: 0;
+  flex: 1;
+  justify-content: center;
+}
+
+.navbar-link {
+  color: #555;
+  text-decoration: none;
+  font-weight: 500;
+  margin-left: 2rem;
+  transition: color 0.3s ease;
+}
+
+.navbar-link:hover,
+.navbar-link.active {
+  color: #AC8900;
+}
+
+/* ===== Navbar Button ===== */
+/* .navbar-button button {
+  border: none;
+  cursor: pointer;
+  font-weight: 500;
+  color: #fff;
+  letter-spacing: 4px;
+  background-color: #000;
+  position: relative;
+  overflow: hidden;
+  transition: background 0.3s ease;
+  -webkit-box-reflect: below 1px linear-gradient(transparent, #0005);
+} */
+
+.navbar-button button {
+  padding: 18px 20px;
+  border: 1px solid #AC8900;
+  cursor: pointer;
+  font-weight: 400;
+  background-color: #AC8900;
+  letter-spacing: 3px;
+  position: relative;
+  overflow: hidden;
+  transition: color 0.3s ease, box-shadow 0.3s ease;
+  color: #fff;
+  border-radius: 4px;
+}
+
+/* Gold sweep layer */
+/* .navbar-button button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: #AC8900;
+  transition: left 0.4s ease;
+  z-index: -1;
+} */
+
+/* Hover effect */
+/* .navbar-button button:hover::before {
+  left: 0;
+}
+*/
+.navbar-button button:hover {
+  /* color: #000; */
+  box-shadow:
+    0 0 8px rgba(172, 137, 0, 0.6),
+    0 0 20px rgba(172, 137, 0, 0.4);
+} 
+/* ===== Hamburger ===== */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  width: 25px;
+  height: 20px;
+}
+
+.hamburger span {
+  height: 3px;
+  background: #fff;
+  border-radius: 2px;
+  transition: 0.3s ease;
+}
+
+.hamburger span:nth-child(3) {
+  width: 15px;
+}
+
+.hamburger.open span:nth-child(1),
+.hamburger.open span:nth-child(3) {
+  position: absolute;
+  top: 8px;
+  width: 25px;
+}
+
+.hamburger.open span:nth-child(1) {
+  transform: rotate(45deg);
+}
+
+.hamburger.open span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.open span:nth-child(3) {
+  transform: rotate(-45deg);
+}
+
+/* ===== Desktop / Mobile Toggles ===== */
+.desktop-only { display: block; }
+.mobile-only { display: none; }
+
+/* ===== Mobile & Tablet ===== */
+@media (max-width: 1024px) {
+  .navbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .hamburger {
+    display: flex;
+    z-index: 1000;
+  }
+
+  .navbar-links {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    background: #000;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: 0.4s ease;
+    z-index: 999;
+  }
+
+  .navbar-links.open {
+    max-height: 500px;
+    padding: 20px 0;
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  .navbar-links li {
+    opacity: 0;
+    transform: translateX(-20px);
+    transition: 0.3s ease;
+  }
+
+  .navbar-links.open li {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  .navbar-link {
+    padding: 12px 20px;
+    color: #7f7f7f;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .navbar-link:hover {
+    background: rgba(84, 35, 210, 0.1);
+    color: #fff;
+    padding-left: 30px;
+  }
+
+  .desktop-only { display: none; }
+  .mobile-only { display: block; margin: 15px 20px 0; }
+}
+
+/* ===== Small Phones ===== */
+@media (max-width: 430px) {
+  .navbar-link,
+  .navbar-button button {
+    font-size: 0.9rem;
+  }
+}

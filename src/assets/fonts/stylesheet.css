@@ -1,0 +1,26 @@
+@font-face {
+    font-family: 'Nimous Daven';
+    src: url('NimousDaven-Regular.eot');
+    src: local('Nimous Daven Regular'), local('NimousDaven-Regular'),
+        url('NimousDaven-Regular.eot?#iefix') format('embedded-opentype'),
+        url('NimousDaven-Regular.woff2') format('woff2'),
+        url('NimousDaven-Regular.woff') format('woff'),
+        url('NimousDaven-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Nimous Daven AT';
+    src: url('NimousDavenAT-Regular.eot');
+    src: local('Nimous Daven AT Regular'), local('NimousDavenAT-Regular'),
+        url('NimousDavenAT-Regular.eot?#iefix') format('embedded-opentype'),
+        url('NimousDavenAT-Regular.woff2') format('woff2'),
+        url('NimousDavenAT-Regular.woff') format('woff'),
+        url('NimousDavenAT-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+

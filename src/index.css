@@ -1,0 +1,15 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+@font-face {
+  font-family: "Nimous-Daven";
+  src: url('./assets/fonts/NimousDaven-Regular.woff') format('woff');
+  src: url('./assets/fonts/NimousDaven-Regular.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Sprite-Graffiti';
+  src: url('./assets/fonts/sprite-graffiti.woff2') format('woff2');
+  src: url('./assets/fonts/sprite-graffiti.woff') format('woff');
+}
