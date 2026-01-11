@@ -96,7 +96,6 @@ const UserNewMusic = () => {
                       effect="blur"
                       className="music-image"
                     />
-                    <div className="music-position">#{item.position}</div>
                   </div>
 
                   <div className="music-info">

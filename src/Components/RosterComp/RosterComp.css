@@ -1,12 +1,12 @@
 /* AdminArtists.css */
 
-.roster-section {
+.user-roster-section {
   padding: 24px 44px;
   background: #000;
   color: #fff;
   font-family: "DM Sans";
   min-height: 100vh;
-  margin-left: 0vw;
+  margin-top: 5vw;
   font-family: 'DM Sans';
 }
 

@@ -49,8 +49,8 @@ const RosterComp = () => {
   }
 
   return (
-    <section className="roster-section">
-      <h2 className="roster-title">Our Roster</h2>
+    <section className="user-roster-section">
+      <h2 className="roster-title">Roster</h2>
 
       <div className="roster-grid">
         {loading
@@ -67,7 +67,7 @@ const RosterComp = () => {
               <div
                 key={artist.id}
                 className="roster-card"
-                onClick={() => navigate(`/artists/${artist.id}`)}
+                onClick={() => navigate(`/user/artists/${artist.id}`)}
                 style={{ cursor: "pointer" }}
               >
                 <LazyLoadImage
