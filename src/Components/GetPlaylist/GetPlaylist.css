@@ -1,0 +1,396 @@
+/* PAGE */
+.playlists-page {
+  padding: 2rem;
+  color: #fff;
+  margin-left: 5vw;
+  font-family: 'DM Sans', sans-serif;
+  min-height: 100vh;
+  background: #000;
+}
+
+/* HEADER */
+.playlists-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.playlists-subtitle {
+  font-size: 16px;
+  color: #ffffffb2;
+  margin-bottom: 3rem;
+}
+
+/* ERROR */
+.error {
+  color: #ff4444;
+  text-align: center;
+  padding: 1rem;
+  background: rgba(255, 68, 68, 0.1);
+  border-radius: 8px;
+  margin-bottom: 2rem;
+}
+
+/* GRID */
+.playlists-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+/* =========================
+   PLAYLIST CARD
+========================= */
+.playlist-card {
+  position: relative;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.playlist-card:hover {
+  transform: translateY(-8px);
+}
+
+/* =========================
+   DISC CONTAINER
+========================= */
+.disc-container {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: visible;
+  background: url('/public/cd-bg.png');
+}
+
+.disc-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+/* DISC CENTER (VINYL HOLE) */
+.disc-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 60px;
+  height: 60px;
+  background: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+  z-index: 5;
+}
+
+.spotify-icon-center {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.spotify-icon-center svg {
+  width: 28px;
+  height: 28px;
+  color: #000;
+}
+
+/* =========================
+   PLAY/PAUSE BUTTON - TOP RIGHT
+========================= */
+.play-pause-btn {
+  position: absolute;
+  top: 210px;
+  right: 12px;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 500;
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
+  z-index: 10;
+}
+
+.playlist-card:hover .play-pause-btn {
+  background: rgba(255, 255, 255, 0.25);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+/* =========================
+   BOTTOM OVERLAY
+========================= */
+.bottom-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 50%;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.3));
+  backdrop-filter: blur(4px);
+  border-radius: 0 0 8px 8px;
+  z-index: 8;
+  display: flex;
+  align-items: flex-end;
+  padding: 16px;
+}
+
+.overlay-content {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 12px;
+}
+
+/* LEFT SIDE - PLAYLIST INFO */
+.playlist-info-left {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.playlist-name {
+  font-size: 64px;
+  font-weight: 500;
+  margin: 0;
+  color: #fff;
+  line-height: 1.2;
+  font-family: 'Nimous-Daven';
+  text-shadow: 
+    0 2px 4px rgba(0, 0, 0, 0.5),
+    0 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+.playlist-subtitle {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  color: #fff;
+}
+
+.playlist-buttons{
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+}
+
+.spotify-badge {
+  width: 30px;
+  height: 30px;
+  background: #000;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.spotify-badge svg {
+  width: 30px;
+  height: 30px;
+  color: #fff;
+}
+
+/* RIGHT SIDE - BARCODE */
+.barcode {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  background: #fff;
+  width: 40px;
+  height: 12px;
+}
+
+.barcode-image {
+  height: 30px;
+  width: auto;
+  opacity: 0.9;
+}
+
+.toggle-btn {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 32px;
+}
+
+.add-action-btn {
+  padding: 8px 12px;
+  font-size: 13px;
+  font-weight: 500;
+  border-radius: 6px;
+  border: 1px solid #FFFFFF33;
+  background: #FFFFFF0D;
+  color: #fff;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  white-space: nowrap;
+  width: 100%;
+  max-width: 100px;
+  height: 32px;
+  margin-right: 8px;
+  cursor: pointer;
+  font-family: 'DM Sans', sans-serif;
+}
+
+.add-action-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+/* =========================
+   SKELETON
+========================= */
+.playlist-card.skeleton {
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  pointer-events: none;
+}
+
+.react-loading-skeleton {
+  animation: shimmer 1.6s infinite linear;
+  background-size: 400% 100%;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 100% 0;
+  }
+  100% {
+    background-position: -100% 0;
+  }
+}
+
+/* EMPTY STATE */
+.empty-state {
+  text-align: center;
+  padding: 4rem 2rem;
+  color: #888;
+}
+
+.empty-state p {
+  font-size: 1.1rem;
+}
+
+/* PAGINATION */
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+  gap: 0.5rem;
+}
+
+.pagination li {
+  list-style: none;
+  padding: 0.4rem 0.7rem;
+  border-radius: 6px;
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.pagination li:hover:not(.disabled) {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.pagination li.active {
+  background: #1db954;
+  color: #000;
+  font-weight: 600;
+}
+
+.pagination li.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.page-link {
+  color: #fff;
+  text-decoration: none;
+}
+
+.pagination li.active .page-link {
+  color: #000;
+}
+
+/* RESPONSIVE */
+@media (max-width: 1024px) {
+  .playlists-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .playlists-page {
+    margin-left: 0;
+    padding: 1.5rem;
+  }
+
+  .playlists-title {
+    font-size: 2rem;
+  }
+
+  .playlists-subtitle {
+    font-size: 14px;
+  }
+
+  .playlists-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .playlist-name {
+    font-size: 1.1rem;
+  }
+
+  .play-pause-btn {
+    font-size: 10px;
+    padding: 5px 10px;
+  }
+
+  .bottom-overlay {
+    padding: 12px;
+  }
+
+  .barcode-image {
+    height: 25px;
+  }
+}
+/* =====================================================
+   INFINITE VINYL ROLL ON HOVER
+===================================================== */
+
+/* REMOVE TRANSITION-BASED ROTATION */
+.disc-image {
+  transition: none;
+  transform-origin: 50% 50%;
+}
+
+/* CONTINUOUS SPIN WHEN CARD IS HOVERED */
+.playlist-card:hover .disc-image {
+  animation: vinylSpin 2.4s linear infinite;
+}
+
+/* VINYL SPIN KEYFRAMES */
+@keyframes vinylSpin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

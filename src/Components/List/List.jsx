@@ -2,18 +2,17 @@ import React from 'react'
 import axios from 'axios'
 import { useState, useEffect } from 'react'
 import ReactPaginate from 'react-paginate'
-import './ArtistRequests.css'
+import './List.css'
 import { BookCopy, SquareCheck } from 'lucide-react'
 import toast from 'react-hot-toast'
 import Modal from '../Modal/Modal' // Import Modal
-import { useNavigate } from 'react-router-dom'
 
 const copyToClipboard = (value) => {
   navigator.clipboard.writeText(value)
   toast.success('Copied to clipboard!')
 }
 
-const ArtistCard = ({ artist, onApprove, onDelete }) => (
+const ArtistCard = ({ artist, onDelete }) => (
   <div className="artist-requests-card">
 
     {/* ARTIST INFO - 2 Column Grid */}
@@ -87,18 +86,13 @@ const ArtistCard = ({ artist, onApprove, onDelete }) => (
         <span><SquareCheck /> Marketing & Promotions</span>
       )}
     </div>
-    
+
     <p className="date">
       Requested on: {new Date(artist.created_at).toLocaleDateString()}
     </p>
 
     {/* ACTIONS */}
     <div className="artist-card-actions">
-      {artist.status !== "approved" && (
-        <button className="approve-btn" onClick={() => onApprove(artist.id, artist.artist_name)}>
-          Add to List
-        </button>
-      )}
       <button className="delete-request-btn" onClick={() => onDelete(artist.id, artist.artist_name)}>
         Remove Request
       </button>
@@ -109,14 +103,13 @@ const ArtistCard = ({ artist, onApprove, onDelete }) => (
 
 
 
-const ArtistRequests = () => {
+const List = () => {
 
     const [requests, setRequests] = useState([])
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState(null)
     const [currentPage, setCurrentPage] = useState(0)
-    const requestsPerPage = 4
-    const navigate = useNavigate()
+    const requestsPerPage = 6
 
     // Modal states
     const [showModal, setShowModal] = useState(false)
@@ -197,53 +190,25 @@ const ArtistRequests = () => {
       handleCloseModal()
     }
 
-    const handleApprove = async (id, artistName) => {
-      showConfirmModal(
-        'Approve Artist Request',
-        `Are you sure you want to approve ${artistName}?`,
-        'This will add the artist to your approved list.',
-        async () => {
-          try {
-            await axios.put(`https://exodus-va6e.onrender.com/artist-requests/${id}/approve`, {}, { headers })
-            setRequests(prev =>
-              prev.map(r => (r.id === id ? { ...r, status: 'approved' } : r))
-            )
-            showSuccessModal(
-              'Artist Approved!',
-              `${artistName} has been successfully approved.`,
-              'The artist will now appear in your approved list.'
-            )
-          } catch (err) {
-            console.error(err)
-            showErrorModal(
-              'Approval Failed',
-              `Failed to approve ${artistName}.`,
-              'Please try again or contact support if the issue persists.'
-            )
-          }
-        }
-      )
-    }
-
     const handleDelete = async (id, artistName) => {
       showConfirmModal(
-        'Delete Artist Request',
-        `Are you sure you want to delete ${artistName}'s request?`,
+        'Remove Artist Request',
+        `Are you sure you want to remove ${artistName}'s request?`,
         'This action cannot be undone.',
         async () => {
           try {
             await axios.delete(`https://exodus-va6e.onrender.com/artist-requests/admin-remove-request/${id}`, { headers })
             setRequests(prev => prev.filter(r => r.id !== id))
             showSuccessModal(
-              'Request Deleted!',
+              'Request Removed!',
               `${artistName}'s request has been removed.`,
               'The request has been permanently deleted from the system.'
             )
           } catch (err) {
             console.error(err)
             showErrorModal(
-              'Deletion Failed',
-              `Failed to delete ${artistName}'s request.`,
+              'Removal Failed',
+              `Failed to remove ${artistName}'s request.`,
               'Please try again or contact support if the issue persists.'
             )
           }
@@ -256,14 +221,11 @@ const ArtistRequests = () => {
     }
 
   return (
-    <div className="artistRequests-section">
+    <div className="artistRequests-section" style={{marginLeft:"3vw"}}>
       <div className="artist-header-section">
         <div className="section-section">
-          <h2>Artist Requests</h2>
-          <p>Manage incoming artist requests and add them to your roster.</p>
-        </div>
-        <div className="section-list-button" onClick={() => navigate('/list')} >
-          View List
+          <h2>Artist List</h2>
+          <p>List of potential artists for emg.</p>
         </div>
       </div>
 
@@ -279,7 +241,6 @@ const ArtistRequests = () => {
           <ArtistCard
             key={artist.id}
             artist={artist}
-            onApprove={handleApprove}
             onDelete={handleDelete}
           />
         ))}
@@ -330,4 +291,4 @@ const ArtistRequests = () => {
   )
 }
 
-export default ArtistRequests
+export default List

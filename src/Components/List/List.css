@@ -11,6 +11,15 @@
 }
 
 /* Header Section */
+.artist-header-section {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  gap: 1rem;
+  width: 100%;
+}
 .section-section {
   margin-bottom: 12px;
 }

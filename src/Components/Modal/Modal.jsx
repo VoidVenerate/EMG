@@ -1,9 +1,9 @@
 // Modal.jsx
 import React from 'react';
-import { BookImage, CheckCircle, LogOut, MessageSquareWarning, XCircle } from 'lucide-react'; // ✅ Icons
+import { BookImage, Check, LogOut, MessageSquareWarning, XCircle } from 'lucide-react';
 import './Modal.css';
 
-const Modal = ({ show, onClose, title, message, subMessage, type, footerButtons,titleAlign = "center" }) => {
+const Modal = ({ show, onClose, title, message, subMessage, type, footerButtons, titleAlign = "center" }) => {
   if (!show) return null;
 
   return (
@@ -12,19 +12,35 @@ const Modal = ({ show, onClose, title, message, subMessage, type, footerButtons,
         className={`modal-container ${type}`}
         onClick={e => e.stopPropagation()}
       >
-        {/* === Title Row with Icon === */}
+        {/* === Circle Icon === */}
+        {type === 'success' && (
+          <div className="circle-wrapper">
+            <Check className="modal-icon success-icon" />
+          </div>
+        )}
+        {type === 'error' && (
+          <div className="circle-wrapper">
+            <XCircle className="modal-icon error-icon" />
+          </div>
+        )}
+        {type === 'logout' && (
+          <div className="circle-wrapper">
+            <LogOut className="modal-icon logout-icon" />
+          </div>
+        )}
+        {type === 'duration' && (
+          <div className="circle-wrapper">
+            <MessageSquareWarning className="modal-icon duration-icon" />
+          </div>
+        )}
         {type === 'image' && (
           <div className="circle-wrapper">
             <BookImage className="modal-icon image-icon" />
           </div>
         )}
-        <div className="modal-title-row">
-          {type === 'success' && <CheckCircle className="modal-icon success-icon" />}
-          {type === 'error' && <XCircle className="modal-icon error-icon" />}
-          {type === 'logout' && <LogOut className='modal-icon logout-icon'/>}
-          {type === 'duration' && <MessageSquareWarning className='modal-icon duration-icon'/>}
-          <h2 className={`modal-title ${titleAlign}`}>{title}</h2>
-        </div>
+
+        {/* === Title === */}
+        <h2 className={`modal-title ${titleAlign}`}>{title}</h2>
 
         {/* === Message Content === */}
         <div className="modal-message">{message}</div>
@@ -32,9 +48,6 @@ const Modal = ({ show, onClose, title, message, subMessage, type, footerButtons,
 
         <div className="modal-footer">
           {footerButtons}
-          {/* <button className="modal-close-btn" onClick={onClose}>
-            Close
-          </button> */}
         </div>
       </div>
     </div>

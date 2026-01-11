@@ -156,6 +156,10 @@ const NewMusic = () => {
       <p className="new-music-subtitle">
         The latest drops from EMG, all in one place.
       </p>
+      <div className="toggle-btn">
+        <button className='music-action-btn' onClick={() => navigate('/admin/new-music')} style={{background:'#dadadaff', color:'#000'}}>New Music</button>
+        <button className='music-action-btn' onClick={() => navigate('/get-playlist')}>Playlist</button>
+      </div>
 
       {error && <p className="error">{error}</p>}
 
@@ -186,7 +190,6 @@ const NewMusic = () => {
                         effect="blur"
                         className="music-image"
                       />
-                      <div className="music-position">#{item.position}</div>
                     </div>
 
                     {/* Admin Controls - Reorder Only */}

@@ -26,6 +26,9 @@ import Newsletter from './Components/Newsletter/Newsletter';
 import ProfileDark from './Components/ProfileDark/ProfileDark';
 import NewMusic from './Components/NewMusic/NewMusic';
 import UserNewMusic from './Components/UserNewMusic/UserNewMusic';
+import List from './Components/List/List';
+import AddPlaylist from './Components/AddPlaylist/AddPlaylist';
+import GetPlaylist from './Components/GetPlaylist/GetPlaylist';
 
 const App = () => {
   const navigate = useNavigate();
@@ -52,6 +55,7 @@ const App = () => {
       {/* ===== ADMIN ROUTES ===== */}
       <Route element={<AdminLayout />}>
         <Route path="/adminhome" element={<Overview />} />
+        <Route path="/list" element={<List />} />
         <Route path='/emgartist' element={<EMGArtist />} />
         <Route path='/addartist' element={<AddArtist onArtistCreated={handleArtistCreated} />} />
         <Route 
@@ -87,6 +91,8 @@ const App = () => {
         <Route path='/subscriptions' element={<Newsletter/>} />
         <Route path='/admin/new-music' element={<NewMusic/>} />
         <Route path='/me' element={<ProfileDark/>} />
+        <Route path='/add-playlist' element={<AddPlaylist/>} />
+        <Route path='/get-playlist' element={<GetPlaylist/>} />
       </Route>
 
     </Routes>
