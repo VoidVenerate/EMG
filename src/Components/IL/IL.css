@@ -98,3 +98,18 @@
     width: 194px;
   }
 }
+@media (max-width: 460px) {
+  .review-nimous p:first-child {
+    font-size: 20px;
+  }
+  .review-nimous p:last-child {
+    font-size: 14px;
+    line-height: 36px;
+    width: 194px;
+  }
+  .IL-reviews {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0rem;
+    font-size: 24px;
+  }
+}

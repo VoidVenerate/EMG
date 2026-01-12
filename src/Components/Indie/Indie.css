@@ -15,7 +15,6 @@
 }
 
 .indie-left p {
-  line-height: 44px;
   color: #ccc;
 }
 
@@ -58,14 +57,18 @@
     font-size: 1.5rem;
   }
 }
-@media (max-width: 420px) {
-  .indie-section {
-    width: 94vw;
-  }
+@media (max-width: 460px) {
   .indie-header {
-    font-size: 16px;
+    font-size: 20px;
   }
   .indie-normal-font{
-    font-size: 12px;
+    font-size: 16px;
+  }
+  .indie-normal-font {
+    line-height: 24px;
+  }
+  .indie-right img {
+    width: 85%;
+    height: 300px;
   }
 }
