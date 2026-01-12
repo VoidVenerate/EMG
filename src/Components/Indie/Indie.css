@@ -45,8 +45,9 @@
 /* ===== Responsive ===== */
 @media (max-width: 768px) {
   .indie-section {
-    flex-direction: column;
-    text-align: center;
+    flex-direction: row;
+    text-align: left;
+    width: 170vw;
   }
   
   .indie-left, .indie-right {

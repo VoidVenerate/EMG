@@ -17,7 +17,7 @@
   text-align: center;
   border-radius: 44px;
   background: #FFFFFF05;
-  padding: 64px;
+  padding: 30px;
   gap: 10px;
 }
 
@@ -39,10 +39,9 @@
 
 /* ===== Reviews / Stats ===== */
 .IL-reviews {
-  display: flex;
-  justify-content: space-around;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
   gap: 2rem;
-  flex-wrap: wrap;
   margin-top: 2rem;
 }
 
@@ -56,21 +55,25 @@
 
 .review-nimous p:first-child {
   font-family: 'Nimous-Daven', cursive;
-  font-size: 2.5rem;
+  font-size: 96px;
   color: #fff; /* golden highlight */
   margin: 0;
 }
 
 .review-nimous p:last-child {
   font-family: 'Nimous-Daven', sans-serif;
-  font-size: 1rem;
+  font-size: 36px;
   color: #ccc;
   margin-top: 0.5rem;
   text-align: center;
+  line-height: 64px;
 }
 
 /* ===== Responsive ===== */
 @media (max-width: 1024px) {
+  .IL-section {
+    width: 170vw;
+  }
   .IL-header {
     font-size: 2.5rem;
   }
@@ -86,8 +89,15 @@
   .IL-section {
     padding: 3rem 3vw;
   }
+  
   .IL-reviews {
-    flex-direction: column;
-    gap: 1.5rem;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    font-size: 24px;
+  }
+  .review-nimous p:last-child {
+    font-size: 24px;
+    line-height: 36px;
+    width: 194px;
   }
 }

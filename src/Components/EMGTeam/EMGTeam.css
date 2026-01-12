@@ -146,6 +146,9 @@
 
 /* Responsive Design */
 @media (max-width: 900px) {
+    .emg-team-section {
+        width: 170vw;
+    }
     .team-grid {
         grid-template-columns: 1fr;
     }

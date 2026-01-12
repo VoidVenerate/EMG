@@ -1,6 +1,10 @@
+/* =========================
+   HERO SECTION – OPTIMIZED
+   ========================= */
+
 .HomeComp-section {
-  width: 100vw;
-  height: calc(100vh);
+  width: 100%;
+  min-height: auto; /* mobile-safe viewport */
   margin-top: 80px;
   overflow: hidden;
   font-family: 'DM Sans';
@@ -17,46 +21,92 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center;
 }
 
-/* DARK GRADIENT FADE (bottom heavy) */
+/* DARK GRADIENT FADE */
 .home-img::after {
   content: '';
   position: absolute;
   inset: 0;
   background: linear-gradient(
     to top,
-    rgba(0, 0, 0, 0.9) 0%,
-    rgba(0, 0, 0, 0.6) 30%,
-    rgba(0, 0, 0, 0.25) 55%,
-    rgba(0, 0, 0, 0.05) 75%
+    rgba(0, 0, 0, 0.92) 0%,
+    rgba(0, 0, 0, 0.7) 35%,
+    rgba(0, 0, 0, 0.35) 60%,
+    rgba(0, 0, 0, 0.08) 80%
   );
   z-index: 1;
 }
 
-/* TEXT WRAPPER */
+/* TEXT */
 .home-img h1,
 .home-img p {
   position: absolute;
   z-index: 2;
+  left: 5%;
+  right: 5%;
   text-align: left;
-  left: 3%;
 }
 
 /* TITLE */
 .home-img h1 {
-  bottom: 80px;
-  font-size: clamp(2.5rem, 6vw, 4.5rem);
-  letter-spacing: 1px;
+  bottom: 96px;
+  font-size: clamp(2.2rem, 6vw, 4.5rem);
+  letter-spacing: 0.5px;
   color: #fff;
 }
 
 /* SUBTEXT */
 .home-img p {
-  bottom: 40px;
-  max-width: 100%;
-  font-size: 20px;
+  bottom: 48px;
+  max-width: 560px;
+  font-size: clamp(0.95rem, 2.5vw, 1.25rem);
   opacity: 0.9;
-  line-height: 1.4;
+  line-height: 1.5;
   color: #B7B7B7;
+}
+
+/* =========================
+   MOBILE ADJUSTMENTS
+   ========================= */
+
+@media (max-width: 768px) {
+  .HomeComp-section {
+    margin-top: 64px;
+    width: 170vw;
+  }
+
+  .home-img h1 {
+    bottom: 120px;
+  }
+
+  .home-img p {
+    bottom: 64px;
+  }
+}
+
+/* Small phones */
+@media (max-width: 480px) {
+  .home-img h1 {
+    font-size: 2rem;
+    bottom: 110px;
+  }
+
+  .home-img p {
+    font-size: 0.95rem;
+    bottom: 60px;
+    max-width: 100%;
+  }
+}
+
+/* Ultra-small (320px) */
+@media (max-width: 360px) {
+  .home-img h1 {
+    font-size: 1.8rem;
+  }
+
+  .home-img p {
+    font-size: 0.9rem;
+  }
 }

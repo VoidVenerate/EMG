@@ -175,3 +175,11 @@
     align-self: center;
   }
 }
+@media (max-width: 768px) {
+  .media-section {
+    width: 170vw;
+  }
+  .media-footer p {
+    font-size: 36px;
+  }
+}

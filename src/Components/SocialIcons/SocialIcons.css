@@ -20,3 +20,9 @@
   transform: scale(1.1);       /* subtle hover grow */
   filter: brightness(1.2);     /* brightens on hover */
 }
+/* Hide social icons on mobile and small tablets */
+@media (max-width: 768px) {
+  .social-icons {
+    display: none;
+  }
+}

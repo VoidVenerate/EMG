@@ -107,6 +107,9 @@
 }
 
 @media (max-width: 768px) {
+  .marketing-section{
+    width: 170vw;
+  }
   .marketing-header p:first-child {
     font-size: 2.25rem;
   }

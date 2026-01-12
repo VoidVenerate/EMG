@@ -13,16 +13,16 @@ const IL = () => {
             </p>
             <div className="IL-reviews">
                 <div className="review-nimous">
-                    <p style={{fontFamily: 'Nimous-Daven', fontSize:'96px'}}>100%</p>
-                    <p style={{fontFamily:'DM Sans', fontSize:'36px', lineHeight:'64px'}}>Creative freedom</p>
+                    <p style={{fontFamily: 'Nimous-Daven'}}>100%</p>
+                    <p style={{fontFamily:'DM Sans'}}>Creative freedom</p>
                 </div>
                 <div className="review-nimous">
-                    <p style={{fontFamily: 'Nimous-Daven', fontSize:'96px'}}>250M+</p>
-                    <p style={{fontFamily:'DM Sans', fontSize:'36px', lineHeight:'64px'}}>Global streams</p>
+                    <p style={{fontFamily: 'Nimous-Daven'}}>250M+</p>
+                    <p style={{fontFamily:'DM Sans'}}>Global streams</p>
                 </div>
                 <div className="review-nimous">
-                    <p style={{fontFamily: 'Nimous-Daven', fontSize:'96px'}}>1K+</p>
-                    <p style={{fontFamily:'DM Sans', fontSize:'36px', lineHeight:'64px'}}>5-star reviews</p>
+                    <p style={{fontFamily: 'Nimous-Daven'}}>1K+</p>
+                    <p style={{fontFamily:'DM Sans'}}>5-star reviews</p>
                 </div>
             </div>
         </div>
