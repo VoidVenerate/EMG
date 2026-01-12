@@ -73,7 +73,8 @@
 
 @media (max-width: 768px) {
   .HomeComp-section {
-    margin-top: 64px;
+    margin-top: 0px;
+    margin-left: 0vw;
   }
 
   .home-img h1 {
