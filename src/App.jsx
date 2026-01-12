@@ -7,7 +7,7 @@ import Roster from './Pages/Roster/Roster';
 
 /* ---------- AUTH PAGES ---------- */
 import Signup from './Components/SignUp/SignUp';
-import SignIn from './Components/SignIn';
+import SignIn from './Components/SignIn/SignIn';
 
 /* ---------- LAYOUTS ---------- */
 import UserLayout from './Pages/UserLayout/UserLayout';
