@@ -102,6 +102,10 @@
 
 /* Ultra-small (320px) */
 @media (max-width: 360px) {
+  .HomeComp-section {
+    margin-top: 0px;
+    margin-left: 0vw;
+  }
   .home-img h1 {
     font-size: 1.8rem;
   }

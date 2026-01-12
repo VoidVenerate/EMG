@@ -222,6 +222,9 @@ const UserNavbar = () => {
         }
 
         @media (max-width: 430px) {
+          .navbar {
+            padding: 16px 24px;
+          }
           .navbar-link,
           .navbar-button button {
             font-size: 0.9rem;
