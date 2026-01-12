@@ -7,7 +7,7 @@ import Roster from './Pages/Roster/Roster';
 
 /* ---------- AUTH PAGES ---------- */
 import Signup from './Components/SignUp/SignUp';
-import SignIn from './Components/SignIn/SignIN';
+import SignIn from './Components/SignIn';
 
 /* ---------- LAYOUTS ---------- */
 import UserLayout from './Pages/UserLayout/UserLayout';
@@ -19,7 +19,6 @@ import AddArtist from './Components/AddArtist/AddArtist';
 import AddSong from './Components/AddSong/AddSong';
 import AddVideos from './Components/AddVideos/AddVideos';
 import ArtistDetails from './Components/ArtistDetails/ArtistDetails';
-import UserArtistProfile from './Pages/UserArtistProfile/UserArtistProfile';
 import EditSong from './Components/EditSong/EditSong';
 import EditVideo from './Components/EditVideos/EditVideos';
 import Newsletter from './Components/Newsletter/Newsletter';
