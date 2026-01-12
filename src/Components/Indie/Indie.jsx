@@ -1,5 +1,5 @@
 import React from 'react'
-import './Indie.CSS'
+import './Indie.css'
 
 const Indie = () => {
   return (
