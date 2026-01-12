@@ -118,12 +118,12 @@
   margin-bottom: 30px;
 }
 
-.subscribe-form {
+.subscribe-pop-form {
   display: flex;
   gap: 10px;
 }
 
-.email-input {
+.email-pop-input {
   flex: 1;
   padding: 14px 20px;
   border-radius: 8px;
@@ -134,17 +134,17 @@
   transition: all 0.3s ease;
 }
 
-.email-input:focus {
+.email-pop-input:focus {
   outline: none;
   border-color: #ffd700;
   background: rgba(255, 255, 255, 0.1);
 }
 
-.email-input::placeholder {
+.email-pop-input::placeholder {
   color: #666;
 }
 
-.subscribe-btn {
+.subscribe-pop-btn {
   padding: 14px 30px;
   background: #AC8900;
   color: #000;
@@ -156,19 +156,19 @@
   transition: all 0.3s ease;
 }
 
-.subscribe-btn:hover {
+.subscribe-pop-btn:hover {
   background: #AC8900;
   transform: translateY(-2px);
   box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3);
 }
 
-.subscribe-btn:disabled {
+.subscribe-pop-btn:disabled {
   opacity: 0.6;
   cursor: not-allowed;
   transform: none;
 }
 
-.email-input:disabled {
+.email-pop-input:disabled {
   opacity: 0.6;
   cursor: not-allowed;
 }
@@ -245,14 +245,14 @@
     margin-bottom: 20px;
   }
 
-  .subscribe-form {
+  .subscribe-pop-form {
     width: 100%;
     flex-direction: column;
     gap: 12px;
   }
 
-  .email-input,
-  .subscribe-btn {
+  .email-pop-input,
+  .subscribe-pop-btn {
     width: 100%;
     padding: 16px;
     font-size: 1rem;
@@ -281,8 +281,8 @@
     font-size: 0.9rem;
   }
 
-  .email-input,
-  .subscribe-btn {
+  .email-pop-input,
+  .subscribe-pop-btn {
     padding: 14px;
     font-size: 0.95rem;
   }

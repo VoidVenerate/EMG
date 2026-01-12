@@ -13,7 +13,7 @@ const NewsletterPopup = () => {
     // Auto-close after 5 seconds
     const timer = setTimeout(() => {
       setIsVisible(false);
-    }, 5000);
+    }, 20000);
 
     return () => clearTimeout(timer);
   }, []);
@@ -86,19 +86,19 @@ const NewsletterPopup = () => {
               with exclusive updates.
             </p>
             
-            <form onSubmit={handleSubscribe} className="subscribe-form">
+            <form onSubmit={handleSubscribe} className="subscribe-pop-form">
               <input
                 type="email"
                 placeholder="Enter your email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
-                className="email-input"
+                className="email-pop-input"
                 disabled={isLoading}
               />
               <button 
                 type="submit" 
-                className="subscribe-btn"
+                className="subscribe-pop-btn"
                 disabled={isLoading}
               >
                 {isLoading ? 'Subscribing...' : 'Subscribe'}
