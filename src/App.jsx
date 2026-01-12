@@ -8,6 +8,7 @@ import Roster from './Pages/Roster/Roster';
 /* ---------- AUTH PAGES ---------- */
 import Signup from './Components/SignUp/SignUp';
 import SignIn from './Components/SignIn/SignIn';
+import ForgotPasswordModal from './Components/ForgotPasswordModal/ForgotPasswordModal';
 
 /* ---------- LAYOUTS ---------- */
 import UserLayout from './Pages/UserLayout/UserLayout';
@@ -53,6 +54,7 @@ const App = () => {
       {/* ===== AUTH ROUTES ===== */}
       <Route path="/signup" element={<Signup />} />
       <Route path="/login" element={<SignIn />} />
+      <Route path="/forgot-password" element={<ForgotPasswordModal />} />
 
       {/* ===== ADMIN ROUTES ===== */}
       <Route element={<AdminLayout />}>

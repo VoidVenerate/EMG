@@ -3,6 +3,7 @@ import axios from 'axios';
 import { Eye, EyeOff } from "lucide-react";
 import { useNavigate } from 'react-router-dom';
 import Modal from '../Modal/Modal';
+import ForgotPasswordModal from '../ForgotPasswordModal/ForgotPasswordModal'
 
 const SignIn = () => {
   const navigate = useNavigate();
@@ -18,9 +19,8 @@ const SignIn = () => {
   const [showSuccessModal, setShowSuccessModal] = useState(false);
   const [modalMessage, setModalMessage] = useState('');
 
-  const [showForgotModal, setShowForgotModal] = useState(false);
-  const [forgotEmail, setForgotEmail] = useState('');
-  const [forgotLoading, setForgotLoading] = useState(false);
+  // This is the only state you need for forgot password now
+  const [showForgotPasswordModal, setShowForgotPasswordModal] = useState(false);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -73,37 +73,6 @@ const SignIn = () => {
     }
   };
 
-  const handleForgotPassword = async () => {
-    if (!forgotEmail) {
-      setModalMessage("Please enter your email");
-      setShowSuccessModal(true);
-      return;
-    }
-
-    if (!isTurnupEmail(forgotEmail)) {
-      setModalMessage("Only @exodusmusicgroup.com emails are allowed");
-      setShowSuccessModal(true);
-      return;
-    }
-
-    setForgotLoading(true);
-    try {
-      await axios.post("/email/send-otp-email", {
-        to_email: forgotEmail,
-        recipient_name: "User",
-      });
-
-      setModalMessage("OTP sent! Check your email.");
-      setShowSuccessModal(true);
-      setShowForgotModal(false);
-    } catch (err) {
-      setModalMessage(err.response?.data?.message || "Failed to send reset email");
-      setShowSuccessModal(true);
-    } finally {
-      setForgotLoading(false);
-    }
-  };
-
   return (
     <div className="signup-container">
       <div className="auth-nav">
@@ -149,12 +118,17 @@ const SignIn = () => {
           Don't have an account? <span style={{color:'#DFA123'}}>Sign Up</span>
         </p>
 
-        <p onClick={() => setShowForgotModal(true)} className="toggle-link" style={{color:'#0084FF'}}>
+        {/* Updated: Now opens the ForgotPasswordModal */}
+        <p 
+          onClick={() => setShowForgotPasswordModal(true)} 
+          className="toggle-link" 
+          style={{color:'#0084FF', cursor: 'pointer'}}
+        >
           Forgot Password?
         </p>
       </div>
 
-      {/* Success Modal */}
+      {/* Success Modal for login */}
       <Modal
         show={showSuccessModal}
         onClose={() => setShowSuccessModal(false)}
@@ -164,27 +138,10 @@ const SignIn = () => {
         subMessage='Redirecting...'
       />
 
-      {/* Forgot Password Modal */}
-      <Modal
-        show={showForgotModal}
-        onClose={() => setShowForgotModal(false)}
-        title="Forgot Password"
-        message="Enter your email to receive a reset OTP."
-        type="info"
-        footerButtons={
-          <>
-            <input
-              type="email"
-              placeholder="Enter your email"
-              value={forgotEmail}
-              onChange={(e) => setForgotEmail(e.target.value)}
-              style={{ padding: '8px', width: '100%', marginBottom: '10px' }}
-            />
-            <button onClick={handleForgotPassword} disabled={forgotLoading}>
-              {forgotLoading ? 'Sending...' : 'Send Reset Email'}
-            </button>
-          </>
-        }
+      {/* NEW: Forgot Password Modal - handles everything internally */}
+      <ForgotPasswordModal
+        show={showForgotPasswordModal}
+        onClose={() => setShowForgotPasswordModal(false)}
       />
     </div>
   );
