@@ -89,28 +89,26 @@
 /* Small phones */
 @media (max-width: 480px) {
   .home-img h1 {
-    font-size: 2rem;
-    bottom: 110px;
+    bottom: 40px;
   }
 
   .home-img p {
-    font-size: 0.95rem;
-    bottom: 60px;
+    bottom: 0px;
     max-width: 100%;
   }
 }
 
 /* Ultra-small (320px) */
-@media (max-width: 360px) {
+@media (max-width: 420px) {
   .HomeComp-section {
     margin-top: 0px;
     margin-left: 0vw;
   }
   .home-img h1 {
-    font-size: 1.8rem;
+    font-size: 16px;
   }
 
   .home-img p {
-    font-size: 0.9rem;
+    font-size: 12px;
   }
 }
