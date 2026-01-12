@@ -228,9 +228,6 @@ const Footer = () => {
 
         /* ===== Mobile Responsive (768px and below) ===== */
         @media (max-width: 768px) {
-          .footer-section {
-            width: 170vw;
-          }
 
           .footer-container {
             gap: 2rem;

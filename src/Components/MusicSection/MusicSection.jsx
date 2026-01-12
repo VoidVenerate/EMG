@@ -78,7 +78,6 @@ const MusicSection = () => {
         /* ===== Mobile Responsive (768px and below) ===== */
         @media (max-width: 768px) {
           .music-section {
-            width: 170vw;
             height: auto;
             padding: 20px 16px;
           }

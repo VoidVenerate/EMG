@@ -47,7 +47,6 @@
   .indie-section {
     flex-direction: row;
     text-align: left;
-    width: 170vw;
   }
   
   .indie-left, .indie-right {
