@@ -108,7 +108,7 @@ const MusicSection = () => {
         /* ===== Small Mobile (480px and below) ===== */
         @media (max-width: 480px) {
           .music-section {
-            padding: 16px 12px;
+            padding: 16px 24px;
           }
 
           .music-container {

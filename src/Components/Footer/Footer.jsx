@@ -228,7 +228,6 @@ const Footer = () => {
 
         /* ===== Mobile Responsive (768px and below) ===== */
         @media (max-width: 768px) {
-
           .footer-container {
             gap: 2rem;
           }
@@ -243,15 +242,14 @@ const Footer = () => {
           }
 
           .info {
-            gap: 1.5rem;
+            gap: 2rem 1.5rem;
             width: 100%;
-            flex-wrap: wrap;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
           }
 
           .info > div {
             gap: 0.5rem;
-            flex: 1;
-            min-width: 120px;
           }
 
           .info p {
@@ -303,12 +301,11 @@ const Footer = () => {
           }
 
           .info {
-            flex-direction: column;
+            grid-template-columns: repeat(2,1fr);
             gap: 1.5rem;
           }
 
           .info > div {
-            flex: none;
             width: 100%;
           }
 

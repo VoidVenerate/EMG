@@ -108,11 +108,13 @@
 
 @media (max-width: 768px) {
   .marketing-header p:first-child {
-    font-size: 2.25rem;
+    font-size: 1.5rem;
+    text-align: left;
   }
 
   .marketing-header p:last-child {
-    font-size: 1rem;
+    font-size: 0.875rem;
+    text-align: left;
   }
 
   .icons {
