@@ -10,7 +10,7 @@ const NewsletterPopup = () => {
   const [error, setError] = useState('');
 
   useEffect(() => {
-    // Auto-close after 5 seconds
+    // Auto-close after 20 seconds
     const timer = setTimeout(() => {
       setIsVisible(false);
     }, 20000);

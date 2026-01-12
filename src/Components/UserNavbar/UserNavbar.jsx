@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { NavLink } from 'react-router-dom';
 
 const UserNavbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -281,35 +282,33 @@ const UserNavbar = () => {
 
       <nav className="navbar">
         <div className="navbar-logo">
-          <a href="/home">
+          <NavLink to="/home">
             <img src="/emg-logo.png" alt="Exodus Music Group" />
-          </a>
+          </NavLink>
         </div>
 
         <div className="navbar-center">
           <ul className="navbar-links">
             {navLinks.map((link, index) => (
               <li key={index}>
-                <a
-                  href={link.to}
+                <NavLink
+                  to={link.to}
                   className="navbar-link"
-                  onClick={(e) => e.preventDefault()}
                 >
                   {link.label}
-                </a>
+                </NavLink>
               </li>
             ))}
           </ul>
         </div>
 
         <div className="navbar-button desktop-only">
-          <a
-            href="/confirmspot"
+          <NavLink
+            to="/confirmspot"
             className="navbar-link"
-            onClick={(e) => e.preventDefault()}
           >
             <button>Confirm Your Spot</button>
-          </a>
+          </NavLink>
         </div>
 
         <div className={`hamburger ${menuOpen ? 'open' : ''}`} onClick={toggleMenu}>
@@ -322,20 +321,25 @@ const UserNavbar = () => {
           <ul className={`navbar-links ${menuOpen ? 'open' : ''}`}>
             {navLinks.map((link, index) => (
               <li key={index}>
-                <a
-                  href={link.to}
+                <NavLink
+                  to={link.to}
                   className="navbar-link"
                   onClick={(e) => {
-                    e.preventDefault();
                     setMenuOpen(false);
                   }}
                 >
                   {link.label}
-                </a>
+                </NavLink>
               </li>
             ))}
             <li className="navbar-button mobile-only">
-              <button onClick={() => setMenuOpen(false)}>Confirm Your Spot</button>
+              <NavLink
+                to="/confirmspot"
+                className="navbar-link"
+                onClick={() => setMenuOpen(false)}
+              >
+                <button>Confirm Your Spot</button>
+              </NavLink>
             </li>
           </ul>
         </div>

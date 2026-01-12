@@ -63,7 +63,7 @@ const UserNewMusic = () => {
   }
 
   return (
-    <div className="new-music-page" style={{marginTop:"5vw", marginLeft:'0px'}}>
+    <div className="new-music-page" style={{marginTop:"0vw", marginLeft:'0px'}}>
       <h1 className="new-music-title">New Music</h1>
       <p className="new-music-subtitle">
         The latest drops from EMG, all in one place.
