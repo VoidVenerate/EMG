@@ -147,6 +147,12 @@ button,
 .info-section {
   padding: 40px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid #ffffff33;
+  background: #ffffff0d;
+  margin-top: 22px;
+  margin-left: 1vw;
+  width: 98%;
+  border-radius: 16px;
 }
 
 .info-section h3 {
@@ -158,7 +164,6 @@ button,
 .section-subtitle {
   font-size: 13px;
   color: #888;
-  margin-bottom: 24px;
 }
 
 .info-grid {
@@ -207,7 +212,11 @@ button,
 .info-input::placeholder {
   color: #666;
 }
-
+.edit-links-btn {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
 /* Edit buttons */
 .edit-actions {
   display: flex;
@@ -258,13 +267,14 @@ button,
   opacity: 0.6;
 }
 
-.delete-btn {
+.delete-profile-btn {
+  padding: 12px 32px;
   background-color: transparent;
   border: 1px solid #ff4444;
   color: #ff4444;
 }
 
-.delete-btn:hover {
+.delete-profile-btn:hover {
   background-color: rgba(255,68,68,0.1);
   border-color: #ff6666;
 }
@@ -468,34 +478,32 @@ button,
 
 /* Reorder Buttons - Top Right */
 .video-reorder-buttons {
-  position: absolute;
-  top: 12px;
-  right: 12px;
   display: flex;
   gap: 4px;
   z-index: 10;
+  justify-content: right;
+  margin-top: 8px;
 }
 
-.reorder-btn {
+.video-reorder-buttons button {
   width: 28px;
   height: 28px;
   padding: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(0, 0, 0, 0.7);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: transparent;
+  border: 0px;
   border-radius: 4px;
   color: #fff;
   backdrop-filter: blur(4px);
 }
 
-.reorder-btn:hover:not(:disabled) {
+.video-reorder-buttons button:hover:not(:disabled) {
   background: rgba(0, 0, 0, 0.9);
-  border-color: rgba(255, 255, 255, 0.4);
 }
 
-.reorder-btn:disabled {
+.video-reorder-buttons button:disabled {
   opacity: 0.3;
   cursor: not-allowed;
 }
@@ -722,3 +730,4 @@ button,
     padding: 5px 8px;
   }
 }
+

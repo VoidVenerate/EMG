@@ -29,8 +29,7 @@
 }
 .add-videos {
   min-height: 100vh;
-  background-color: transparent;
-  padding: 40px 20px;
+  background-color: #FFFFFF0D;
   color: #ffffff;
   max-width: 700px;
   margin: 0 auto;
@@ -204,7 +203,7 @@
 
 .actions button:last-child {
   background-color: #FFFFFF0D;
-  color: #FFFFFF33;
+  color: #ffffff;
   border: 1px solid #FFFFFF33;
 }
 
@@ -214,9 +213,12 @@
 
 .actions button:disabled {
   background-color: #333333;
-  color: #666666;
+  color: #4f4f4f;
   cursor: not-allowed;
   opacity: 0.6;
+}
+.actions button:disabled:hover {
+  background-color: #333333;
 }
 
 /* Responsive Design */

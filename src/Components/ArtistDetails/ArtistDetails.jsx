@@ -18,8 +18,10 @@ const ArtistDetails = () => {
   const [editMode, setEditMode] = useState(false)
   const [saving, setSaving] = useState(false)
   const [editForm, setEditForm] = useState({})
-  const [bannerFile, setBannerFile] = useState(null)
-  const [profileFile, setProfileFile] = useState(null)
+  
+  // Remove these states as we no longer need them
+  // const [bannerFile, setBannerFile] = useState(null)
+  // const [profileFile, setProfileFile] = useState(null)
 
   const token = localStorage.getItem('token')
 
@@ -67,23 +69,11 @@ const ArtistDetails = () => {
     setEditForm(prev => ({ ...prev, [field]: value }))
   }
 
-  const handleBannerUpload = (e) => {
+  // Updated: Auto-save banner on file selection
+  const handleBannerUpload = async (e) => {
     const file = e.target.files[0]
-    if (file) {
-      setBannerFile(file)
-      uploadBannerImage(file)
-    }
-  }
+    if (!file) return
 
-  const handleProfileUpload = (e) => {
-    const file = e.target.files[0]
-    if (file) {
-      setProfileFile(file)
-      uploadProfileImage(file)
-    }
-  }
-
-  const uploadBannerImage = async (file) => {
     try {
       setSaving(true)
       const formData = new FormData()
@@ -110,7 +100,11 @@ const ArtistDetails = () => {
     }
   }
 
-  const uploadProfileImage = async (file) => {
+  // Updated: Auto-save profile image on file selection
+  const handleProfileUpload = async (e) => {
+    const file = e.target.files[0]
+    if (!file) return
+
     try {
       setSaving(true)
       const formData = new FormData()
@@ -166,8 +160,6 @@ const ArtistDetails = () => {
 
       setArtist(response.data)
       setEditMode(false)
-      setBannerFile(null)
-      setProfileFile(null)
       toast.success('Artist updated successfully! 🎉')
     } catch (error) {
       console.error(error)
@@ -212,14 +204,12 @@ const ArtistDetails = () => {
     let newIndex = direction === 'up' ? currentIndex - 1 : currentIndex + 1;
     if (newIndex < 0 || newIndex >= artist.videos.length) return;
 
-    // Swap positions locally for instant UI feedback
     const updatedVideos = [...artist.videos];
     [updatedVideos[currentIndex], updatedVideos[newIndex]] = [updatedVideos[newIndex], updatedVideos[currentIndex]];
 
-    // Update display_order according to new positions
     const reorderData = updatedVideos.map((video, index) => ({
       id: video.id,
-      position: index + 1, // positions start at 1
+      position: index + 1,
     }));
 
     try {
@@ -232,7 +222,6 @@ const ArtistDetails = () => {
         }
       );
 
-      // Update state with reordered videos
       setArtist(prev => ({
         ...prev,
         videos: updatedVideos
@@ -256,14 +245,12 @@ const ArtistDetails = () => {
     let newIndex = direction === 'up' ? currentIndex - 1 : currentIndex + 1;
     if (newIndex < 0 || newIndex >= artist.songs.length) return;
 
-    // Swap positions locally for instant UI feedback
     const updatedSongs = [...artist.songs];
     [updatedSongs[currentIndex], updatedSongs[newIndex]] = [updatedSongs[newIndex], updatedSongs[currentIndex]];
 
-    // Update display_order according to new positions
     const reorderData = updatedSongs.map((song, index) => ({
       id: song.id,
-      position: index + 1, // positions start at 1
+      position: index + 1,
     }));
 
     try {
@@ -276,7 +263,6 @@ const ArtistDetails = () => {
         }
       );
 
-      // Update state with reordered songs
       setArtist(prev => ({
         ...prev,
         songs: updatedSongs
@@ -293,8 +279,6 @@ const ArtistDetails = () => {
 
   const handleCancel = () => {
     setEditMode(false)
-    setBannerFile(null)
-    setProfileFile(null)
     setEditForm({
       artist_name: artist.artist_name,
       genres: artist.genres?.join(', ') || '',
@@ -369,8 +353,8 @@ const ArtistDetails = () => {
 
       {/* Banner Section */}
       <div className="banner-section">
-        <LazyLoadImage
-          src={bannerFile ? URL.createObjectURL(bannerFile) : artist.banner_image_url}
+        <img
+          src={artist.banner_image_url}
           effect="blur"
           className="artist-banner"
           alt={`${artist.artist_name} banner`}
@@ -382,18 +366,27 @@ const ArtistDetails = () => {
             onChange={handleBannerUpload}
             style={{ display: 'none' }}
             id="banner-upload"
+            disabled={saving}
         />
             
-        <label htmlFor="banner-upload" className="banner-uploads-overlay" style={{ cursor: 'pointer' }}>
-            <CloudUpload size={32} />
-            <p>Click to upload</p>
+        <label 
+          htmlFor="banner-upload" 
+          className="banner-uploads-overlay" 
+          style={{ 
+            cursor: saving ? 'not-allowed' : 'pointer',
+            opacity: saving ? 0.6 : 1 
+          }}
+        >
+          <CloudUpload size={32} />
+          <p>{saving ? 'Uploading...' : 'Click to upload'}</p>
         </label>
       </div>
 
       {/* Artist Information */}
+      
+      <h3 style={{marginTop:'24px', marginLeft:"1vw", fontSize:"32px"}}>Artist Information</h3>
+      <p style={{marginLeft:"1vw"}} className="section-subtitle">Get people get to know your artist.</p>
       <section className="info-section">
-        <h3>Artist Information</h3>
-        <p className="section-subtitle">Get people get to know your artist.</p>
         
         <div className="info-grid">
           <div className="info-field">
@@ -524,16 +517,18 @@ const ArtistDetails = () => {
           </div>
         </div>
 
-        {!editMode ? (
-          <button className="edit-btn" onClick={() => setEditMode(true)}>Edit</button>
-        ) : (
-          <div className="edit-actions">
-            <button className="cancel-btn" onClick={handleCancel}>Cancel</button>
-            <button className="save-btn" onClick={handleSave} disabled={saving}>
-              {saving ? 'Saving...' : 'Save Changes'}
-            </button>
-          </div>
-        )}
+        <div className="edit-links-btn">
+          {!editMode ? (
+            <button className="edit-btn" onClick={() => setEditMode(true)}>Edit</button>
+          ) : (
+            <div className="edit-actions">
+              <button className="cancel-btn" onClick={handleCancel}>Cancel</button>
+              <button className="save-btn" onClick={handleSave} disabled={saving}>
+                {saving ? 'Saving...' : 'Save Changes'}
+              </button>
+            </div>
+          )}
+        </div>
       </section>
 
       {/* Musics Section */}
@@ -556,7 +551,6 @@ const ArtistDetails = () => {
             {artist.songs.map((song, index) => (
               <div key={song.id} className="music-card">
                 
-                {/* Thumbnail */}
                 <div className="music-thumbnail-wrapper">
                   <img
                     src={song.cover_art_url}
@@ -565,7 +559,6 @@ const ArtistDetails = () => {
                   />
                 </div>
 
-                {/* Reorder buttons */}
                 <div className="video-reorder-buttons">
                   <button
                     className="reorder-btn"
@@ -586,7 +579,6 @@ const ArtistDetails = () => {
                   </button>
                 </div>
 
-                {/* Song Info & Actions */}
                 <div className="videos-card-footer">
                   <div className="song-header">
                     <h4 className="videos-card-title">{song.song_name}</h4>
@@ -596,7 +588,7 @@ const ArtistDetails = () => {
                       disabled={saving}
                       title="Add to New Music"
                     >
-                      Add to New
+                      Add to New Music
                     </button>
                   </div>
                   <p className="videos-card-subtitle">{song.artist_name}</p>
@@ -658,7 +650,6 @@ const ArtistDetails = () => {
 
               return (
                 <div key={video.id} className="videos-card">
-                  {/* Thumbnail */}
                   <div className="video-thumbnail-wrapper">
                     <img src={thumbnail} alt={video.video_name} className="video-thumb-img" />
                     <div className="video-play-icon">
@@ -666,10 +657,8 @@ const ArtistDetails = () => {
                     </div>
                   </div>
 
-                  {/* Reorder buttons */}
                   <div className="video-reorder-buttons">
                     <button
-                      className="reorder-btn"
                       onClick={() => handleReorderVideo(video.id, 'up')}
                       disabled={index === 0}
                       title="Move Up"
@@ -678,7 +667,6 @@ const ArtistDetails = () => {
                       <ArrowUp size={16} />
                     </button>
                     <button
-                      className="reorder-btn"
                       onClick={() => handleReorderVideo(video.id, 'down')}
                       disabled={index === artist.videos.length - 1}
                       title="Move Down"
@@ -687,7 +675,6 @@ const ArtistDetails = () => {
                     </button>
                   </div>
 
-                  {/* Video Info & Actions */}
                   <div className="videos-card-footer">
                     <h4 className="videos-card-title">{video.video_name}</h4>
                     <div className="videos-card-actions">
@@ -737,25 +724,33 @@ const ArtistDetails = () => {
 
         <div className="artist-image-preview">
           <LazyLoadImage
-            src={profileFile ? URL.createObjectURL(profileFile) : artist.image_url}
+            src={artist.image_url}
             effect="blur"
             alt={artist.artist_name}
             className="profile-preview"
           />
-              <input
-                type="file"
-                accept="image/*"
-                onChange={handleProfileUpload}
-                style={{ display: 'none' }}
-                id="profile-upload"
-              />
-              <label htmlFor="profile-upload" className="uploads-overlay" style={{ cursor: 'pointer' }}>
-                <CloudUpload size={32} />
-                <p>Click to upload</p>
-              </label>
+          <input
+            type="file"
+            accept="image/*"
+            onChange={handleProfileUpload}
+            style={{ display: 'none' }}
+            id="profile-upload"
+            disabled={saving}
+          />
+          <label 
+            htmlFor="profile-upload" 
+            className="uploads-overlay" 
+            style={{ 
+              cursor: saving ? 'not-allowed' : 'pointer',
+              opacity: saving ? 0.6 : 1 
+            }}
+          >
+            <CloudUpload size={32} />
+            <p>{saving ? 'Uploading...' : 'Click to upload'}</p>
+          </label>
         </div>
 
-        <button className="delete-btn">Delete Profile</button>
+        <button className="delete-profile-btn">Delete Profile</button>
       </section>
     </div>
   )

@@ -5,7 +5,7 @@ import ReactPaginate from 'react-paginate'
 import './ArtistRequests.css'
 import { BookCopy, SquareCheck } from 'lucide-react'
 import toast from 'react-hot-toast'
-import Modal from '../Modal/Modal' // Import Modal
+import Modal from '../Modal/Modal'
 import { useNavigate } from 'react-router-dom'
 
 const copyToClipboard = (value) => {
@@ -74,18 +74,18 @@ const ArtistCard = ({ artist, onApprove, onDelete }) => (
 
     {/* SERVICES - 2 Column Grid */}
     <div className="services">
-      {artist.music_distribution && (
-        <span><SquareCheck /> Music Distribution</span>
-      )}
-      {artist.music_publishing && (
-        <span><SquareCheck /> Music Publishing</span>
-      )}
-      {artist.prod_and_engineering && (
-        <span><SquareCheck /> Production & Engineering</span>
-      )}
-      {artist.marketing_and_promotions && (
-        <span><SquareCheck /> Marketing & Promotions</span>
-      )}
+      <span className={artist.music_distribution ? 'checked' : 'unchecked'}>
+        <SquareCheck /> Music Distribution
+      </span>
+      <span className={artist.music_publishing ? 'checked' : 'unchecked'}>
+        <SquareCheck /> Music Publishing
+      </span>
+      <span className={artist.prod_and_engineering ? 'checked' : 'unchecked'}>
+        <SquareCheck /> Production & Engineering
+      </span>
+      <span className={artist.marketing_and_promotions ? 'checked' : 'unchecked'}>
+        <SquareCheck /> Marketing & Promotions
+      </span>
     </div>
     
     <p className="date">
@@ -94,7 +94,7 @@ const ArtistCard = ({ artist, onApprove, onDelete }) => (
 
     {/* ACTIONS */}
     <div className="artist-card-actions">
-      {artist.status !== "approved" && (
+      {artist.status !== "listed" && (
         <button className="approve-btn" onClick={() => onApprove(artist.id, artist.artist_name)}>
           Add to List
         </button>
@@ -143,7 +143,9 @@ const ArtistRequests = () => {
             if(!token) return
 
             const requestRes = await axios.get('https://exodus-va6e.onrender.com/artist-requests/admin-list', { headers })
-            setRequests(requestRes.data)
+            // Filter out artists with "listed" status
+            const pendingRequests = requestRes.data.filter(artist => artist.status !== 'listed')
+            setRequests(pendingRequests)
             setLoading(false)
         } catch (err) {
             console.error('Error fetching artist requests:', err)
@@ -199,25 +201,28 @@ const ArtistRequests = () => {
 
     const handleApprove = async (id, artistName) => {
       showConfirmModal(
-        'Approve Artist Request',
-        `Are you sure you want to approve ${artistName}?`,
-        'This will add the artist to your approved list.',
+        'Add Artist to List',
+        `Are you sure you want to add ${artistName} to the list?`,
+        'This will set the artist status to "listed".',
         async () => {
           try {
-            await axios.put(`https://exodus-va6e.onrender.com/artist-requests/${id}/approve`, {}, { headers })
-            setRequests(prev =>
-              prev.map(r => (r.id === id ? { ...r, status: 'approved' } : r))
+            await axios.patch(
+              `https://exodus-va6e.onrender.com/artist-requests/admin-update-status/${id}`,
+              { status: 'listed' },
+              { headers }
             )
+            // Remove the artist from the requests list since they're now listed
+            setRequests(prev => prev.filter(r => r.id !== id))
             showSuccessModal(
-              'Artist Approved!',
-              `${artistName} has been successfully approved.`,
-              'The artist will now appear in your approved list.'
+              'Artist Added!',
+              `${artistName} has been successfully added to the list.`,
+              'The artist will now appear in your listed artists.'
             )
           } catch (err) {
             console.error(err)
             showErrorModal(
-              'Approval Failed',
-              `Failed to approve ${artistName}.`,
+              'Action Failed',
+              `Failed to add ${artistName} to the list.`,
               'Please try again or contact support if the issue persists.'
             )
           }
@@ -256,7 +261,7 @@ const ArtistRequests = () => {
     }
 
   return (
-    <div className="artistRequests-section">
+    <div className="admin-artistRequests-section">
       <div className="artist-header-section">
         <div className="section-section">
           <h2>Artist Requests</h2>
@@ -296,6 +301,7 @@ const ArtistRequests = () => {
           disabledClassName={'disabled'}
           pageRangeDisplayed={0}
           marginPagesDisplayed={0}
+          breakLabel={null}
         />
       )}
 

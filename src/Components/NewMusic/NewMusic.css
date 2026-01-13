@@ -77,18 +77,14 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(0, 0, 0, 0.8);
-  border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 6px;
   color: #fff;
-  backdrop-filter: blur(4px);
   cursor: pointer;
   transition: all 0.2s ease;
 }
 
 .reorder-btn:hover:not(:disabled) {
   background: rgba(0, 0, 0, 0.95);
-  border-color: rgba(255, 255, 255, 0.4);
   transform: scale(1.05);
 }
 
@@ -245,16 +241,11 @@
   padding: 0.4rem 0.7rem;
   border-radius: 6px;
   cursor: pointer;
-  background: rgba(255, 255, 255, 0.1);
+  background: transparent;
   transition: all 0.2s ease;
 }
 
-.pagination li:hover:not(.disabled) {
-  background: rgba(255, 255, 255, 0.15);
-}
-
 .pagination li.active {
-  background: #d4af37;
   color: #000;
   font-weight: 600;
 }

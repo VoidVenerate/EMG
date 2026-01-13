@@ -86,8 +86,7 @@ const UserNewMusic = () => {
             : currentSongs.map((item) => (
                 <div
                   key={item.song.id}
-                  className="music-card"
-                  onClick={() => handleSongClick(item.song)}
+                  className="new-music-card"
                 >
                   <div className="music-image-wrapper">
                     <LazyLoadImage

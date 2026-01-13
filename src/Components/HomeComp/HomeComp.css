@@ -5,7 +5,6 @@
 .HomeComp-section {
   width: 100%;
   min-height: auto; /* mobile-safe viewport */
-  margin-top: 80px;
   overflow: hidden;
   font-family: 'DM Sans';
 }

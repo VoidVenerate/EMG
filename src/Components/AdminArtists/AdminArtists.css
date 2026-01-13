@@ -81,11 +81,6 @@
   background: rgba(255,255,255,0.1);
 }
 
-.pagination li.active {
-  background: #d4af37;
-  color: #000;
-}
-
 /* RESPONSIVE */
 @media (max-width: 900px) {
   .artists-grid {

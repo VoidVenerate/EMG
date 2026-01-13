@@ -108,7 +108,7 @@ const AdminCards = () => {
         <h3>Artist Requests</h3>
         <p>{artistRequest}</p>
         <span className="hr-span"></span>
-        <button>View List</button>
+        <button onClick={() => navigate('/list')}>View List</button>
       </div>
 
       {/* ===== Artists Count ===== */}

@@ -5,101 +5,103 @@ import ReactPaginate from 'react-paginate'
 import './List.css'
 import { BookCopy, SquareCheck } from 'lucide-react'
 import toast from 'react-hot-toast'
-import Modal from '../Modal/Modal' // Import Modal
+import Modal from '../Modal/Modal'
 
 const copyToClipboard = (value) => {
   navigator.clipboard.writeText(value)
   toast.success('Copied to clipboard!')
 }
 
-const ArtistCard = ({ artist, onDelete }) => (
-  <div className="artist-requests-card">
+const ArtistCard = ({ artist, onDelete }) => {
+  return (
+    <div className="artist-requests-card">
 
-    {/* ARTIST INFO - 2 Column Grid */}
-    <div className="artist-info-grid">
-      <div className="artist-field">
-        <label>Artist Name</label>
-        <p>{artist.artist_name}</p>
+      {/* ARTIST INFO - 2 Column Grid */}
+      <div className="artist-info-grid">
+        <div className="artist-field">
+          <label>Artist Name</label>
+          <p>{artist.artist_name}</p>
+        </div>
+
+        <div className="artist-field">
+          <label>Email</label>
+          <p>{artist.email}</p>
+        </div>
       </div>
 
-      <div className="artist-field">
-        <label>Email</label>
-        <p>{artist.email}</p>
+      {/* LINKS - 2 Column Grid */}
+      <div className="social-links">
+        {artist.ig_link && (
+          <div className="link-item">
+            <label>Instagram Link</label>
+            <div className="link-content">
+              <span>{artist.ig_link}</span>
+              <BookCopy onClick={() => copyToClipboard(artist.ig_link)} />
+            </div>
+          </div>
+        )}
+
+        {artist.yt_link && (
+          <div className="link-item">
+            <label>YouTube Link</label>
+            <div className="link-content">
+              <span>{artist.yt_link}</span>
+              <BookCopy onClick={() => copyToClipboard(artist.yt_link)} />
+            </div>
+          </div>
+        )}
+
+        {artist.spotify_link && (
+          <div className="link-item">
+            <label>Spotify Profile Link</label>
+            <div className="link-content">
+              <span>{artist.spotify_link}</span>
+              <BookCopy onClick={() => copyToClipboard(artist.spotify_link)} />
+            </div>
+          </div>
+        )}
+
+        {artist.apple_music_link && (
+          <div className="link-item">
+            <label>Apple Music Link</label>
+            <div className="link-content">
+              <span>{artist.apple_music_link}</span>
+              <BookCopy onClick={() => copyToClipboard(artist.apple_music_link)} />
+            </div>
+          </div>
+        )}
       </div>
+
+      {/* SERVICES - 2 Column Grid - ALL SERVICES ALWAYS VISIBLE */}
+      <div className="services">
+        <span className={artist.music_distribution ? 'checked' : 'unchecked'}>
+          <SquareCheck /> Music Distribution
+        </span>
+        <span className={artist.music_publishing ? 'checked' : 'unchecked'}>
+          <SquareCheck /> Music Publishing
+        </span>
+        <span className={artist.prod_and_engineering ? 'checked' : 'unchecked'}>
+          <SquareCheck /> Production & Engineering
+        </span>
+        <span className={artist.marketing_and_promotions ? 'checked' : 'unchecked'}>
+          <SquareCheck /> Marketing & Promotions
+        </span>
+      </div>
+
+      <p className="date">
+        Requested on: {new Date(artist.created_at).toLocaleDateString()}
+      </p>
+
+      {/* ACTIONS */}
+      <div className="artist-card-actions">
+        <button className="delete-request-btn" onClick={() => onDelete(artist.id, artist.artist_name)}>
+          Remove Request
+        </button>
+      </div>
+
     </div>
-
-    {/* LINKS - 2 Column Grid */}
-    <div className="social-links">
-      {artist.ig_link && (
-        <div className="link-item">
-          <label>Instagram Link</label>
-          <div className="link-content">
-            <span>{artist.ig_link}</span>
-            <BookCopy onClick={() => copyToClipboard(artist.ig_link)} />
-          </div>
-        </div>
-      )}
-
-      {artist.yt_link && (
-        <div className="link-item">
-          <label>YouTube Link</label>
-          <div className="link-content">
-            <span>{artist.yt_link}</span>
-            <BookCopy onClick={() => copyToClipboard(artist.yt_link)} />
-          </div>
-        </div>
-      )}
-
-      {artist.spotify_link && (
-        <div className="link-item">
-          <label>Spotify Profile Link</label>
-          <div className="link-content">
-            <span>{artist.spotify_link}</span>
-            <BookCopy onClick={() => copyToClipboard(artist.spotify_link)} />
-          </div>
-        </div>
-      )}
-
-      {artist.apple_music_link && (
-        <div className="link-item">
-          <label>Apple Music Link</label>
-          <div className="link-content">
-            <span>{artist.apple_music_link}</span>
-            <BookCopy onClick={() => copyToClipboard(artist.apple_music_link)} />
-          </div>
-        </div>
-      )}
-    </div>
-
-    {/* SERVICES - 2 Column Grid */}
-    <div className="services">
-      {artist.music_distribution && (
-        <span><SquareCheck /> Music Distribution</span>
-      )}
-      {artist.music_publishing && (
-        <span><SquareCheck /> Music Publishing</span>
-      )}
-      {artist.prod_and_engineering && (
-        <span><SquareCheck /> Production & Engineering</span>
-      )}
-      {artist.marketing_and_promotions && (
-        <span><SquareCheck /> Marketing & Promotions</span>
-      )}
-    </div>
-
-    <p className="date">
-      Requested on: {new Date(artist.created_at).toLocaleDateString()}
-    </p>
-
-    {/* ACTIONS */}
-    <div className="artist-card-actions">
-      <button className="delete-request-btn" onClick={() => onDelete(artist.id, artist.artist_name)}>
-        Remove Request
-      </button>
-    </div>
-
-  </div>
-)
+  )
+}
 
 
 
@@ -136,7 +138,9 @@ const List = () => {
             if(!token) return
 
             const requestRes = await axios.get('https://exodus-va6e.onrender.com/artist-requests/admin-list', { headers })
-            setRequests(requestRes.data)
+            // Filter to show only artists with "listed" status
+            const listedArtists = requestRes.data.filter(artist => artist.status === 'listed')
+            setRequests(listedArtists)
             setLoading(false)
         } catch (err) {
             console.error('Error fetching artist requests:', err)
@@ -224,8 +228,8 @@ const List = () => {
     <div className="artistRequests-section" style={{marginLeft:"3vw"}}>
       <div className="artist-header-section">
         <div className="section-section">
-          <h2>Artist List</h2>
-          <p>List of potential artists for emg.</p>
+          <h2>Listed Artists</h2>
+          <p>Artists with "listed" status on the platform.</p>
         </div>
       </div>
 
@@ -233,7 +237,7 @@ const List = () => {
       {error && <p className="error">{error}</p>}
 
       {!loading && !error && requests.length === 0 && (
-        <p>No artist requests at the moment.</p>
+        <p>No listed artists at the moment.</p>
       )}
 
       <div className="artist-card-grid">
@@ -257,6 +261,7 @@ const List = () => {
           disabledClassName={'disabled'}
           pageRangeDisplayed={0}
           marginPagesDisplayed={0}
+          breakLabel={null}
         />
       )}
 

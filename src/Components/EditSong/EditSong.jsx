@@ -133,7 +133,7 @@ const EditSong = () => {
           <p style={{ color: '#FFFFFFB2' }}>Update your song details</p>
         </div>
         <div className="header-right">
-          <button onClick={() => navigate(-1)} className="back-btn">
+          <button onClick={() => navigate(-1)}>
             Go Back
           </button>
         </div>

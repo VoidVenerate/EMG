@@ -114,10 +114,10 @@ const AddSong = ({
       <div className="add-videos-header">
         <div className="header-left">
           <h2>Add Music</h2>
-          <p style={{ color: '#FFFFFFB2' }}>Upload your artist musics</p>
+          <p style={{ color: '#FFFFFFB2' }}>Add music to your artist profile on EMG.</p>
         </div>
         <div className="header-right">
-          <button onClick={() => navigate(-1)} className="back-btn">Go Back</button>
+          <button onClick={() => navigate(-1)}>Go Back</button>
         </div>
       </div>
       <span className="hr-span"></span>
@@ -125,11 +125,6 @@ const AddSong = ({
       <div className="add-songs">
         {songs.map((song, i) => (
           <div key={i} className="song-row">
-            <h2>Music Upload</h2>
-            <p style={{ color: '#FFFFFFB2', fontSize: '12px' }}>
-              Upload some or all of your artist songs
-            </p>
-
             {songs.length > 1 && (
               <button onClick={() => removeRow(i)} className="delete-btn">
                 <Trash size={16} />
@@ -173,12 +168,6 @@ const AddSong = ({
               onChange={(e) => handleChange(i, 'linktree', e.target.value)}
             />
 
-            {i === songs.length - 1 && (
-              <div className="song-add-button">
-                <button onClick={addRow} className="song-row-add-new">Add New</button>
-              </div>
-            )}
-
             <div className="actions">
               {showSkip && (
                 <button onClick={() => navigate(skipRedirect.replace(':artistId', artistId))}>
@@ -186,7 +175,7 @@ const AddSong = ({
                 </button>
               )}
               <button onClick={handleSubmit} disabled={loading || !isFormValid}>
-                {loading ? 'Uploading...' : 'Continue'}
+                {loading ? 'Adding...' : 'Add Song'}
               </button>
             </div>
           </div>

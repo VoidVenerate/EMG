@@ -114,12 +114,6 @@ const AddVideos = ({ showSkip = true }) => { // ✅ prop for skip button
             </div>
           ))}
 
-          <div className="song-add-button">
-            <button onClick={addRow} className="song-row-add-new">
-              Add New
-            </button>
-          </div>
-
           <div className="actions">
             {showSkip && (
               <button onClick={() => navigate(`/admin/artists/${artistId}`)}>Skip</button>

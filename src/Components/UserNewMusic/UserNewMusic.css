@@ -38,14 +38,16 @@
 }
 
 /* CARD */
-.music-card {
-  background: rgba(255, 255, 255, 0.08);
+.new-music-card {
+  background: transparent;
   border-radius: 16px;
   overflow: hidden;
   cursor: pointer;
   transition: all 0.3s ease;
+  width: 100%;
+  max-width: 440px;
   backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 0px solid rgba(255, 255, 255, 0.1);
 }
 
 /* IMAGE WRAPPER */
@@ -103,7 +105,7 @@
 }
 
 /* SKELETON CARD */
-.music-card.skeleton {
+.new-music-card.skeleton {
   pointer-events: none;
 }
 
@@ -145,16 +147,11 @@
   padding: 0.4rem 0.7rem;
   border-radius: 6px;
   cursor: pointer;
-  background: rgba(255, 255, 255, 0.1);
+  background: transparent;
   transition: all 0.2s ease;
 }
 
-.pagination li:hover:not(.disabled) {
-  background: rgba(255, 255, 255, 0.15);
-}
-
 .pagination li.active {
-  background: #d4af37;
   color: #000;
   font-weight: 600;
 }

@@ -31,6 +31,8 @@ import AddPlaylist from './Components/AddPlaylist/AddPlaylist';
 import GetPlaylist from './Components/GetPlaylist/GetPlaylist';
 import UserPlaylists from './Components/UserPlaylists/UserPlaylists';
 import UserArtistDetails from './Components/UserArtistDetails/UserArtistDetails';
+import UserNewMusicPage from './Pages/UserNewMusicPage/UserNewMusicPage';
+import UserPlaylistPage from './Pages/UserPlaylistPage/UserPlaylistPage';
 
 const App = () => {
   const navigate = useNavigate();
@@ -45,8 +47,8 @@ const App = () => {
         <Route path="/" element={<Home />} />
         <Route path="/home" element={<Home />} />
         <Route path="/roster" element={<Roster />} />
-        <Route path="/new-music" element={<UserNewMusic />} />
-        <Route path="/playlists" element={<UserPlaylists />} />
+        <Route path="/new-music" element={<UserNewMusicPage />} />
+        <Route path="/playlists" element={<UserPlaylistPage />} />
         <Route path='/user/artists/:artistId' element={<UserArtistDetails/>} />
       </Route>
         <Route path='/confirmspot' element={<Spot />} />

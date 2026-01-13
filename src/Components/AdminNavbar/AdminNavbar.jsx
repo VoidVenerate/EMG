@@ -10,6 +10,7 @@ import {
 } from 'lucide-react';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
+import Modal from '../Modal/Modal';
 import './AdminNavbar.css';
 
 const API_BASE_URL = 'https://exodus-va6e.onrender.com';
@@ -37,10 +38,10 @@ const AdminNavbar = () => {
   useEffect(() => {
     const fetchProfile = async () => {
       try {
-        const token = localStorage.getItem('access_token');
+        const token = localStorage.getItem('token');
         if (!token) return;
 
-        const res = await axios.get(`${API_BASE_URL}/me`, {
+        const res = await axios.get(`${API_BASE_URL}/auth/me`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -92,13 +93,15 @@ const AdminNavbar = () => {
   /* -------------------- LOGOUT -------------------- */
   const handleLogout = () => {
     localStorage.removeItem('access_token');
+    localStorage.removeItem('token');
     setShowLogoutModal(false);
     navigate('/login');
   };
 
   /* -------------------- RENDER -------------------- */
   return (
-    <nav className="admin-navbar">
+    <>
+      <nav className="admin-navbar">
 
         {/* ===== TOP SECTION ===== */}
         <div className="admin-navbar-top">
@@ -169,21 +172,28 @@ const AdminNavbar = () => {
             )}
             </div>
         </div>
+      </nav>
 
-        {/* LOGOUT MODAL stays outside layout flow */}
-        {showLogoutModal && (
-            <div className="logout-modal">
-            <div className="logout-modal-content">
-                <p>Are you sure you want to logout?</p>
-                <div className="logout-actions">
-                <button onClick={handleLogout}>Yes</button>
-                <button onClick={() => setShowLogoutModal(false)}>Cancel</button>
-                </div>
-            </div>
-            </div>
-        )}
-        </nav>
-
+      {/* Modal Component */}
+      <Modal
+        show={showLogoutModal}
+        onClose={() => setShowLogoutModal(false)}
+        title="Logout Confirmation"
+        message="Are you sure you want to logout?"
+        subMessage="You will need to log back in to access your account."
+        type="logout"
+        footerButtons={
+          <div className="modal-btn-group">
+            <button className="modal-close-btn" onClick={() => setShowLogoutModal(false)}>
+              Cancel
+            </button>
+            <button className="modal-btn-danger" onClick={handleLogout}>
+              Logout
+            </button>
+          </div>
+        }
+      />
+    </>
   );
 };
 
