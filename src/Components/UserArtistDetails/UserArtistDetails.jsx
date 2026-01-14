@@ -168,25 +168,6 @@ const UserArtistDetails = () => {
           </div>
         )}
       </section>
-
-      {/* Artist Image Section */}
-      <section className="content-section">
-        <div className="section-header">
-          <div>
-            <h3>Artist Image</h3>
-            <p className="section-subtitle">Official artist photo</p>
-          </div>
-        </div>
-
-        <div className="artist-image-preview">
-          <LazyLoadImage
-            src={artist.image_url}
-            effect="blur"
-            alt={artist.artist_name}
-            className="profile-preview"
-          />
-        </div>
-      </section>
     </div>
   )
 }
