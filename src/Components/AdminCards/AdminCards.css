@@ -109,6 +109,11 @@
 }
 
 /* ===== Tablet Responsive (1024px and below) ===== */
+@media (max-width: 1504px) {
+  .dashboard-cards{
+    width: 98%;
+  }
+}
 @media (max-width: 1024px) {
   .dashboard-cards {
     grid-template-columns: repeat(2, 1fr);

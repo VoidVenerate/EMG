@@ -39,6 +39,20 @@ const Media = () => {
           padding: 0px;
         }
 
+        /* Mobile replacement image - hidden by default */
+        .media-mobile-image {
+          display: none;
+          width: 100%;
+          border-radius: 24px;
+          overflow: hidden;
+        }
+
+        .media-mobile-image img {
+          width: 100%;
+          height: auto;
+          object-fit: cover;
+        }
+
         /* Vector decorations INSIDE container */
         .media-container::before {
           content: "";
@@ -210,37 +224,14 @@ const Media = () => {
             padding: 40px 24px;
           }
 
+          /* Hide the original container on mobile */
           .media-container {
-            border-radius: 32px;
-            padding: 0px;
-            gap: 2rem;
+            display: none;
           }
 
-          .media-container::before,
-          .media-container::after {
-            width: 400px;
-            height: 400px;
-          }
-
-          .media-container-img img {
-            max-width: 100%;
-            height: auto;
-          }
-
-          .media-container-text p:first-child {
-            font-size: 28px;
-            line-height: 1.3;
-          }
-
-          .media-container-text p:nth-child(2) {
-            font-size: 14px;
-          }
-
-          .media-container-text button {
-            padding: 14px 28px;
-            font-size: 14px;
-            width: 100%;
-            max-width: 280px;
+          /* Show the mobile image instead */
+          .media-mobile-image {
+            display: block;
           }
 
           .media-footer {
@@ -248,6 +239,7 @@ const Media = () => {
             gap: 2rem;
             margin-top: 3rem;
             text-align: center;
+            align-items: baseline;
           }
 
           .media-footer > p {
@@ -270,30 +262,8 @@ const Media = () => {
             padding: 32px 20px;
           }
 
-          .media-container {
-            border-radius: 24px;
-            padding: 0px;
-            padding-top: 20px;
-            gap: 1.5rem;
-          }
-
-          .media-container::before,
-          .media-container::after {
-            width: 300px;
-            height: 300px;
-          }
-
-          .media-container-text p:first-child {
-            font-size: 24px;
-          }
-
-          .media-container-text p:nth-child(2) {
-            font-size: 13px;
-          }
-
-          .media-container-text button {
-            padding: 12px 24px;
-            font-size: 13px;
+          .media-mobile-image {
+            border-radius: 20px;
           }
 
           .media-footer > p {
@@ -313,6 +283,7 @@ const Media = () => {
       `}</style>
 
       <div className='media-section'>
+        {/* Desktop/Tablet Container */}
         <div className="media-container">
           <div className="media-container-img">
             <img src="/Man-hs.png" alt="Artist with headphones" />
@@ -324,6 +295,12 @@ const Media = () => {
             <button>Join Us Today!</button>
           </div>
         </div>
+
+        {/* Mobile Image Replacement */}
+        <div className="media-mobile-image">
+          <img src="/mobile-media-banner.png" alt="Join us today" />
+        </div>
+
         <div className="media-footer">
           <p style={{fontFamily:'Nimous-Daven'}}>Follow us on social media</p>
           <div className="media-icons">

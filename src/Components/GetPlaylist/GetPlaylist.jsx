@@ -76,7 +76,7 @@ const GetPlaylist = () => {
 
       
       <div className="playlist-buttons">
-        <div className="toggle-btn" style={{marginBottom:'32px'}}>
+        <div className="toggle-btn" style={{marginBottom:'32px', gap:'0px', width:'100%'}}>
           <button className='music-action-btn' onClick={() => navigate('/admin/new-music')}>New Music</button>
           <button className='music-action-btn' onClick={() => navigate('/get-playlist')} style={{background:'#dadadaff', color:'#000'}}>Playlist</button>
         </div>

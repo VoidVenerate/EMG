@@ -55,10 +55,8 @@
   border: none;
 }
 
-/* Lazy image */
-.roster-img,
 .roster-card img {
-  width: 100%;
+  width: 103%;
   height: 100%;
   object-fit: cover;
   display: block;
@@ -166,6 +164,11 @@
     height: 400px;
   }
 
+  /* Show overlay on mobile (no hover needed) */
+  .roster-overlay {
+    transform: translateY(0);
+  }
+
   .roster-overlay p {
     font-size: 32px;
     margin-bottom: 16px;
@@ -179,5 +182,22 @@
     width: 36px;
     height: 36px;
     font-size: 14px;
+  }
+}
+@media (max-width: 400px) {
+  .roster-card {
+    height: 238px;
+  }
+
+  .roster-overlay p {
+    font-size: 24px;
+    margin-bottom: 12px;
+  }
+}
+
+/* For touch devices - always show overlay */
+@media (hover: none) and (pointer: coarse) {
+  .roster-overlay {
+    transform: translateY(0);
   }
 }

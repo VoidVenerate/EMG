@@ -300,6 +300,10 @@ const Footer = () => {
             gap: 1.5rem;
           }
 
+          .footer-logo {
+            margin-top: -60px;
+          }
+
           .footer-logo img {
             width: 120px;
           }
@@ -307,6 +311,10 @@ const Footer = () => {
           .info {
             grid-template-columns: repeat(1,1fr);
             gap: 0rem;
+            padding-left: 20px;
+          }
+          .footer-subscribe {
+            padding-left: 20px;
           }
 
           .info > div {
