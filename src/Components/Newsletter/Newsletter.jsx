@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import Modal from '../Modal/Modal'
-import { Upload, Mail, ChevronLeft, ChevronRight } from 'lucide-react'
+import { Mail, ChevronLeft, ChevronRight, Download } from 'lucide-react'
 import './Newsletter.css'
 import * as XLSX from 'xlsx'
 import { saveAs } from 'file-saver'
@@ -66,7 +66,7 @@ const Newsletter = () => {
         title: 'No Data',
         message: 'There are no subscribers to export.',
         subMessage: '',
-        type: 'info',
+        type: 'duration',
       })
       return
     }
@@ -90,77 +90,108 @@ const Newsletter = () => {
     })
 
     saveAs(file, 'newsletter_subscribers.xlsx')
+    
+    setModalInfo({
+      show: true,
+      title: 'Success!',
+      message: 'Subscriber list downloaded successfully.',
+      subMessage: '',
+      type: 'success',
+    })
   }
 
   return (
     <div className="subscription-container">
       {modalInfo.show && (
         <Modal
+          show={modalInfo.show}
           title={modalInfo.title}
           message={modalInfo.message}
           subMessage={modalInfo.subMessage}
           type={modalInfo.type}
           onClose={() => setModalInfo(prev => ({ ...prev, show: false }))}
+          footerButtons={
+            <button 
+              className="modal-close-btn-primary" 
+              onClick={() => setModalInfo(prev => ({ ...prev, show: false }))}
+            >
+              Close
+            </button>
+          }
         />
       )}
-      {/* Card */}
-      <div className="dashboard-card" style={{marginLeft:'3vw'}}>
+
+      {/* Header Section */}
+      <div className="newsletter-header">
+        <h1 className="newsletter-title">Newsletter Subscribers</h1>
+        <p className="newsletter-subtitle">Manage and export your subscriber list</p>
+      </div>
+
+      {/* Stats Card */}
+      <div className="dashboard-card">
         <div className="card-icon">
           <Mail size={24} />
         </div>
-        <h3>Newsletter Subscribers</h3>
-        <p>{subscriptionsList.length}</p>
+        <h3>Total Subscribers</h3>
+        <p className="subscriber-count">{subscriptionsList.length}</p>
         <span className="hr-span"></span>
-        <button onClick={exportSubscribersToExcel}>
+        <button className="download-btn" onClick={exportSubscribersToExcel}>
+          <Download size={16} />
           Download Report
         </button>
       </div>
 
-      {/* List */}
+      {/* Subscribers List */}
       <div className="newsletter-list">
-        <h3 style={{ margin: '72px 0 12px 4vw', color: '#fff' }}>
-          List of Subscribers: {subscriptionsList.length}
-        </h3>
+        <div className="list-header">
+          <h3 className="list-title">
+            Subscriber List <span className="count-badge">{subscriptionsList.length}</span>
+          </h3>
+        </div>
 
         <div className="notification-list">
           {paginatedList.length > 0 ? (
             paginatedList.map((sub, index) => (
-              <div key={index}>
-                <p style={{ fontWeight: 500 }}>{sub.email}</p>
+              <div key={index} className="subscriber-item">
+                <div className="subscriber-info">
+                  <Mail size={16} className="email-icon" />
+                  <p className="subscriber-email">{sub.email}</p>
+                </div>
+                <p className="subscriber-date">
+                  {new Date(sub.subscribed_at).toLocaleDateString()}
+                </p>
                 <hr className="notification-hr" />
               </div>
             ))
           ) : (
-            <p style={{ opacity: 0.6 }}>No subscribers found yet.</p>
+            <div className="empty-state">
+              <Mail size={48} className="empty-icon" />
+              <p>No subscribers found yet.</p>
+            </div>
           )}
         </div>
 
         {/* Pagination */}
         {subscriptionsList.length > itemsPerPage && (
-          <div
-            className="pagination-controls"
-            style={{
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center',
-              gap: '12px',
-              marginTop: '24px',
-            }}
-          >
+          <div className="pagination-controls">
             <button
               onClick={prevPage}
               disabled={currentPage === 1}
+              className="pagination-btn"
+              aria-label="Previous page"
             >
               <ChevronLeft size={16} />
             </button>
 
-            <span style={{ color: '#ccc' }}>
+            <span className="pagination-info">
               Page {currentPage} of {totalPages}
             </span>
 
             <button
               onClick={nextPage}
               disabled={currentPage === totalPages}
+              className="pagination-btn"
+              aria-label="Next page"
             >
               <ChevronRight size={16} />
             </button>

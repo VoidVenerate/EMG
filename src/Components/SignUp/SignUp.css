@@ -3,18 +3,27 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   min-height: 100vh;
-  background: url('/bg-auth.jpg') ; /* dark background */
+  background: url('/bg-auth.jpg');
   background-repeat: no-repeat;
   background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
   font-family: 'DM Sans', sans-serif;
-  padding: 16px;
-
+  padding: 20px 16px;
 }
+
 .auth-nav {
-    width: 100%;
-    padding: 0px;
-    margin: 0px;
+  width: 100%;
+  max-width: 504px;
+  padding: 0;
+  margin-bottom: 24px;
+}
+
+.auth-nav img {
+  width: 179px;
+  height: auto;
 }
 
 /* Form Panel */
@@ -26,24 +35,28 @@
   max-width: 504px;
   color: #fff;
   border: 1px solid #FFFFFF33;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
 }
 
 .form-panel h2 {
   margin-bottom: 12px;
   font-size: 2rem;
+  font-weight: 700;
 }
 
 .form-panel p {
   font-size: 16px;
   margin-bottom: 24px;
   color: #FFFFFFCC;
+  line-height: 1.5;
 }
 
 /* Form Fields */
 .form-fields label {
   display: block;
-  margin-bottom: 6px;
+  margin-bottom: 8px;
   font-weight: 600;
+  font-size: 0.95rem;
 }
 
 .form-fields label span {
@@ -52,13 +65,20 @@
 
 .form-fields input {
   width: 100%;
-  padding: 12px 16px;
+  padding: 14px 16px;
   border-radius: 8px;
   border: 1px solid #333;
   background: #1a1a1a;
   color: #fff;
-  margin-bottom: 12px;
+  margin-bottom: 16px;
   font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.form-fields input:focus {
+  outline: none;
+  border-color: #DFA123;
+  background: #222;
 }
 
 .form-fields input::placeholder {
@@ -67,33 +87,49 @@
 
 /* Error styling */
 .error-input {
-  border-color: #ff4444;
+  border-color: #ff4444 !important;
 }
 
 .field-error {
   color: #ff4444;
-  font-size: 0.75rem;
-  margin-bottom: 8px;
+  font-size: 0.8rem;
+  margin-top: -12px;
+  margin-bottom: 12px;
+  display: block;
 }
 
 /* Password toggle */
 .password-input {
   position: relative;
+  margin-bottom: 16px;
+}
+
+.password-input input {
+  padding-right: 45px;
+  margin-bottom: 0;
 }
 
 .password-input .toggle-icon {
   position: absolute;
-  right: 12px;
-  top: 50%;
-  transform: translateY(-50%);
+  right: 14px;
+  top: 14px;
   cursor: pointer;
   color: #ccc;
+  transition: color 0.3s ease;
+}
+
+.password-input .toggle-icon:hover {
+  color: #fff;
+}
+
+.password-input .field-error {
+  margin-top: 8px;
 }
 
 /* Submit Button */
 .sign-up-submit {
   width: 100%;
-  padding: 14px;
+  padding: 16px;
   background: #fff;
   color: #000;
   font-weight: 600;
@@ -105,6 +141,12 @@
   transition: all 0.3s ease;
 }
 
+.sign-up-submit:hover:not(:disabled) {
+  background: #f0f0f0;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(255, 255, 255, 0.2);
+}
+
 .sign-up-submit:disabled {
   opacity: 0.6;
   cursor: not-allowed;
@@ -113,21 +155,31 @@
 /* Toggle link */
 .toggle-link {
   text-align: center;
-  margin-top: 16px;
+  margin-top: 20px;
   color: #ccc;
   cursor: pointer;
-  font-size: 0.9rem;
+  font-size: 0.95rem;
+  transition: color 0.3s ease;
 }
 
+.toggle-link:hover {
+  color: #fff;
+}
+
+.toggle-link span {
+  color: #DFA123;
+  font-weight: 600;
+}
 
 /* General error message */
 .error {
   color: #ff4444;
-  font-size: 0.85rem;
-  margin: 8px 0;
+  font-size: 0.9rem;
+  margin: 12px 0;
+  text-align: center;
 }
 
-/* Modal adjustments (optional if your Modal inherits these styles) */
+/* Modal adjustments */
 .modal-content {
   background: #0d0d0d;
   color: #fff;
@@ -138,3 +190,150 @@
   color: #000;
 }
 
+/* ===== Tablet Responsive (1024px and below) ===== */
+@media (max-width: 1024px) {
+  .signup-container {
+    padding: 18px 16px;
+  }
+
+  .form-panel {
+    padding: 36px 28px;
+  }
+
+  .form-panel h2 {
+    font-size: 1.8rem;
+  }
+}
+
+/* ===== Mobile Responsive (768px and below) ===== */
+@media (max-width: 768px) {
+  .signup-container {
+    padding: 16px 12px;
+    background-attachment: scroll;
+  }
+
+  .auth-nav {
+    margin-bottom: 20px;
+  }
+
+  .auth-nav img {
+    width: 150px;
+  }
+
+  .form-panel {
+    padding: 32px 24px;
+    border-radius: 20px;
+    max-width: 100%;
+  }
+
+  .form-panel h2 {
+    font-size: 1.6rem;
+    margin-bottom: 10px;
+  }
+
+  .form-panel p {
+    font-size: 0.95rem;
+    margin-bottom: 20px;
+  }
+
+  .form-fields label {
+    font-size: 0.9rem;
+    margin-bottom: 6px;
+  }
+
+  .form-fields input {
+    padding: 12px 14px;
+    font-size: 0.95rem;
+    margin-bottom: 14px;
+  }
+
+  .password-input .toggle-icon {
+    right: 12px;
+    top: 12px;
+  }
+
+  .sign-up-submit {
+    padding: 14px;
+    font-size: 0.95rem;
+  }
+
+  .toggle-link {
+    font-size: 0.9rem;
+    margin-top: 16px;
+  }
+
+  .field-error {
+    font-size: 0.75rem;
+    margin-top: -10px;
+  }
+}
+
+/* ===== Small Mobile (480px and below) ===== */
+@media (max-width: 480px) {
+  .signup-container {
+    padding: 12px 10px;
+  }
+
+  .auth-nav img {
+    width: 130px;
+  }
+
+  .form-panel {
+    padding: 28px 20px;
+    border-radius: 16px;
+  }
+
+  .form-panel h2 {
+    font-size: 1.4rem;
+  }
+
+  .form-panel p {
+    font-size: 0.875rem;
+  }
+
+  .form-fields label {
+    font-size: 0.875rem;
+  }
+
+  .form-fields input {
+    padding: 11px 12px;
+    font-size: 0.9rem;
+  }
+
+  .password-input .toggle-icon {
+    right: 10px;
+    top: 11px;
+  }
+
+  .sign-up-submit {
+    padding: 13px;
+    font-size: 0.9rem;
+  }
+
+  .toggle-link {
+    font-size: 0.85rem;
+  }
+
+  .field-error {
+    font-size: 0.7rem;
+  }
+}
+
+/* ===== Extra Small Mobile (375px and below) ===== */
+@media (max-width: 375px) {
+  .form-panel {
+    padding: 24px 16px;
+  }
+
+  .form-panel h2 {
+    font-size: 1.3rem;
+  }
+
+  .form-panel p {
+    font-size: 0.8125rem;
+  }
+
+  .auth-nav img {
+    width: 120px;
+  }
+}

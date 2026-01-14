@@ -6,7 +6,8 @@ import {
   Disc3,
   Mail,
   House,
-  LogOut
+  LogOut,
+  User
 } from 'lucide-react';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
@@ -23,7 +24,6 @@ const AdminNavbar = () => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [userName, setUserName] = useState('');
   const [profileImage, setProfileImage] = useState(null);
-  const [hasUnread, setHasUnread] = useState(false);
   const [showLogoutModal, setShowLogoutModal] = useState(false);
 
   /* -------------------- MENU TOGGLE -------------------- */
@@ -121,55 +121,80 @@ const AdminNavbar = () => {
             </div>
 
             <ul className={`admin-navbar-links ${menuOpen ? 'open' : ''}`}>
-            <li>
-                <NavLink to="/adminhome" className="admin-navbar-link">
-                <House />
+              {/* Regular Navigation Links */}
+              <li>
+                <NavLink to="/adminhome" className="admin-navbar-link" onClick={() => setMenuOpen(false)}>
+                  <House />
+                  <span className="nav-label">Home</span>
                 </NavLink>
-            </li>
-            <li>
-                <NavLink to="/emgartist" className="admin-navbar-link">
-                <Users />
+              </li>
+              <li>
+                <NavLink to="/emgartist" className="admin-navbar-link" onClick={() => setMenuOpen(false)}>
+                  <Users />
+                  <span className="nav-label">Artists</span>
                 </NavLink>
-            </li>
-            <li>
-                <NavLink to="/admin/new-music" className="admin-navbar-link">
-                <Disc3 />
+              </li>
+              <li>
+                <NavLink to="/admin/new-music" className="admin-navbar-link" onClick={() => setMenuOpen(false)}>
+                  <Disc3 />
+                  <span className="nav-label">New Music</span>
                 </NavLink>
-            </li>
-            <li>
-                <NavLink to="/subscriptions" className="admin-navbar-link">
-                <Mail />
+              </li>
+              <li>
+                <NavLink to="/subscriptions" className="admin-navbar-link" onClick={() => setMenuOpen(false)}>
+                  <Mail />
+                  <span className="nav-label">Subscriptions</span>
                 </NavLink>
-            </li>
+              </li>
+
+              {/* Mobile-only: Profile and Logout */}
+              <li className="mobile-only">
+                <NavLink to="/me" className="admin-navbar-link" onClick={() => setMenuOpen(false)}>
+                  <User />
+                  <span className="nav-label">Profile</span>
+                </NavLink>
+              </li>
+              <li className="mobile-only">
+                <button 
+                  className="admin-navbar-link logout-link" 
+                  onClick={() => {
+                    setMenuOpen(false);
+                    setShowLogoutModal(true);
+                  }}
+                >
+                  <LogOut />
+                  <span className="nav-label">Logout</span>
+                </button>
+              </li>
             </ul>
         </div>
 
-        {/* ===== BOTTOM SECTION ===== */}
-        <div className="admin-navbar-bottom">
+        {/* ===== BOTTOM SECTION (Desktop Only) ===== */}
+        <div className="admin-navbar-bottom desktop-only">
             <button className="logout-btn" onClick={() => setShowLogoutModal(true)}>
-            <LogOut size={16} />
+              <LogOut size={16} />
             </button>
 
             <div className="profile-container">
-            {profileImage ? (
+              {profileImage ? (
                 <LazyLoadImage
-                src={profileImage}
-                effect="blur"
-                className="profile-avatar"
-                onClick={() => setDropdownOpen(!dropdownOpen)}
-                onError={e => (e.target.src = DEFAULT_AVATAR)}
+                  src={profileImage}
+                  effect="blur"
+                  className="profile-avatar"
+                  onClick={() => setDropdownOpen(!dropdownOpen)}
+                  onError={e => (e.target.src = DEFAULT_AVATAR)}
                 />
-            ) : (
+              ) : (
                 renderLetterAvatar()
-            )}
+              )}
 
-            {dropdownOpen && (
+              {dropdownOpen && (
                 <div className="profile-dropdown">
-                <NavLink to="/me" className="dropdown-item">
+                  <NavLink to="/me" className="dropdown-item" onClick={() => setDropdownOpen(false)}>
                     Profile
-                </NavLink>
+                  </NavLink>
                 </div>
-            )}
+              )}
             </div>
         </div>
       </nav>

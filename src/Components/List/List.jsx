@@ -14,7 +14,7 @@ const copyToClipboard = (value) => {
 
 const ArtistCard = ({ artist, onDelete }) => {
   return (
-    <div className="artist-requests-card">
+    <div className="list-card">
 
       {/* ARTIST INFO - 2 Column Grid */}
       <div className="artist-info-grid">

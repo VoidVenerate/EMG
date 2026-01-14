@@ -1,10 +1,10 @@
 /* ArtistRequests.css */
 
 .admin-artistRequests-section {
-  padding: 0vw;
+  padding: 0;
   background: #000;
   color: #fff;
-  font-family: 'DM Sans';
+  font-family: 'DM Sans', sans-serif;
   min-height: 100vh;
   margin-left: 5vw;
   box-sizing: border-box;
@@ -16,7 +16,7 @@
   justify-content: space-between;
   align-items: flex-start;
   margin-bottom: 32px;
-  padding: 0px;
+  padding: 0 0 24px 0;
   border-bottom: 1px solid #FFFFFF33;
 }
 
@@ -35,10 +35,11 @@
   font-size: 14px;
   color: #FFFFFFB2;
   margin: 0;
+  line-height: 1.5;
 }
 
 .section-list-button {
-  padding: 10px 24px;
+  padding: 12px 24px;
   background: transparent;
   border: 1px solid #FFFFFF33;
   border-radius: 8px;
@@ -47,6 +48,7 @@
   font-weight: 500;
   cursor: pointer;
   transition: all 0.2s ease;
+  white-space: nowrap;
 }
 
 .section-list-button:hover {
@@ -56,10 +58,11 @@
 }
 
 /* Loading & Error */
-.artistRequests-section > p {
+.admin-artistRequests-section > p {
   text-align: center;
   color: #FFFFFFB2;
   margin: 2rem 0;
+  font-size: 14px;
 }
 
 .error {
@@ -68,6 +71,7 @@
   padding: 1rem;
   border-radius: 8px;
   text-align: center;
+  border: 1px solid rgba(255, 68, 68, 0.3);
 }
 
 /* Artist Cards Grid */
@@ -75,7 +79,7 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(550px, 1fr));
   gap: 24px;
-  padding: 0px;
+  padding: 0;
 }
 
 /* Artist Card */
@@ -86,8 +90,14 @@
   padding: 24px;
   display: flex;
   flex-direction: column;
-  gap: 16px;
-  align-self: start; /* prevents stretching in the row */
+  gap: 20px;
+  align-self: start;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.artist-requests-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
 }
 
 /* Artist Info Grid - 2 Columns */
@@ -117,6 +127,7 @@
   border: 1px solid #FFFFFF33;
   border-radius: 8px;
   margin: 0;
+  word-break: break-word;
 }
 
 /* Social Links - 2 Column Grid */
@@ -124,7 +135,7 @@
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 16px;
-  margin: 8px 0;
+  margin: 0;
 }
 
 .link-item {
@@ -181,7 +192,7 @@
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 12px;
-  margin: 8px 0;
+  margin: 0;
 }
 
 .services span {
@@ -228,71 +239,41 @@
   flex-shrink: 0;
 }
 
-/* Status Badge */
-.status {
-  display: inline-block;
-  padding: 6px 12px;
-  border-radius: 6px;
-  font-size: 12px;
-  font-weight: 600;
-  text-transform: capitalize;
-  width: fit-content;
-}
-
-.status.pending {
-  background: rgba(255, 193, 7, 0.2);
-  color: #ffc107;
-  border: 1px solid rgba(255, 193, 7, 0.3);
-}
-
-.status.approved {
-  background: rgba(76, 175, 80, 0.2);
-  color: #4caf50;
-  border: 1px solid rgba(76, 175, 80, 0.3);
-}
-
-.status.rejected {
-  background: rgba(244, 67, 54, 0.2);
-  color: #f44336;
-  border: 1px solid rgba(244, 67, 54, 0.3);
-}
-
 /* Date */
 .date {
-  font-size: 12px;
+  font-size: 13px;
   color: #FFFFFFB2;
   margin: 0;
 }
 
 /* Card Actions */
 .artist-card-actions {
-  /* display: flex; */
+  display: flex;
   gap: 12px;
-  margin-top: 8px;
+  margin-top: 4px;
   padding-top: 16px;
   border-top: 1px solid #FFFFFF33;
-  text-align: right;
 }
 
 .artist-card-actions button {
   flex: 1;
-  padding: 12px 24px;
+  padding: 12px 20px;
   border-radius: 8px;
   font-size: 14px;
   font-weight: 500;
   cursor: pointer;
   transition: all 0.2s ease;
-  font-family: 'DM Sans';
+  font-family: 'DM Sans', sans-serif;
 }
 
 .approve-btn {
   background: #FFFFFF0D;
   color: #fff;
   border: 1px solid #FFFFFF33;
-  margin-right: 24px;
 }
 
 .approve-btn:hover {
+  background: #FFFFFF1A;
   transform: translateY(-2px);
 }
 
@@ -303,6 +284,7 @@
 }
 
 .delete-request-btn:hover {
+  background: #FFFFFF1A;
   transform: translateY(-2px);
 }
 
@@ -337,7 +319,8 @@
 }
 
 .pagination li a:hover {
-  transform: translateY(-3px);
+  background: #FFFFFF0D;
+  transform: translateY(-2px);
 }
 
 .pagination li.active a {
@@ -352,6 +335,7 @@
 
 .pagination li.disabled a:hover {
   transform: translateY(0);
+  background: transparent;
 }
 
 /* Hide page numbers */
@@ -359,53 +343,201 @@
   display: none;
 }
 
-/* Responsive Design */
-@media (max-width: 1400px) {
+/* ===== Tablet Responsive (1024px and below) ===== */
+@media (max-width: 1024px) {
+  .admin-artistRequests-section {
+    margin-left: 3vw;
+  }
+
   .artist-card-grid {
     grid-template-columns: 1fr;
   }
+
+  .section-section h2 {
+    font-size: 1.75rem;
+  }
 }
 
+/* ===== Mobile Responsive (768px and below) ===== */
 @media (max-width: 768px) {
   .admin-artistRequests-section {
     margin-left: 0;
-    padding: 0 20px;
+    padding: 0 16px;
   }
 
   .artist-header-section {
     flex-direction: column;
     gap: 16px;
-    padding: 24px 20px;
-  }
-
-  .artist-card-grid {
-    padding: 0;
-  }
-
-  .section-list-button {
-    position: static;
-    margin-bottom: 20px;
-    width: 100%;
-    text-align: center;
+    padding: 20px 0;
+    margin-bottom: 24px;
   }
 
   .section-section h2 {
     font-size: 1.5rem;
   }
 
-  .artist-info-grid,
-  .social-links,
+  .section-section p {
+    font-size: 13px;
+  }
+
+  .section-list-button {
+    width: 100%;
+    text-align: center;
+    padding: 12px 20px;
+  }
+
+  .artist-card-grid {
+    gap: 20px;
+  }
+
+  .artist-requests-card {
+    padding: 20px;
+    gap: 16px;
+  }
+
+  .artist-info-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .social-links {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .link-content span {
+    max-width: none;
+  }
+
   .services {
     grid-template-columns: 1fr;
+    gap: 10px;
   }
 
   .artist-card-actions {
     flex-direction: column;
+    gap: 10px;
+  }
+
+  .artist-card-actions button {
+    width: 100%;
+  }
+
+  .approve-btn {
+    margin-right: 0;
   }
 
   .pagination {
     justify-content: center;
     flex-wrap: wrap;
     padding: 0;
+    gap: 0.5rem;
+  }
+
+  .pagination li a {
+    padding: 10px 18px;
+    font-size: 13px;
+  }
+}
+
+/* ===== Small Mobile (480px and below) ===== */
+@media (max-width: 480px) {
+  .admin-artistRequests-section {
+    padding: 0 12px;
+  }
+
+  .artist-header-section {
+    padding: 16px 0;
+    margin-bottom: 20px;
+  }
+
+  .section-section h2 {
+    font-size: 1.3rem;
+  }
+
+  .section-section p {
+    font-size: 12px;
+  }
+
+  .section-list-button {
+    padding: 11px 18px;
+    font-size: 13px;
+  }
+
+  .artist-card-grid {
+    gap: 16px;
+  }
+
+  .artist-requests-card {
+    padding: 16px;
+    gap: 14px;
+    border-radius: 12px;
+  }
+
+  .artist-field label,
+  .link-item label {
+    font-size: 12px;
+  }
+
+  .artist-field p {
+    font-size: 13px;
+    padding: 9px 10px;
+  }
+
+  .link-content {
+    padding: 9px 10px;
+  }
+
+  .link-content span {
+    font-size: 13px;
+  }
+
+  .services span {
+    font-size: 13px;
+    padding: 9px 10px;
+  }
+
+  .services svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  .date {
+    font-size: 12px;
+  }
+
+  .artist-card-actions {
+    padding-top: 14px;
+  }
+
+  .artist-card-actions button {
+    padding: 11px 18px;
+    font-size: 13px;
+  }
+
+  .pagination li a {
+    padding: 9px 16px;
+    font-size: 12px;
+  }
+}
+
+/* ===== Extra Small Mobile (375px and below) ===== */
+@media (max-width: 375px) {
+  .admin-artistRequests-section {
+    padding: 0 10px;
+  }
+
+  .section-section h2 {
+    font-size: 1.2rem;
+  }
+
+  .artist-requests-card {
+    padding: 14px;
+  }
+
+  .artist-field p,
+  .link-content,
+  .services span {
+    padding: 8px 9px;
   }
 }

@@ -1,3 +1,110 @@
+/* Overview.css */
+
 .overview-page {
-    font-family: 'DM Sans';
+  padding: 24px 40px;
+  font-family: 'DM Sans', sans-serif;
+  min-height: 100vh;
+  background: #000;
+}
+
+.overview-header {
+  margin-left: 5vw;
+  margin-bottom: 32px;
+}
+
+.overview-title {
+  font-size: 36px;
+  color: #fff;
+  font-weight: 600;
+  margin: 0 0 8px 0;
+  font-family: 'DM Sans', sans-serif;
+}
+
+.overview-subtitle {
+  font-size: 16px;
+  color: #FFFFFFB2;
+  margin: 0;
+  font-family: 'DM Sans', sans-serif;
+}
+
+/* ===== Tablet Responsive (1024px and below) ===== */
+@media (max-width: 1024px) {
+  .overview-page {
+    padding: 20px 32px;
+  }
+
+  .overview-header {
+    margin-left: 0;
+    margin-bottom: 28px;
+  }
+
+  .overview-title {
+    font-size: 32px;
+  }
+
+  .overview-subtitle {
+    font-size: 15px;
+  }
+}
+
+/* ===== Mobile Responsive (768px and below) ===== */
+@media (max-width: 768px) {
+  .overview-page {
+    padding: 16px 24px;
+    padding-top: 80px; /* Account for fixed navbar */
+  }
+
+  .overview-header {
+    margin-left: 0;
+    margin-bottom: 24px;
+  }
+
+  .overview-title {
+    font-size: 28px;
+  }
+
+  .overview-subtitle {
+    font-size: 14px;
+    line-height: 1.5;
+  }
+}
+
+/* ===== Small Mobile (480px and below) ===== */
+@media (max-width: 480px) {
+  .overview-page {
+    padding: 14px 20px;
+    padding-top: 75px;
+  }
+
+  .overview-header {
+    margin-bottom: 20px;
+  }
+
+  .overview-title {
+    font-size: 24px;
+  }
+
+  .overview-subtitle {
+    font-size: 13px;
+  }
+}
+
+/* ===== Extra Small Mobile (375px and below) ===== */
+@media (max-width: 375px) {
+  .overview-page {
+    padding: 12px 16px;
+    padding-top: 70px;
+  }
+
+  .overview-header {
+    margin-bottom: 16px;
+  }
+
+  .overview-title {
+    font-size: 22px;
+  }
+
+  .overview-subtitle {
+    font-size: 12px;
+  }
 }

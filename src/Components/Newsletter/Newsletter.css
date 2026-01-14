@@ -3,9 +3,105 @@
 /* ============================= */
 
 .subscription-container {
+  padding: 24px 40px;
+  font-family: 'DM Sans', sans-serif;
+  min-height: 100vh;
+  background: #000;
+  color: #fff;
+}
+
+/* ============================= */
+/* Header Section */
+/* ============================= */
+
+.newsletter-header {
   margin-left: 3vw;
-  padding: 1rem;
-  font-family: inherit;
+  margin-bottom: 32px;
+}
+
+.newsletter-title {
+  font-size: 36px;
+  font-weight: 600;
+  margin: 0 0 8px 0;
+  color: #fff;
+}
+
+.newsletter-subtitle {
+  font-size: 16px;
+  color: #FFFFFFB2;
+  margin: 0;
+}
+
+/* ============================= */
+/* Dashboard Card */
+/* ============================= */
+
+.dashboard-card {
+  background: #FFFFFF0D;
+  border: 1px solid #FFFFFF33;
+  border-radius: 16px;
+  padding: 32px;
+  max-width: 400px;
+  margin-left: 3vw;
+  margin-bottom: 48px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.card-icon {
+  width: 56px;
+  height: 56px;
+  background: #FFFFFF0D;
+  border: 1px solid #FFFFFF33;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+}
+
+.dashboard-card h3 {
+  font-size: 18px;
+  font-weight: 500;
+  margin: 0;
+  color: #FFFFFFB2;
+}
+
+.subscriber-count {
+  font-size: 48px;
+  font-weight: 700;
+  margin: 0;
+  color: #fff;
+}
+
+.hr-span {
+  display: block;
+  height: 1px;
+  background: #FFFFFF33;
+  width: 100%;
+}
+
+.download-btn {
+  background: #FFFFFF0D;
+  border: 1px solid #FFFFFF33;
+  color: #fff;
+  border-radius: 8px;
+  padding: 12px 20px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-family: 'DM Sans', sans-serif;
+}
+
+.download-btn:hover {
+  background: #FFFFFF1A;
+  transform: translateY(-2px);
 }
 
 /* ============================= */
@@ -13,25 +109,123 @@
 /* ============================= */
 
 .newsletter-list {
-  margin-top: 40px;
+  margin-top: 0;
+}
+
+.list-header {
+  margin: 0 0 24px 3vw;
+}
+
+.list-title {
+  font-size: 24px;
+  font-weight: 600;
+  color: #fff;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.count-badge {
+  background: #FFFFFF0D;
+  border: 1px solid #FFFFFF33;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #FFFFFFB2;
 }
 
 .notification-list {
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  margin: 4vw;
-  max-height: 350px;
+  gap: 0;
+  margin: 0 3vw;
+  max-height: 500px;
   overflow-y: auto;
-  padding-right: 4px;
+  padding: 24px;
+  background: #FFFFFF0D;
+  border: 1px solid #FFFFFF33;
+  border-radius: 12px;
+}
+
+/* Scrollbar styling */
+.notification-list::-webkit-scrollbar {
+  width: 6px;
+}
+
+.notification-list::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.notification-list::-webkit-scrollbar-thumb {
+  background: #FFFFFF33;
+  border-radius: 3px;
+}
+
+.notification-list::-webkit-scrollbar-thumb:hover {
+  background: #FFFFFF66;
+}
+
+.subscriber-item {
+  position: relative;
+}
+
+.subscriber-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.email-icon {
+  color: #FFFFFFB2;
+  flex-shrink: 0;
+}
+
+.subscriber-email {
+  font-weight: 500;
+  font-size: 15px;
   color: #fff;
+  margin: 0;
+  word-break: break-all;
+}
+
+.subscriber-date {
+  font-size: 13px;
+  color: #FFFFFFB2;
+  margin: 0 0 12px 28px;
 }
 
 .notification-hr {
   border: none;
   height: 1px;
-  background: rgba(255, 255, 255, 0.2);
-  margin: 4px 0 8px 0;
+  background: #FFFFFF1A;
+  margin: 16px 0;
+}
+
+.subscriber-item:last-child .notification-hr {
+  display: none;
+}
+
+/* Empty State */
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 20px;
+  gap: 16px;
+}
+
+.empty-icon {
+  color: #FFFFFF33;
+}
+
+.empty-state p {
+  color: #FFFFFFB2;
+  font-size: 15px;
+  margin: 0;
 }
 
 /* ============================= */
@@ -42,52 +236,248 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 12px;
-  margin-top: 24px;
+  gap: 16px;
+  margin: 32px 3vw 0;
+  padding: 20px;
+  background: #FFFFFF0D;
+  border: 1px solid #FFFFFF33;
+  border-radius: 12px;
 }
 
-.pagination-controls button {
-  background: transparent;
+.pagination-btn {
+  background: #FFFFFF0D;
   color: #fff;
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  border-radius: 6px;
-  padding: 6px 10px;
+  border: 1px solid #FFFFFF33;
+  border-radius: 8px;
+  padding: 10px 12px;
   cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.pagination-controls button:disabled {
-  opacity: 0.4;
+.pagination-btn:hover:not(:disabled) {
+  background: #FFFFFF1A;
+  transform: translateY(-2px);
+}
+
+.pagination-btn:disabled {
+  opacity: 0.3;
   cursor: not-allowed;
 }
 
+.pagination-info {
+  color: #FFFFFFB2;
+  font-size: 14px;
+  font-weight: 500;
+  min-width: 120px;
+  text-align: center;
+}
+
 /* ============================= */
-/* Responsive */
+/* Tablet Responsive (1024px and below) */
 /* ============================= */
 
-/* Tablets */
 @media (max-width: 1024px) {
+  .subscription-container {
+    padding: 20px 32px;
+  }
+
+  .newsletter-header {
+    margin-left: 0;
+  }
+
+  .newsletter-title {
+    font-size: 32px;
+  }
+
   .dashboard-card {
-    width: 90%;
-    max-width: 500px;
+    max-width: 100%;
+    margin-left: 0;
+  }
+
+  .list-header {
+    margin-left: 0;
+  }
+
+  .notification-list {
+    margin: 0;
+  }
+
+  .pagination-controls {
+    margin: 32px 0 0;
   }
 }
 
-/* Mobile */
-@media (max-width: 600px) {
+/* ============================= */
+/* Mobile Responsive (768px and below) */
+/* ============================= */
+
+@media (max-width: 768px) {
+  .subscription-container {
+    padding: 16px 24px;
+    padding-top: 80px; /* Account for fixed navbar */
+  }
+
+  .newsletter-header {
+    margin-bottom: 24px;
+  }
+
+  .newsletter-title {
+    font-size: 28px;
+  }
+
+  .newsletter-subtitle {
+    font-size: 14px;
+  }
+
   .dashboard-card {
-    width: 100%;
+    padding: 24px;
+    margin-bottom: 32px;
+  }
+
+  .card-icon {
+    width: 48px;
+    height: 48px;
+  }
+
+  .subscriber-count {
+    font-size: 40px;
+  }
+
+  .list-title {
+    font-size: 20px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .notification-list {
+    padding: 16px;
+    max-height: 400px;
+  }
+
+  .subscriber-email {
+    font-size: 14px;
+  }
+
+  .subscriber-date {
+    font-size: 12px;
+    margin-left: 0;
+  }
+
+  .pagination-controls {
+    padding: 16px;
+  }
+
+  .pagination-info {
+    font-size: 13px;
+    min-width: 100px;
+  }
+}
+
+/* ============================= */
+/* Small Mobile (480px and below) */
+/* ============================= */
+
+@media (max-width: 480px) {
+  .subscription-container {
+    padding: 14px 20px;
+    padding-top: 75px;
+  }
+
+  .newsletter-title {
+    font-size: 24px;
+  }
+
+  .newsletter-subtitle {
+    font-size: 13px;
+  }
+
+  .dashboard-card {
+    padding: 20px;
+  }
+
+  .card-icon {
+    width: 44px;
+    height: 44px;
+  }
+
+  .subscriber-count {
+    font-size: 36px;
+  }
+
+  .download-btn {
+    padding: 10px 16px;
+    font-size: 13px;
+  }
+
+  .list-title {
+    font-size: 18px;
+  }
+
+  .notification-list {
+    padding: 12px;
+  }
+
+  .subscriber-info {
+    gap: 8px;
+  }
+
+  .subscriber-email {
+    font-size: 13px;
+  }
+
+  .pagination-btn {
+    padding: 8px 10px;
+  }
+}
+
+/* ============================= */
+/* Extra Small Mobile (375px and below) */
+/* ============================= */
+
+@media (max-width: 375px) {
+  .subscription-container {
+    padding: 12px 16px;
+    padding-top: 70px;
+  }
+
+  .newsletter-title {
+    font-size: 22px;
+  }
+
+  .newsletter-subtitle {
+    font-size: 12px;
+  }
+
+  .dashboard-card {
     padding: 18px;
   }
 
-  .dashboard-card h3 {
-    font-size: 1rem;
+  .subscriber-count {
+    font-size: 32px;
   }
 
-  .dashboard-card p {
-    font-size: 1.5rem;
+  .list-title {
+    font-size: 16px;
   }
 
-  .newsletter-list {
-    margin-top: 120px;
+  .count-badge {
+    font-size: 12px;
+    padding: 3px 10px;
+  }
+
+  .subscriber-email {
+    font-size: 12px;
+  }
+
+  .pagination-controls {
+    gap: 12px;
+  }
+
+  .pagination-info {
+    font-size: 12px;
   }
 }
