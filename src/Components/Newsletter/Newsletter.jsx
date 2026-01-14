@@ -1,16 +1,18 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import Modal from '../Modal/Modal'
-import { Mail, ChevronLeft, ChevronRight, Download } from 'lucide-react'
+import { Mail, ChevronLeft, ChevronRight, Download, Copy, Check } from 'lucide-react'
 import './Newsletter.css'
 import * as XLSX from 'xlsx'
 import { saveAs } from 'file-saver'
+import toast from 'react-hot-toast'
 
 const BASE_URL = 'https://exodus-va6e.onrender.com'
 
 const Newsletter = () => {
   const [subscriptionsList, setSubscriptionsList] = useState([])
   const [currentPage, setCurrentPage] = useState(1)
+  const [copiedEmail, setCopiedEmail] = useState(null)
   const itemsPerPage = 12
 
   const [modalInfo, setModalInfo] = useState({
@@ -41,6 +43,17 @@ const Newsletter = () => {
 
     fetchSubscriptions()
   }, [])
+
+  // Copy email to clipboard
+  const copyToClipboard = (email) => {
+    navigator.clipboard.writeText(email).then(() => {
+      setCopiedEmail(email)
+      toast.success('Email copied to clipboard!')
+      setTimeout(() => setCopiedEmail(null), 2000)
+    }).catch(() => {
+      toast.error('Failed to copy email')
+    })
+  }
 
   // Pagination
   const totalPages = Math.ceil(subscriptionsList.length / itemsPerPage)
@@ -101,7 +114,7 @@ const Newsletter = () => {
   }
 
   return (
-    <div className="subscription-container">
+    <div className="subscription-container" style={{ marginLeft: '24px' }}>
       {modalInfo.show && (
         <Modal
           show={modalInfo.show}
@@ -154,13 +167,22 @@ const Newsletter = () => {
             paginatedList.map((sub, index) => (
               <div key={index} className="subscriber-item">
                 <div className="subscriber-info">
-                  <Mail size={16} className="email-icon" />
-                  <p className="subscriber-email">{sub.email}</p>
+                  <div className="subscriber-email-wrapper">
+                    <Mail size={16} className="email-icon" />
+                    <p className="subscriber-email">{sub.email}</p>
+                  </div>
+                  <button 
+                    className="copy-btn"
+                    onClick={() => copyToClipboard(sub.email)}
+                    title="Copy email"
+                  >
+                    {copiedEmail === sub.email ? (
+                      <Check size={16} />
+                    ) : (
+                      <Copy size={16} />
+                    )}
+                  </button>
                 </div>
-                <p className="subscriber-date">
-                  {new Date(sub.subscribed_at).toLocaleDateString()}
-                </p>
-                <hr className="notification-hr" />
               </div>
             ))
           ) : (

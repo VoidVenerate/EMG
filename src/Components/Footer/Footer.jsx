@@ -84,6 +84,7 @@ const Footer = () => {
         /* ===== Logo ===== */
         .footer-logo {
           align-self: flex-start;
+          margin-top:-60px;
         }
 
         .footer-logo img {

@@ -14,7 +14,7 @@ const TeamMember = ({ name, role, description }) => {
   return (
     <div className="team-card">
       <div className="card-header">
-        <img src="/Shapes.png" alt="Background shapes" className="header-bg-image" style={{color:'#fff'}} />
+        <img src="/Shapess.png" alt="Background shapes" className="header-bg-image" style={{color:'#fff'}} />
         <div className="avatar">
           <span className="initials" style={{fontFamily:'Sprite-Graffiti'}}>{getInitials(name)}</span>
         </div>

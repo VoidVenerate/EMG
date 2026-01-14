@@ -137,7 +137,7 @@ const ArtistDetails = () => {
       )
       
       toast.success('Artist profile deleted successfully!')
-      navigate('/admin/artists')
+      navigate('/admin/emgartist')
     } catch (error) {
       console.error(error)
       toast.error(error.response?.data?.detail || 'Failed to delete artist profile')
