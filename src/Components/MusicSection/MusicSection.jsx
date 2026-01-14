@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import './MusicSection.css';
+import { useNavigate } from 'react-router-dom';
 
 const MusicSection = () => {
   const [isMobile, setIsMobile] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const checkMobile = () => {
@@ -27,19 +29,22 @@ const MusicSection = () => {
             <img 
               src={isMobile ? "/production-mobile.png" : "/production.png"} 
               alt="Production" 
+              onClick={() => navigate('/spot')}
             />
           </div>
           <div className="headset-girl-2">
             <img 
               src={isMobile ? "/publishing-mobile.png" : "/publishing.png"} 
-              alt="Publishing" 
+              alt="Publishing"  
+              onClick={() => navigate('/spot')}
             />
           </div>
         </div>
         <div className="music-vinyl-engineering">
           <img 
             src={isMobile ? "/engineering-mobile.png" : "/engineering.png"} 
-            alt="Engineering" 
+            alt="Engineering"  
+            onClick={() => navigate('/spot')}
           />
         </div>
       </div>
