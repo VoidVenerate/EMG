@@ -1,24 +1,22 @@
 /* Full page background */
 .art-form {
-  content: "";
-  min-height: 66vw;
-  inset: 0;
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
   padding: 44px;
-
-  background:
-    linear-gradient(
-      rgba(0, 0, 0, 0.65),
-      rgba(0, 0, 0, 0.65)
-    ),
-  url('/spot-bg.jpg') no-repeat center center fixed;
-
+  background: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)),
+    url('/spot-bg.jpg') no-repeat center center;
   background-size: cover;
-  z-index: -1;
+  background-attachment: fixed;
   margin: 0;
   font-family: 'DM Sans';
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
+
 .back-btn {
-  position: absolute;
+  position: fixed;
   top: 18px;
   left: 18px;
   width: 44px;
@@ -29,15 +27,17 @@
   border-radius: 8px;
   font-size: 24px;
   cursor: pointer;
-
   backdrop-filter: blur(8px);
   transition: 0.2s ease;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .back-btn:hover {
   background: rgba(255, 255, 255, 0.18);
 }
-
 
 /* Center the form container */
 .artist-form-container {
@@ -45,23 +45,14 @@
   flex-direction: column;
   justify-content: center;
   max-width: 600px;
-  margin: auto;
-  margin-top: 8vw;
+  width: 100%;
   padding: 2rem;
   border-radius: 12px;
   color: #fff;
-
-  /* Glassmorphism style */
   background: transparent;
   backdrop-filter: blur(12px);
-  box-shadow: 0 8px 32px 0 rgba(0,0,0,0.37);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
   border: 1px solid rgba(255, 255, 255, 0.18);
-
-  /* Center vertically */
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
 }
 
 /* Heading and description */
@@ -73,6 +64,7 @@
 .artist-form-container p {
   color: #ccc;
   margin-bottom: 1.2rem;
+  line-height: 1.5;
 }
 
 /* Form styling */
@@ -84,6 +76,7 @@
 
 .artist-request-form label {
   margin-bottom: 0.4rem;
+  font-weight: 500;
 }
 
 .required {
@@ -95,31 +88,41 @@
 .artist-request-form input[type="text"],
 .artist-request-form input[type="email"],
 .artist-request-form input[type="url"] {
-  padding: 0.6rem;
+  padding: 0.75rem;
   border-radius: 6px;
   border: 1px solid rgba(255, 255, 255, 0.3);
   background: rgba(255, 255, 255, 0.1);
   color: #fff;
   backdrop-filter: blur(5px);
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.artist-request-form input:focus {
+  outline: none;
+  border-color: #AC8900;
+  background: rgba(255, 255, 255, 0.15);
 }
 
 /* Service selection */
 .service-title {
   font-weight: bold;
   margin-top: 1rem;
+  margin-bottom: 0.5rem;
 }
 
 .service-subtitle {
   font-size: 0.9rem;
   color: #ccc;
   margin-bottom: 0.8rem;
+  line-height: 1.5;
 }
 
 .service-checkboxes {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 0.6rem;
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
 }
 
 .service-checkboxes label {
@@ -127,26 +130,43 @@
   align-items: center;
   gap: 0.5rem;
   background: rgba(255, 255, 255, 0.1);
-  padding: 0.5rem;
+  padding: 0.6rem;
   border-radius: 6px;
   cursor: pointer;
   backdrop-filter: blur(5px);
+  transition: all 0.3s ease;
+  font-size: 0.95rem;
+}
+
+.service-checkboxes label:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.service-checkboxes input[type="checkbox"] {
+  cursor: pointer;
+  width: 18px;
+  height: 18px;
 }
 
 /* Submit button */
 .artist-request-form button {
   width: 100%;
-  padding: 12px 140px;
+  padding: 18px 20px;
   background-color: #AC8900;
   color: #fff;
   border: none;
-  border-radius: 16px;
-  font-weight: 500;
+  border-radius: 8px;
+  font-weight: 600;
   cursor: pointer;
-  height: 64px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  margin-top: 1rem;
 }
-.artist-request-form button:hover {
+
+.artist-request-form button:hover:not(:disabled) {
   background-color: #bc9809;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(172, 137, 0, 0.3);
 }
 
 .artist-request-form button:disabled {
@@ -155,5 +175,150 @@
 }
 
 /* Messages */
-.error { color: red; margin-bottom: 0.5rem; }
-.success { color: #00ff99; margin-bottom: 0.5rem; }
+.error {
+  color: #ff6b6b;
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.success {
+  color: #00ff99;
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+}
+
+/* ===== Tablet Responsive (1024px and below) ===== */
+@media (max-width: 1024px) {
+  .art-form {
+    padding: 32px;
+  }
+
+  .artist-form-container {
+    max-width: 550px;
+    padding: 1.75rem;
+  }
+
+  .artist-form-container h2 {
+    font-size: 1.6rem;
+  }
+}
+
+/* ===== Mobile Responsive (768px and below) ===== */
+@media (max-width: 768px) {
+  .art-form {
+    padding: 24px 16px;
+    min-height: 100vh;
+    background-attachment: scroll;
+  }
+
+  .back-btn {
+    width: 40px;
+    height: 40px;
+    top: 16px;
+    left: 16px;
+    font-size: 20px;
+  }
+
+  .artist-form-container {
+    max-width: 100%;
+    padding: 1.5rem;
+    margin-top: 60px;
+  }
+
+  .artist-form-container h2 {
+    font-size: 1.5rem;
+  }
+
+  .artist-form-container p {
+    font-size: 0.95rem;
+  }
+
+  .service-checkboxes {
+    gap: 0.5rem;
+  }
+
+  .service-checkboxes label {
+    font-size: 0.9rem;
+    padding: 0.5rem;
+  }
+
+  .artist-request-form button {
+    padding: 16px 20px;
+    font-size: 0.95rem;
+  }
+}
+
+/* ===== Small Mobile (480px and below) ===== */
+@media (max-width: 480px) {
+  .art-form {
+    padding: 16px 12px;
+  }
+
+  .back-btn {
+    width: 36px;
+    height: 36px;
+    top: 12px;
+    left: 12px;
+    font-size: 18px;
+  }
+
+  .artist-form-container {
+    padding: 1.25rem;
+    margin-top: 50px;
+  }
+
+  .artist-form-container h2 {
+    font-size: 1.3rem;
+  }
+
+  .artist-form-container p {
+    font-size: 0.875rem;
+  }
+
+  .service-checkboxes {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+
+  .service-checkboxes label {
+    font-size: 0.875rem;
+  }
+
+  .artist-request-form input[type="text"],
+  .artist-request-form input[type="email"],
+  .artist-request-form input[type="url"] {
+    padding: 0.65rem;
+    font-size: 0.95rem;
+  }
+
+  .service-title {
+    font-size: 0.95rem;
+  }
+
+  .service-subtitle {
+    font-size: 0.85rem;
+  }
+
+  .artist-request-form button {
+    padding: 14px 20px;
+    font-size: 0.9rem;
+  }
+}
+
+/* ===== Extra Small Mobile (375px and below) ===== */
+@media (max-width: 375px) {
+  .artist-form-container {
+    padding: 1rem;
+  }
+
+  .artist-form-container h2 {
+    font-size: 1.2rem;
+  }
+
+  .artist-request-form input[type="text"],
+  .artist-request-form input[type="email"],
+  .artist-request-form input[type="url"] {
+    padding: 0.6rem;
+    font-size: 0.9rem;
+  }
+}
