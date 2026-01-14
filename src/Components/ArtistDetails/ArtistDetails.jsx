@@ -9,6 +9,7 @@ import 'react-lazy-load-image-component/src/effects/blur.css'
 import { Music, Video, CloudUpload, Trash2, Edit, ExternalLink, ArrowUp, ArrowDown, Youtube } from 'lucide-react'
 import './ArtistDetails.css'
 import { SkeletonTheme } from 'react-loading-skeleton'
+import Modal from '../Modal/Modal'
 
 const ArtistDetails = () => {
   const { artistId } = useParams()
@@ -19,11 +20,7 @@ const ArtistDetails = () => {
   const [saving, setSaving] = useState(false)
   const [editForm, setEditForm] = useState({})
   const [featuredSongs, setFeaturedSongs] = useState(new Set())
-
-  
-  // Remove these states as we no longer need them
-  // const [bannerFile, setBannerFile] = useState(null)
-  // const [profileFile, setProfileFile] = useState(null)
+  const [showDeleteModal, setShowDeleteModal] = useState(false)
 
   const token = localStorage.getItem('token')
 
@@ -31,12 +28,10 @@ const ArtistDetails = () => {
     try {
       const parsed = new URL(url)
 
-      // youtube.com/watch?v=ID
       if (parsed.hostname.includes('youtube.com')) {
         return parsed.searchParams.get('v')
       }
 
-      // youtu.be/ID
       if (parsed.hostname.includes('youtu.be')) {
         return parsed.pathname.replace('/', '')
       }
@@ -71,7 +66,6 @@ const ArtistDetails = () => {
     setEditForm(prev => ({ ...prev, [field]: value }))
   }
 
-  // Updated: Auto-save banner on file selection
   const handleBannerUpload = async (e) => {
     const file = e.target.files[0]
     if (!file) return
@@ -102,7 +96,6 @@ const ArtistDetails = () => {
     }
   }
 
-  // Updated: Auto-save profile image on file selection
   const handleProfileUpload = async (e) => {
     const file = e.target.files[0]
     if (!file) return
@@ -130,6 +123,27 @@ const ArtistDetails = () => {
       toast.error(error.response?.data?.detail || 'Failed to update profile image')
     } finally {
       setSaving(false)
+    }
+  }
+
+  const handleDeleteProfile = async () => {
+    try {
+      setSaving(true)
+      await axios.delete(
+        `https://exodus-va6e.onrender.com/artists/admin-delete-artist/${artistId}`,
+        {
+          headers: { Authorization: `Bearer ${token}` }
+        }
+      )
+      
+      toast.success('Artist profile deleted successfully!')
+      navigate('/admin/artists')
+    } catch (error) {
+      console.error(error)
+      toast.error(error.response?.data?.detail || 'Failed to delete artist profile')
+    } finally {
+      setSaving(false)
+      setShowDeleteModal(false)
     }
   }
 
@@ -201,7 +215,6 @@ const ArtistDetails = () => {
       setSaving(false)
     }
   }
-
 
   const handleReorderVideo = async (videoId, direction) => {
     if (!artist?.videos) return;
@@ -350,6 +363,35 @@ const ArtistDetails = () => {
 
   return (
     <div className="artist-details" style={{marginLeft:'7vw',paddingRight:'2vw'}}>
+      {/* Delete Confirmation Modal */}
+      <Modal
+        show={showDeleteModal}
+        onClose={() => setShowDeleteModal(false)}
+        title="Delete Artist Profile"
+        message={`Are you sure you want to delete ${artist?.artist_name}'s profile? This action cannot be undone.`}
+        subMessage="All songs, videos, and associated data will be permanently deleted."
+        type="error"
+        titleAlign="left"
+        footerButtons={
+          <>
+            <button 
+              className="modal-close-btn" 
+              onClick={() => setShowDeleteModal(false)}
+              style={{ marginBottom: '10px' }}
+            >
+              Cancel
+            </button>
+            <button 
+              className="modal-btn-danger" 
+              onClick={handleDeleteProfile}
+              disabled={saving}
+            >
+              {saving ? 'Deleting...' : 'Delete Profile'}
+            </button>
+          </>
+        }
+      />
+
       {/* Header */}
       <div className="artist-details-header">
         <h1>Manage Artist Profile</h1>
@@ -762,7 +804,12 @@ const ArtistDetails = () => {
           </label>
         </div>
 
-        <button className="delete-profile-btn">Delete Profile</button>
+        <button 
+          className="delete-profile-btn"
+          onClick={() => setShowDeleteModal(true)}
+        >
+          Delete Profile
+        </button>
       </section>
     </div>
   )

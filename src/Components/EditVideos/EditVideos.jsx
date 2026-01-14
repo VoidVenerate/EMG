@@ -112,7 +112,7 @@ const EditVideo = () => {
           <p style={{ color: '#FFFFFFB2' }}>Update your video details</p>
         </div>
         <div className="header-right">
-          <button onClick={() => navigate(-1)} className="back-btn">
+          <button onClick={() => navigate(-1)} className="go-back-btn">
             Go Back
           </button>
         </div>

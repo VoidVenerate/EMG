@@ -14,7 +14,7 @@
 }
 
 /* Modal Container */
-.modal-container {
+.modal-container-only {
   background: #000;
   border-radius: 12px;
   padding: 25px 30px;
@@ -55,7 +55,7 @@
   filter: drop-shadow(0 0 6px rgba(34, 197, 94, 0.7));
 }
 
-.error-icon {
+.error-icons {
   color: #ef4444;
   filter: drop-shadow(0 0 6px rgba(239, 68, 68, 0.7));
 }
@@ -94,7 +94,7 @@
 .modal-subMessage {
   font-size: 0.9rem;
   color: #888;
-  text-align: center;
+  text-align: left;
 }
 
 /* ================= BUTTONS ================= */
