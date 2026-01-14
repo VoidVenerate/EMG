@@ -27,7 +27,7 @@ const AdminCards = () => {
 
         const artistRequestRes = await axios.get(
           `${BASE_URL}/artist-requests/admin-list`,
-          { headers }
+          { headers, params: { status_filter: 'pending' } }
         )
         setArtistRequest(artistRequestRes.data.length)
 
@@ -103,7 +103,7 @@ const AdminCards = () => {
       {/* ===== Artist Requests ===== */}
       <div className="dashboard-card">
         <div className="card-icon">
-          <UserMinus size={24} />
+          <img src="/user-left-02.svg" alt="" />
         </div>
         <h3>Artist Requests</h3>
         <p>{artistRequest}</p>

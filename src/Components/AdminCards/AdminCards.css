@@ -21,6 +21,7 @@
   min-height: 180px;
   box-shadow: 0 8px 24px rgba(0,0,0,0.4);
   width: 100%;
+  max-width: 472px;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -63,7 +64,7 @@
 .dashboard-card p {
   font-size: 40px;
   font-weight: 700;
-  margin: 0 0 20px 0;
+  margin-left: 16px;
   letter-spacing: -0.5px;
   line-height: 1;
 }
@@ -92,6 +93,8 @@
   box-shadow: 0 4px 12px rgba(0,0,0,0.3);
   margin-top: auto;
   white-space: nowrap;
+  margin-bottom: 16px;
+  margin-left: 16px;
 }
 
 .dashboard-card button:hover {

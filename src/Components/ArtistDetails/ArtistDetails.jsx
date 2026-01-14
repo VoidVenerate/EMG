@@ -18,6 +18,8 @@ const ArtistDetails = () => {
   const [editMode, setEditMode] = useState(false)
   const [saving, setSaving] = useState(false)
   const [editForm, setEditForm] = useState({})
+  const [featuredSongs, setFeaturedSongs] = useState(new Set())
+
   
   // Remove these states as we no longer need them
   // const [bannerFile, setBannerFile] = useState(null)
@@ -172,6 +174,7 @@ const ArtistDetails = () => {
   const handleFeatureSong = async (songId) => {
     try {
       setSaving(true)
+
       await axios.post(
         `https://exodus-va6e.onrender.com/new-music/admin-add?song_id=${songId}`,
         {},
@@ -182,18 +185,23 @@ const ArtistDetails = () => {
         }
       )
 
+      setFeaturedSongs(prev => new Set(prev).add(songId))
       toast.success('Song added to new music! ⭐')
+
     } catch (error) {
       console.error(error)
+
       if (error.response?.status === 400) {
-        toast.error('Song is already in new music')
+        setFeaturedSongs(prev => new Set(prev).add(songId))
+        toast.error('Song already added')
       } else {
-        toast.error(error.response?.data?.detail || 'Failed to add song to new music')
+        toast.error(error.response?.data?.detail || 'Failed to add song')
       }
     } finally {
       setSaving(false)
     }
   }
+
 
   const handleReorderVideo = async (videoId, direction) => {
     if (!artist?.videos) return;
@@ -341,12 +349,12 @@ const ArtistDetails = () => {
   if (loading) return <div className="skeleton-container"><SkeletonTheme baseColor="#1a1a1a" highlightColor="#2a2a2a"><Skeleton height={1000} /></SkeletonTheme></div>
 
   return (
-    <div className="artist-details">
+    <div className="artist-details" style={{marginLeft:'7vw',paddingRight:'2vw'}}>
       {/* Header */}
       <div className="artist-details-header">
         <h1>Manage Artist Profile</h1>
         <p>Manage your artist profile on the artist profile.</p>
-        <button className="go-back-btn" onClick={() => navigate(-1)}>
+        <button className="go-back-btn" style={{right:'0'}} onClick={() => navigate(-1)}>
           Go Back
         </button>
       </div>
@@ -384,9 +392,9 @@ const ArtistDetails = () => {
 
       {/* Artist Information */}
       
-      <h3 style={{marginTop:'24px', marginLeft:"1vw", fontSize:"32px"}}>Artist Information</h3>
-      <p style={{marginLeft:"1vw"}} className="section-subtitle">Get people get to know your artist.</p>
-      <section className="info-section">
+      <h3 style={{marginTop:'24px', marginLeft:"0vw", fontSize:"32px"}}>Artist Information</h3>
+      <p style={{marginLeft:"0vw"}} className="section-subtitle">Get people get to know your artist.</p>
+      <section className="info-section" style={{width:'100%'}}>
         
         <div className="info-grid">
           <div className="info-field">
@@ -559,37 +567,41 @@ const ArtistDetails = () => {
                   />
                 </div>
 
-                <div className="video-reorder-buttons">
+                
+                <div className="new-reorder-buttons" style={{display:'flex', justifyContent:'space-between', alignItems:'center', marginTop:'8px'}}>
                   <button
-                    className="reorder-btn"
-                    onClick={() => handleReorderSong(song.id, 'up')}
-                    disabled={index === 0}
-                    title="Move Up"
+                    className="feature-btn"
+                    onClick={() => handleFeatureSong(song.id)}
+                    disabled={saving || featuredSongs.has(song.id)}
+                    title="Add to New Music"
                   >
-                    <ArrowUp size={16} />
+                    {featuredSongs.has(song.id) ? 'Added' : 'Add to New Music'}
                   </button>
 
-                  <button
-                    className="reorder-btn"
-                    onClick={() => handleReorderSong(song.id, 'down')}
-                    disabled={index === artist.songs.length - 1}
-                    title="Move Down"
-                  >
-                    <ArrowDown size={16} />
-                  </button>
+                  <div className="video-reorder-buttons">
+                    <button
+                      className="reorder-btn"
+                      onClick={() => handleReorderSong(song.id, 'up')}
+                      disabled={index === 0}
+                      title="Move Up"
+                    >
+                      <ArrowUp size={16} />
+                    </button>
+
+                    <button
+                      className="reorder-btn"
+                      onClick={() => handleReorderSong(song.id, 'down')}
+                      disabled={index === artist.songs.length - 1}
+                      title="Move Down"
+                    >
+                      <ArrowDown size={16} />
+                    </button>
+                  </div>
                 </div>
 
                 <div className="videos-card-footer">
                   <div className="song-header">
                     <h4 className="videos-card-title">{song.song_name}</h4>
-                    <button
-                      className="feature-btn"
-                      onClick={() => handleFeatureSong(song.id)}
-                      disabled={saving}
-                      title="Add to New Music"
-                    >
-                      Add to New Music
-                    </button>
                   </div>
                   <p className="videos-card-subtitle">{song.artist_name}</p>
 

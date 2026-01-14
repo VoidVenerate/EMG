@@ -29,14 +29,14 @@ const Media = () => {
           display: flex;
           align-items: center;
           justify-content: space-between;
-          gap: 3rem;
+          gap: 1rem;
           background: #AC8900;
           border: 1px solid #FFFFFF26;
           border-radius: 48px;
           overflow: hidden;
           max-width: 100%;
           margin: 0 auto;
-          padding: 40px;
+          padding: 0px;
         }
 
         /* Vector decorations INSIDE container */
@@ -73,7 +73,7 @@ const Media = () => {
           z-index: 1;
         }
 
-        /* Image side (LEFT) */
+        /* Image side (LEFT on desktop) */
         .media-container-img {
           flex: 1;
           display: flex;
@@ -88,7 +88,7 @@ const Media = () => {
           object-fit: contain;
         }
 
-        /* Text side (RIGHT) */
+        /* Text side (RIGHT on desktop) */
         .media-container-text {
           flex: 1;
           display: flex;
@@ -189,13 +189,15 @@ const Media = () => {
             padding: 30px;
           }
 
-          .media-container-img {
+          /* Text appears first */
+          .media-container-text {
             order: 1;
+            align-items: center;
           }
 
-          .media-container-text {
+          /* Image appears second */
+          .media-container-img {
             order: 2;
-            align-items: center;
           }
 
           .media-container-text button {
@@ -210,7 +212,7 @@ const Media = () => {
 
           .media-container {
             border-radius: 32px;
-            padding: 24px;
+            padding: 0px;
             gap: 2rem;
           }
 
@@ -270,7 +272,8 @@ const Media = () => {
 
           .media-container {
             border-radius: 24px;
-            padding: 20px;
+            padding: 0px;
+            padding-top: 20px;
             gap: 1.5rem;
           }
 

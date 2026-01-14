@@ -1,13 +1,13 @@
-/* === Modal.css (Dark Neon Style with Glow Pulse) === */
+/* === Modal.css (Dark Neon Style – Fixed Icons) === */
 
 /* Overlay */
 .modal-overlay {
   position: fixed;
-  top: 0; left: 0; right: 0; bottom: 0;
+  inset: 0;
   background: rgba(0, 0, 0, 0.7);
   backdrop-filter: blur(4px);
-  display: flex; 
-  justify-content: center; 
+  display: flex;
+  justify-content: center;
   align-items: center;
   z-index: 1000;
   animation: fadeIn 0.3s ease;
@@ -15,250 +15,158 @@
 
 /* Modal Container */
 .modal-container {
-  background: #000000;
+  background: #000;
   border-radius: 12px;
   padding: 25px 30px;
   max-width: 475px;
-  height: auto;
-  max-height: 655px;
   width: 90%;
   display: flex;
   flex-direction: column;
   gap: 16px;
-  text-align: left;
-  position: relative;
-  animation: scaleUp 0.25s ease;
   border: 1px solid #292929;
+  animation: scaleUp 0.25s ease;
 }
 
-/* Success Glow (Green) + Pulse */
+/* ================= ICON CIRCLE ================= */
 
-
-/* === Title Row === */
-.modal-title-row {
+.circle-wrapper {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
   display: flex;
   align-items: center;
-  gap: 8px;
-  margin-bottom: 15px;
+  justify-content: center;
+
+  background: rgba(255, 255, 255, 0.06);
+  border: 4px solid rgba(255, 255, 255, 0.05);
+  margin-right: 32px;
 }
 
-/* Icon beside title */
+/* Icon base */
 .modal-icon {
-  width: 22px;
-  height: 22px;
+  width: 16px;
+  height: 19px;
+  stroke-width: 2.5;
 }
 
-/* Success Icon */
+/* Icon colors */
 .success-icon {
   color: #22c55e;
   filter: drop-shadow(0 0 6px rgba(34, 197, 94, 0.7));
-  text-align: left;
-  background: rgba(255, 255, 255, 0.058);
-  padding: 16px;
-  border-radius: 50%;
-  border: 4px solid rgba(255, 255, 255, 0.018);
 }
 
-/* Error Icon */
 .error-icon {
   color: #ef4444;
   filter: drop-shadow(0 0 6px rgba(239, 68, 68, 0.7));
-  text-align: left;
-  background: rgba(255, 255, 255, 0.058);
-  padding: 16px;
-  border-radius: 50%;
-  border: 4px solid rgba(255, 255, 255, 0.018);
 }
 
 .logout-icon {
   color: #ef4444;
-  filter: drop-shadow(0 0 6px #ef4444b3);
-  text-align: left;
-  background: rgba(255, 255, 255, 0.058);
-  padding: 16px;
-  border-radius: 50%;
-  border: 4px solid rgba(255, 255, 255, 0.018);
-}
-.duration-icon {
-  color: #FFC130;
-  filter: drop-shadow(0 0 6px #FFC130b3);
-  text-align: left;
-  background: rgba(255, 255, 255, 0.058);
-  padding: 16px;
-  border-radius: 50%;
-  border: 4px solid rgba(255, 255, 255, 0.018);
-}
-.circle-wrapper {
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  overflow: hidden;   /* hides anything outside the circle */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: rgba(255, 255, 255, 0.058)
+  filter: drop-shadow(0 0 6px rgba(239, 68, 68, 0.7));
 }
 
-.modal-icon.image-icon {
-  width: 100%;
-  height: 100%;
+.duration-icon {
+  color: #FFC130;
+  filter: drop-shadow(0 0 6px rgba(255, 193, 48, 0.7));
 }
 
 .image-icon {
   color: #ffffff;
-  filter: drop-shadow(0 0 6px #ffffffb3);
-  text-align: left;
-  background: rgba(255, 255, 255, 0.058);
-  padding: 16px;
-  border-radius: 50%;
-  border: 4px solid rgba(255, 255, 255, 0.018);
+  filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.7));
 }
 
-/* Title */
+/* ================= TEXT ================= */
+
 .modal-title {
+  color: #fff;
   font-weight: bold;
+  font-size: 16px;
   margin: 0;
   text-align: left;
-  font-size: 16px;
-  width: 90%;
-}
-.modal-title h2 .left {
-  text-align: left;
 }
 
-
-
-/* Main Message */
 .modal-message {
   font-size: 18px;
   color: #ccc;
-  margin-bottom: -15px;
+  text-align: left;
 }
 
-/* Sub Message */
 .modal-subMessage {
   font-size: 0.9rem;
-  margin-bottom: 0px;
   color: #888;
+  text-align: center;
 }
 
-/* === Close Button (Dynamic) === */
-.modal-close-btn {
+/* ================= BUTTONS ================= */
+
+.modal-footer {
+  margin-top: 10px;
+}
+
+.modal-close-btn,
+.modal-close-btn-primary,
+.modal-btn-danger {
+  width: 100%;
   padding: 20px 24px;
   border-radius: 12px;
-  cursor: pointer;
   font-weight: bold;
-  transition: all 0.3s ease;
+  cursor: pointer;
+  transition: all 0.25s ease;
   border: 1px solid #292929;
-  color: #fff;
-  background: transparent;
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  margin-top: 10px;
-  margin-bottom: 14px;
 }
+
+/* Secondary */
+.modal-close-btn {
+  background: transparent;
+  color: #fff;
+}
+
 .modal-close-btn:hover {
   transform: scale(1.05);
 }
+
+/* Primary */
 .modal-close-btn-primary {
-  background: #FFF;
-  padding: 20px 24px;
-  border-radius: 12px;
-  cursor: pointer;
-  font-weight: bold;
-  transition: all 0.3s ease;
-  border: 1px solid #292929;
+  background: #fff;
   color: #000;
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  margin-top: 10px;
-  margin-bottom: 14px;
 }
-.modal-close-btn-primary:hover{
-  background: #FFF;
-  color: #000;
+
+.modal-close-btn-primary:hover {
   transform: scale(1.05);
 }
 
-
+/* Danger */
 .modal-btn-danger {
-  background: #FFF; /* Tailwind red-600 */
+  background: #fff;
   color: #000;
-  border: 1px solid #292929;
-  border-radius: 12px;
-  width: 100%;
-  padding: 20px 24px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.25s ease-in-out;
 }
-.acitvated {
-  background: #FFF;
-}
+
 .modal-btn-danger:hover {
-  background: #FFF; /* darker red */
-  box-shadow: 0 0 14px rgba(59, 17, 150, 0.7);
   transform: scale(1.05);
-  color: #000;
 }
 
 .modal-btn-danger:active {
   transform: scale(0.95);
-  background: #FFF; /* even darker red */
 }
-.modal-btn-group {
-  margin-top: 10px;
+
+/* ================= ANIMATIONS ================= */
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
-/* Circle wrapper - now standalone above title */
-.circle-wrapper {
-  width: 70px;
-  height: 70px;
-  border-radius: 50%;
-  overflow: hidden;
+
+@keyframes scaleUp {
+  from {
+    transform: scale(0.95);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+.iconxtitle {
   display: flex;
   align-items: center;
-  justify-content: center;
-  background: rgba(255, 255, 255, 0.058);
-  border: 4px solid rgba(255, 255, 255, 0.018);
-  margin-bottom: 16px;
-}
-
-/* Icon inside circle */
-.modal-icon {
-  width: 32px;
-  height: 32px;
-}
-
-/* Success Icon */
-.success-icon {
-  color: #22c55e;
-  filter: drop-shadow(0 0 6px rgba(34, 197, 94, 0.7));
-}
-
-/* Error Icon */
-.error-icon {
-  color: #ef4444;
-  filter: drop-shadow(0 0 6px rgba(239, 68, 68, 0.7));
-}
-
-.logout-icon {
-  color: #ef4444;
-  filter: drop-shadow(0 0 6px #ef4444b3);
-}
-
-.duration-icon {
-  color: #FFC130;
-  filter: drop-shadow(0 0 6px #FFC130b3);
-}
-
-.image-icon {
-  color: #ffffff;
-  filter: drop-shadow(0 0 6px #ffffffb3);
-  width: 100%;
-  height: 100%;
-}
-.modal-title{
-  color: #fff;
 }

@@ -128,13 +128,13 @@ const Newsletter = () => {
       </div>
 
       {/* Stats Card */}
-      <div className="dashboard-card">
+      <div className="dashboard-card" style={{marginLeft:'3vw'}}>
         <div className="card-icon">
           <Mail size={24} />
         </div>
         <h3>Total Subscribers</h3>
         <p className="subscriber-count">{subscriptionsList.length}</p>
-        <span className="hr-span"></span>
+        <span className="hr-spans"></span>
         <button className="download-btn" onClick={exportSubscribersToExcel}>
           <Download size={16} />
           Download Report

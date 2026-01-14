@@ -82,15 +82,19 @@ const Footer = () => {
         }
 
         /* ===== Logo ===== */
+        .footer-logo {
+          align-self: flex-start;
+        }
+
         .footer-logo img {
           width: 160px;
-          margin-top: -60px;
         }
 
         /* ===== Info Columns ===== */
         .info {
           display: flex;
           gap: 4rem;
+          align-items: flex-start;
         }
 
         .info > div {
@@ -118,6 +122,7 @@ const Footer = () => {
           display: flex;
           flex-direction: column;
           gap: 1rem;
+          align-self: flex-start;
         }
 
         .footer-subscribe p:first-child {
@@ -238,7 +243,6 @@ const Footer = () => {
 
           .footer-logo img {
             width: 140px;
-            margin-top: -40px;
           }
 
           .info {
@@ -297,12 +301,11 @@ const Footer = () => {
 
           .footer-logo img {
             width: 120px;
-            margin-top: -30px;
           }
 
           .info {
-            grid-template-columns: repeat(2,1fr);
-            gap: 1.5rem;
+            grid-template-columns: repeat(1,1fr);
+            gap: 0rem;
           }
 
           .info > div {

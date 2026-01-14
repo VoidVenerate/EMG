@@ -8,6 +8,8 @@ import 'react-lazy-load-image-component/src/effects/blur.css'
 import { Music, Video } from 'lucide-react'
 import './UserArtistDetails.css'
 import { SkeletonTheme } from 'react-loading-skeleton'
+import Media from '../Media/Media'
+import Footer from '../Footer/Footer'
 
 const UserArtistDetails = () => {
   const { artistId } = useParams()
@@ -48,14 +50,6 @@ const UserArtistDetails = () => {
 
   return (
     <div className="artist-details">
-      {/* Header */}
-      <div className="artist-details-header">
-        <h1>{artist.artist_name}</h1>
-        <p>Explore music and videos from {artist.artist_name}</p>
-        <button className="go-back-btn" onClick={() => navigate(-1)}>
-          Go Back
-        </button>
-      </div>
 
       {/* Banner Section */}
       <div className="banner-section">
@@ -64,118 +58,9 @@ const UserArtistDetails = () => {
           effect="blur"
           className="artist-banner"
           alt={`${artist.artist_name} banner`}
-          style={{width:'100%'}}
+          style={{width:'97%', filter: 'brightness(0.8)'}}
         />
       </div>
-
-      {/* Artist Information */}
-      <section className="info-section">
-        <h3>Artist Information</h3>
-        <p className="section-subtitle">Get to know {artist.artist_name}</p>
-        
-        <div className="info-grid">
-          <div className="info-field">
-            <label>Artist Name</label>
-            <div className="info-value">{artist.artist_name}</div>
-          </div>
-
-          <div className="info-field">
-            <label>Genre</label>
-            <div className="info-value">{artist.genres?.join(', ') || 'Hip-Hop'}</div>
-          </div>
-
-          <div className="info-field">
-            <label>Artist Spotify Link</label>
-            <div className="info-value">
-              {artist.spotify_link ? (
-                <a href={artist.spotify_link} target="_blank" rel="noopener noreferrer" className="info-link">
-                  {artist.spotify_link}
-                </a>
-              ) : (
-                'Not available'
-              )}
-            </div>
-          </div>
-
-          <div className="info-field">
-            <label>Apple Music Link</label>
-            <div className="info-value">
-              {artist.apple_music_link ? (
-                <a href={artist.apple_music_link} target="_blank" rel="noopener noreferrer" className="info-link">
-                  {artist.apple_music_link}
-                </a>
-              ) : (
-                'Not available'
-              )}
-            </div>
-          </div>
-
-          <div className="info-field">
-            <label>YouTube Link</label>
-            <div className="info-value">
-              {artist.youtube_link ? (
-                <a href={artist.youtube_link} target="_blank" rel="noopener noreferrer" className="info-link">
-                  {artist.youtube_link}
-                </a>
-              ) : (
-                'Not available'
-              )}
-            </div>
-          </div>
-
-          <div className="info-field">
-            <label>YouTube Music Link</label>
-            <div className="info-value">
-              {artist.youtube_music_link ? (
-                <a href={artist.youtube_music_link} target="_blank" rel="noopener noreferrer" className="info-link">
-                  {artist.youtube_music_link}
-                </a>
-              ) : (
-                'Not available'
-              )}
-            </div>
-          </div>
-
-          <div className="info-field">
-            <label>Instagram Link</label>
-            <div className="info-value">
-              {artist.instagram_link ? (
-                <a href={artist.instagram_link} target="_blank" rel="noopener noreferrer" className="info-link">
-                  {artist.instagram_link}
-                </a>
-              ) : (
-                'Not available'
-              )}
-            </div>
-          </div>
-
-          <div className="info-field">
-            <label>X Link</label>
-            <div className="info-value">
-              {artist.x_link ? (
-                <a href={artist.x_link} target="_blank" rel="noopener noreferrer" className="info-link">
-                  {artist.x_link}
-                </a>
-              ) : (
-                'Not available'
-              )}
-            </div>
-          </div>
-
-          <div className="info-field">
-            <label>TikTok Link</label>
-            <div className="info-value">
-              {artist.tiktok_link ? (
-                <a href={artist.tiktok_link} target="_blank" rel="noopener noreferrer" className="info-link">
-                  {artist.tiktok_link}
-                </a>
-              ) : (
-                'Not available'
-              )}
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* Musics Section */}
       <section className="content-section">

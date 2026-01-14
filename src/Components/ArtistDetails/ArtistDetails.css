@@ -48,7 +48,7 @@ button,
 
 .go-back-btn {
   position: absolute;
-  right: 40px;
+  right: 24px;
   top: 24px;
   padding: 8px 20px;
   background-color: transparent;
@@ -150,8 +150,8 @@ button,
   border: 1px solid #ffffff33;
   background: #ffffff0d;
   margin-top: 22px;
-  margin-left: 1vw;
-  width: 98%;
+  margin-left: 0vw;
+  width: 97%;
   border-radius: 16px;
 }
 
@@ -284,6 +284,7 @@ button,
    ======================================= */
 .content-section {
   padding: 40px;
+  padding-left: 0px;
   border-bottom: 1px solid rgba(255,255,255,0.2);
   margin-bottom: 48px;
 }
@@ -511,6 +512,7 @@ button,
 /* Video Footer */
 .videos-card-footer {
   padding: 16px;
+  padding-left: 0px;
   display: flex;
   flex-direction: column;
   gap: 12px;

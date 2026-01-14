@@ -45,7 +45,6 @@ const App = () => {
       {/* ===== USER ROUTES ===== */}
       <Route element={<UserLayout />}>
         <Route path="/" element={<Home />} />
-        <Route path="/home" element={<Home />} />
         <Route path="/roster" element={<Roster />} />
         <Route path="/new-music" element={<UserNewMusicPage />} />
         <Route path="/playlists" element={<UserPlaylistPage />} />

@@ -12,36 +12,38 @@ const Modal = ({ show, onClose, title, message, subMessage, type, footerButtons,
         className={`modal-container ${type}`}
         onClick={e => e.stopPropagation()}
       >
-        {/* === Circle Icon === */}
-        {type === 'success' && (
-          <div className="circle-wrapper">
-            <Check className="modal-icon success-icon" />
-          </div>
-        )}
-        {type === 'error' && (
-          <div className="circle-wrapper">
-            <XCircle className="modal-icon error-icon" />
-          </div>
-        )}
-        {type === 'logout' && (
-          <div className="circle-wrapper">
-            <LogOut className="modal-icon logout-icon" />
-          </div>
-        )}
-        {type === 'duration' && (
-          <div className="circle-wrapper">
-            <MessageSquareWarning className="modal-icon duration-icon" />
-          </div>
-        )}
-        {type === 'image' && (
-          <div className="circle-wrapper">
-            <BookImage className="modal-icon image-icon" />
-          </div>
-        )}
+        <div className="iconxtitle">
+          {/* === Circle Icon === */}
+          {type === 'success' && (
+            <div className="circle-wrapper">
+              <Check className="modal-icon success-icon" />
+            </div>
+          )}
+          {type === 'error' && (
+            <div className="circle-wrapper">
+              <XCircle className="modal-icon error-icon" />
+            </div>
+          )}
+          {type === 'logout' && (
+            <div className="circle-wrapper">
+              <LogOut className="modal-icon logout-icon" />
+            </div>
+          )}
+          {type === 'duration' && (
+            <div className="circle-wrapper">
+              <MessageSquareWarning className="modal-icon duration-icon" />
+            </div>
+          )}
+          {type === 'image' && (
+            <div className="circle-wrapper">
+              <BookImage className="modal-icon image-icon" />
+            </div>
+          )}
 
-        {/* === Title === */}
-        <h2 className={`modal-title ${titleAlign}`}>{title}</h2>
+          {/* === Title === */}
+          <h2 className={`modal-title ${titleAlign}`}>{title}</h2>
 
+        </div>
         {/* === Message Content === */}
         <div className="modal-message">{message}</div>
         {subMessage && <div className="modal-subMessage">{subMessage}</div>}

@@ -3,11 +3,12 @@ body {
 }
 
 .profile-dark-container {
-  width: 87%;
+  width: 97%;
   max-width: 100%;
   margin: 3px auto;
+  margin-left: 4vw;
   padding: 24px 40px;
-  background-color: #000000;
+  background-color: #0B0B0F;
   color: #eee;
   font-family: 'DM Sans', sans-serif;
   border-radius: 12px;
@@ -16,7 +17,6 @@ body {
 .profile-dark-title {
   font-size: 36px;
   font-weight: 600;
-  margin: 0 0 32px 0;
   letter-spacing: 0.5px;
   color: #fff;
 }
@@ -53,14 +53,13 @@ body {
 /* ============================= */
 
 .profile-dark-left {
-  flex: 1;
-  max-width: 320px;
+  width: 495px;
   text-align: center;
-  background: #FFFFFF0D;
+  background: transparent;
   border: 1px solid #FFFFFF33;
   border-radius: 16px;
   padding: 32px 24px;
-  min-height: 500px;
+  min-height: 358px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -76,12 +75,14 @@ body {
   margin-bottom: 4px;
   font-size: 16px;
   color: #fff;
+  text-align: left;
 }
 
 .profile-dark-subtext {
   font-size: 13px;
   color: #FFFFFFB2;
   margin-bottom: 24px;
+  text-align: left;
 }
 
 .profile-dark-image {
@@ -123,15 +124,16 @@ body {
 /* ============================= */
 
 .profile-dark-right {
-  flex: 2;
-  background: #FFFFFF0D;
+  width: 100%;
+  max-width: 868px;
+  background: transparent;
   border: 1px solid #FFFFFF33;
   border-radius: 16px;
   padding: 32px;
-  min-height: 500px;
+  min-height: 405px;
   transition: border-color 0.3s ease;
 }
-
+a
 .profile-dark-right:hover {
   border-color: #FFFFFF66;
 }
@@ -162,9 +164,9 @@ body {
 .profile-dark-input-group input[type="password"],
 .profile-dark-input-group input[type="text"],
 .profile-dark-input-group input[type="email"] {
-  background-color: #1e1e23;
+  background-color: transparent;
   border-radius: 8px;
-  border: 1px solid #FFFFFF1A;
+  border: 0px solid #FFFFFF33;
   padding: 12px 16px;
   color: #fff;
   font-size: 14px;
@@ -189,10 +191,10 @@ body {
   position: relative;
   display: flex;
   align-items: center;
-  background-color: #1e1e23;
+  background-color: #FFFFFF0D;
   border-radius: 8px;
   padding: 12px 16px;
-  border: 1px solid #FFFFFF1A;
+  border: 0px solid #FFFFFF33;
 }
 
 .profile-dark-input-disabled input {
@@ -409,7 +411,6 @@ body {
 
   .profile-dark-title {
     font-size: 28px;
-    margin-bottom: 24px;
   }
 
   .profile-dark-content {

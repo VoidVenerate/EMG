@@ -308,6 +308,7 @@
   transition: all 0.25s ease;
   text-decoration: none;
   font-size: 14px;
+  font-family: 'DM Sans';
 }
 
 .pagination li a:hover {

@@ -17,7 +17,7 @@ const UserNavbar = () => {
   };
 
   const navLinks = [
-    { to: '/home', label: 'Home' },
+    { to: '/', label: 'Home' },
     { to: '/new-music', label: 'New Music' },
     { to: '/roster', label: 'Roster' },
     { to: '/playlists', label: 'Playlists' }
@@ -33,7 +33,7 @@ const UserNavbar = () => {
         }
 
         body {
-          font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+          font-family: 'DM Sans', sans-serif;
           background-color: #0B0B0F;
           padding-top: 100px;
         }
@@ -96,11 +96,11 @@ const UserNavbar = () => {
           cursor: pointer;
           font-weight: 400;
           background-color: #AC8900;
-          letter-spacing: 3px;
           position: relative;
           overflow: hidden;
           transition: color 0.3s ease, box-shadow 0.3s ease;
           color: #fff;
+          fontFamily: 'DM Sans', sans-serif;
           border-radius: 4px;
         }
 
@@ -282,7 +282,7 @@ const UserNavbar = () => {
 
       <nav className="navbar">
         <div className="navbar-logo">
-          <NavLink to="/home">
+          <NavLink to="/">
             <img src="/emg-logo.png" alt="Exodus Music Group" />
           </NavLink>
         </div>

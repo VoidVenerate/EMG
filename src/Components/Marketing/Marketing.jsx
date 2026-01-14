@@ -96,7 +96,7 @@ const Marketing = () => {
         .marketing-section > button {
           padding: 16px 40px;
           font-size: 1.125rem;
-          font-weight: 700;
+          font-weight: 600;
           background-color: #272728;
           color: #fff;
           border: 1px solid #676767;
@@ -108,7 +108,6 @@ const Marketing = () => {
 
         .marketing-section > button:hover {
           transform: translateY(-2px);
-          border-color: #AC8900;
           box-shadow: 0 4px 12px rgba(172, 137, 0, 0.2);
         }
 
@@ -163,7 +162,7 @@ const Marketing = () => {
             padding: 14px 32px;
             font-size: 1rem;
             width: 100%;
-            max-width: 350px;
+            max-width: 253px;
           }
         }
 
@@ -207,7 +206,7 @@ const Marketing = () => {
         <div className="marketing-header">
           <p>Music Marketing</p>
           <p>
-            A track without Exodus is a potential hit with no plan. <br />
+            A track without Exodus is a potential hit with no plan.
             We make sure people actually hear it.
           </p>
         </div>
