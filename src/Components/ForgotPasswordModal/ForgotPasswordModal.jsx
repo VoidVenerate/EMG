@@ -195,7 +195,7 @@ const ForgotPasswordModal = ({ show, onClose }) => {
   return (
     <>
       <div className="modal-overlay" onClick={handleClose}>
-        <div className="modal-container" onClick={e => e.stopPropagation()}>
+        <div className="modal-container-only" onClick={e => e.stopPropagation()} style={{background:'#04060C', border:'1px solid #FFFFFF33', padding: '16px 32px'}}>
           {/* Icon Circle */}
           <div className="circle-wrapper">
             {step === 1 ? (

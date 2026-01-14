@@ -21,7 +21,6 @@ const AdminNavbar = () => {
   const navigate = useNavigate();
 
   const [menuOpen, setMenuOpen] = useState(false);
-  const [dropdownOpen, setDropdownOpen] = useState(false);
   const [userName, setUserName] = useState('');
   const [profileImage, setProfileImage] = useState(null);
   const [showLogoutModal, setShowLogoutModal] = useState(false);
@@ -83,7 +82,7 @@ const AdminNavbar = () => {
           fontWeight: 'bold',
           cursor: 'pointer',
         }}
-        onClick={() => setDropdownOpen(!dropdownOpen)}
+        onClick={() => navigate('/me')}
       >
         {letter}
       </div>
@@ -181,19 +180,12 @@ const AdminNavbar = () => {
                   src={profileImage}
                   effect="blur"
                   className="profile-avatar"
-                  onClick={() => setDropdownOpen(!dropdownOpen)}
+                  onClick={() => navigate('/me')}
                   onError={e => (e.target.src = DEFAULT_AVATAR)}
+                  style={{ cursor: 'pointer' }}
                 />
               ) : (
                 renderLetterAvatar()
-              )}
-
-              {dropdownOpen && (
-                <div className="profile-dropdown">
-                  <NavLink to="/me" className="dropdown-item" onClick={() => setDropdownOpen(false)}>
-                    Profile
-                  </NavLink>
-                </div>
               )}
             </div>
         </div>

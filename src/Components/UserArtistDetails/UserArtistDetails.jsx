@@ -37,6 +37,14 @@ const UserArtistDetails = () => {
     }
   }
 
+  const handleSongClick = (linktree) => {
+    window.open(linktree, '_blank', 'noopener,noreferrer')
+  }
+
+  const handleVideoClick = (videoLink) => {
+    window.open(videoLink, '_blank', 'noopener,noreferrer')
+  }
+
   useEffect(() => {
     axios
       .get(`https://exodus-va6e.onrender.com/artists/${artistId}`)
@@ -74,7 +82,12 @@ const UserArtistDetails = () => {
         {artist.songs?.length ? (
           <div className="videos-grid" style={{marginRight: '2vw'}}>
             {artist.songs.map((song) => (
-              <div key={song.id} className="music-card">
+              <div 
+                key={song.id} 
+                className="music-card clickable-card" 
+                style={{border:'0px', cursor: 'pointer'}}
+                onClick={() => handleSongClick(song.linktree)}
+              >
                 
                 {/* Thumbnail */}
                 <div className="music-thumbnail-wrapper">
@@ -85,23 +98,12 @@ const UserArtistDetails = () => {
                   />
                 </div>
 
-                {/* Song Info & Actions */}
-                <div className="videos-card-footer">
+                {/* Song Info */}
+                <div className="videos-card-footer" style={{padding:'0px',paddingTop:'16px'}}>
                   <div className="song-header">
                     <h4 className="videos-card-title">{song.song_name}</h4>
                   </div>
                   <p className="videos-card-subtitle">{song.artist_name}</p>
-
-                  <div className="videos-card-actions">
-                    <a
-                      href={song.linktree}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="video-action-btn"
-                    >
-                      Listen Now
-                    </a>
-                  </div>
                 </div>
               </div>
             ))}
@@ -133,7 +135,12 @@ const UserArtistDetails = () => {
                 : video.thumbnail_url || 'https://via.placeholder.com/400x225?text=No+Preview'
 
               return (
-                <div key={video.id} className="videos-card">
+                <div 
+                  key={video.id} 
+                  className="videos-card clickable-card"
+                  style={{cursor: 'pointer'}}
+                  onClick={() => handleVideoClick(video.video_link)}
+                >
                   {/* Thumbnail */}
                   <div className="video-thumbnail-wrapper">
                     <img src={thumbnail} alt={video.video_name} className="video-thumb-img" />
@@ -142,19 +149,9 @@ const UserArtistDetails = () => {
                     </div>
                   </div>
 
-                  {/* Video Info & Actions */}
+                  {/* Video Info */}
                   <div className="videos-card-footer">
                     <h4 className="videos-card-title">{video.video_name}</h4>
-                    <div className="videos-card-actions">
-                      <a
-                        href={video.video_link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="video-action-btn"
-                      >
-                        Watch Now
-                      </a>
-                    </div>
                   </div>
                 </div>
               )

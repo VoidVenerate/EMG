@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Check, XCircle, KeyRound, Mail, ShieldHalf } from 'lucide-react';
+import { Check, XCircle, KeyRound, Mail, ShieldHalf, X } from 'lucide-react';
 
 const Modal = ({ show, onClose, title, message, subMessage, type, footerButtons, titleAlign = "left" }) => {
   if (!show) return null;
@@ -125,9 +125,32 @@ const ForgotPasswordModal = ({ show, onClose, onBackToChangePassword }) => {
     <>
       <div className="modal-overlay" onClick={handleClose} style={{fontFamily:'DM Sans'}}>
         <div className="modal-container" onClick={e => e.stopPropagation()}>
-          {/* Icon Circle */}
-          <div className="circle-wrapper">
-            <Mail className="modal-icon duration-icon" />
+          {/* Header with Icon and Close Button */}
+          <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', width: '100%', marginBottom: '16px' }}>
+            {/* Icon Circle */}
+            <div className="circle-wrapper">
+              <Mail className="modal-icon duration-icon" />
+            </div>
+
+            {/* Close Button */}
+            <button
+              onClick={handleClose}
+              style={{
+                background: 'transparent',
+                border: 'none',
+                color: '#fff',
+                cursor: 'pointer',
+                padding: '4px',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                transition: 'all 0.2s ease'
+              }}
+              onMouseEnter={(e) => e.currentTarget.style.opacity = '0.7'}
+              onMouseLeave={(e) => e.currentTarget.style.opacity = '1'}
+            >
+              <X size={24} />
+            </button>
           </div>
 
           {/* Title */}
@@ -173,9 +196,6 @@ const ForgotPasswordModal = ({ show, onClose, onBackToChangePassword }) => {
                 style={{ opacity: loading || !email ? 0.5 : 1 }}
               >
                 {loading ? 'Sending...' : 'Send Reset Link'}
-              </button>
-              <button onClick={handleClose} className="modal-close-btn">
-                Cancel
               </button>
             </div>
 
@@ -269,7 +289,6 @@ const ChangePasswordModal = ({ show, onClose }) => {
   const handleChangePassword = async () => {
     setError('');
 
-    // Validation
     if (!currentPassword || !newPassword || !confirmPassword) {
       setError('All fields are required');
       return;
@@ -363,26 +382,48 @@ const ChangePasswordModal = ({ show, onClose }) => {
       {/* Change Password Modal */}
       {!showForgotPassword && (
         <div className="modal-overlay" onClick={handleClose} style={{fontFamily:'DM Sans'}}>
-          <div className="modal-container" onClick={e => e.stopPropagation()}>
-             {/* Icon Circle */}
-                <div className="circle-wrapper">
+          <div className="modal-container" onClick={e => e.stopPropagation()} style={{background:'#04060C', border:'1px solid #FFFFFF33', height:'590px', width:'400px', padding: '16px 32px'}}>
+            {/* Header with Icon and Close Button */}
+            <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', width: '100%', marginBottom: '16px' }}>
+              {/* Icon Circle */}
+              <div className="circle-wrapper">
                 <ShieldHalf className="modal-icon duration-icon" />
-                </div>
+              </div>
 
+              {/* Close Button */}
+              <button
+                onClick={handleClose}
+                style={{
+                  background: 'transparent',
+                  border: 'none',
+                  color: '#fff',
+                  cursor: 'pointer',
+                  padding: '4px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  transition: 'all 0.2s ease'
+                }}
+                onMouseEnter={(e) => e.currentTarget.style.opacity = '0.7'}
+                onMouseLeave={(e) => e.currentTarget.style.opacity = '1'}
+              >
+                <X size={24} />
+              </button>
+            </div>
+
+            <div className="change-password-text">
                 {/* Title */}
-                <h2 className="modal-title left">Change Password</h2>
+                <h2 className="modal-title left" style={{marginBottom:"16px"}}>Change Password</h2>
 
-            {/* Message */}
-            <div className="modal-message">
-              Enter your current password and choose a new secure password.
+                {/* Message */}
+                <div className="modal-message" style={{fontSize:'16px'}}>
+                Enter your current password and choose a new secure password.
+                </div>
             </div>
 
             {/* Form Fields */}
             <div style={{ width: '100%', marginTop: '10px' }}>
               <div style={{ marginBottom: '16px' }}>
-                <label style={{ color: '#ccc', display: 'block', marginBottom: '8px', fontSize: '14px' }}>
-                  Current Password
-                </label>
                 <input
                   type="password"
                   value={currentPassword}
@@ -391,21 +432,19 @@ const ChangePasswordModal = ({ show, onClose }) => {
                   style={{
                     width: '100%',
                     padding: '12px 16px',
-                    background: '#000',
-                    border: '1px solid #292929',
+                    background: '#FFFFFF0D',
+                    border: '0px solid #292929',
                     borderRadius: '8px',
                     color: '#fff',
                     fontSize: '14px',
                     outline: 'none',
-                    boxSizing: 'border-box'
+                    boxSizing: 'border-box',
+                    height: '68px',
                   }}
                 />
               </div>
 
               <div style={{ marginBottom: '16px' }}>
-                <label style={{ color: '#ccc', display: 'block', marginBottom: '8px', fontSize: '14px' }}>
-                  New Password
-                </label>
                 <input
                   type="password"
                   value={newPassword}
@@ -414,10 +453,11 @@ const ChangePasswordModal = ({ show, onClose }) => {
                   style={{
                     width: '100%',
                     padding: '12px 16px',
-                    background: '#000',
-                    border: '1px solid #292929',
+                    height: '68px',
+                    border: '0px solid #292929',
                     borderRadius: '8px',
                     color: '#fff',
+                    background: '#FFFFFF0D',
                     fontSize: '14px',
                     outline: 'none',
                     boxSizing: 'border-box'
@@ -426,9 +466,6 @@ const ChangePasswordModal = ({ show, onClose }) => {
               </div>
 
               <div style={{ marginBottom: '16px' }}>
-                <label style={{ color: '#ccc', display: 'block', marginBottom: '8px', fontSize: '14px' }}>
-                  Confirm New Password
-                </label>
                 <input
                   type="password"
                   value={confirmPassword}
@@ -438,13 +475,14 @@ const ChangePasswordModal = ({ show, onClose }) => {
                   style={{
                     width: '100%',
                     padding: '12px 16px',
-                    background: '#000',
+                    background: '#FFFFFF0D',
                     border: '1px solid #292929',
                     borderRadius: '8px',
                     color: '#fff',
                     fontSize: '14px',
                     outline: 'none',
-                    boxSizing: 'border-box'
+                    boxSizing: 'border-box',
+                    height: '68px',
                   }}
                 />
               </div>
@@ -463,18 +501,15 @@ const ChangePasswordModal = ({ show, onClose }) => {
                 </div>
               )}
 
-              {/* Buttons */}
+              {/* Button */}
               <div className="modal-btn-group">
                 <button
                   onClick={handleChangePassword}
                   disabled={loading || !currentPassword || !newPassword || !confirmPassword}
                   className="modal-close-btn-primary"
-                  style={{ opacity: loading || !currentPassword || !newPassword || !confirmPassword ? 0.5 : 1 }}
+                  style={{ opacity: loading || !currentPassword || !newPassword || !confirmPassword ? 0.5 : 1, marginTop:'32px' }}
                 >
                   {loading ? 'Changing...' : 'Change Password'}
-                </button>
-                <button onClick={handleClose} className="modal-close-btn">
-                  Cancel
                 </button>
               </div>
 

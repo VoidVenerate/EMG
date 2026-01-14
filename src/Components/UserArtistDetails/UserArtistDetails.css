@@ -84,6 +84,7 @@ button,
   height: 300px;
   overflow: hidden;
   cursor: pointer;
+  margin-top: 1vw;
 }
 
 .artist-banner {
@@ -509,7 +510,8 @@ button,
 
 /* Video Footer */
 .videos-card-footer {
-  padding: 16px;
+  padding-top: 16px;
+  padding-left: 0px;
   display: flex;
   flex-direction: column;
   gap: 12px;

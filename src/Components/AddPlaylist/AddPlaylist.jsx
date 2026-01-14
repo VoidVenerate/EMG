@@ -98,7 +98,7 @@ const AddPlaylist = ({
           <p style={{ color: '#FFFFFFB2' }}>Upload your playlists</p>
         </div>
         <div className="header-right">
-          <button onClick={() => navigate(-1)} className="back-btn">Go Back</button>
+          <button onClick={() => navigate(-1)} className="go-back-btn">Go Back</button>
         </div>
       </div>
       <span className="hr-span"></span>

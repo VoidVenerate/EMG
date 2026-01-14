@@ -221,7 +221,7 @@ const Media = () => {
 
         @media (max-width: 768px) {
           .media-section {
-            padding: 40px 24px;
+            padding: 0px;
           }
 
           /* Hide the original container on mobile */
@@ -237,7 +237,8 @@ const Media = () => {
           .media-footer {
             flex-direction: column;
             gap: 2rem;
-            margin-top: 3rem;
+            margin-top: 1rem;
+            margin-bottom: 1rem;
             text-align: center;
             align-items: baseline;
           }
@@ -259,11 +260,11 @@ const Media = () => {
 
         @media (max-width: 480px) {
           .media-section {
-            padding: 32px 20px;
+            padding: 0px;
           }
 
           .media-mobile-image {
-            border-radius: 20px;
+            border-radius: 0px;
           }
 
           .media-footer > p {

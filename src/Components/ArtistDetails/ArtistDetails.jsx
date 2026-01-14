@@ -137,7 +137,7 @@ const ArtistDetails = () => {
       )
       
       toast.success('Artist profile deleted successfully!')
-      navigate('/admin/emgartist')
+      navigate('/admin/artists')
     } catch (error) {
       console.error(error)
       toast.error(error.response?.data?.detail || 'Failed to delete artist profile')
@@ -186,30 +186,54 @@ const ArtistDetails = () => {
   }
 
   const handleFeatureSong = async (songId) => {
+    const isCurrentlyFeatured = featuredSongs.has(songId)
+
     try {
       setSaving(true)
 
-      await axios.post(
-        `https://exodus-va6e.onrender.com/new-music/admin-add?song_id=${songId}`,
-        {},
-        {
-          headers: {
-            Authorization: `Bearer ${token}`
+      if (isCurrentlyFeatured) {
+        // Remove from featured
+        await axios.delete(
+          `https://exodus-va6e.onrender.com/new-music/admin-remove/${songId}`,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`
+            }
           }
-        }
-      )
+        )
 
-      setFeaturedSongs(prev => new Set(prev).add(songId))
-      toast.success('Song added to new music! ⭐')
+        setFeaturedSongs(prev => {
+          const newSet = new Set(prev)
+          newSet.delete(songId)
+          return newSet
+        })
+        toast.success('Song removed from new music!')
+      } else {
+        // Add to featured
+        await axios.post(
+          `https://exodus-va6e.onrender.com/new-music/admin-add?song_id=${songId}`,
+          {},
+          {
+            headers: {
+              Authorization: `Bearer ${token}`
+            }
+          }
+        )
+
+        setFeaturedSongs(prev => new Set(prev).add(songId))
+        toast.success('Song added to new music! ⭐')
+      }
 
     } catch (error) {
       console.error(error)
 
-      if (error.response?.status === 400) {
+      if (error.response?.status === 400 && !isCurrentlyFeatured) {
         setFeaturedSongs(prev => new Set(prev).add(songId))
         toast.error('Song already added')
+      } else if (error.response?.status === 404 && isCurrentlyFeatured) {
+        toast.error('Song not found in featured list')
       } else {
-        toast.error(error.response?.data?.detail || 'Failed to add song')
+        toast.error(error.response?.data?.detail || `Failed to ${isCurrentlyFeatured ? 'remove' : 'add'} song`)
       }
     } finally {
       setSaving(false)
@@ -610,35 +634,24 @@ const ArtistDetails = () => {
                 </div>
 
                 
-                <div className="new-reorder-buttons" style={{display:'flex', justifyContent:'space-between', alignItems:'center', marginTop:'8px'}}>
+                <div className="video-reorder-buttons">
                   <button
-                    className="feature-btn"
-                    onClick={() => handleFeatureSong(song.id)}
-                    disabled={saving || featuredSongs.has(song.id)}
-                    title="Add to New Music"
+                    className="reorder-btn"
+                    onClick={() => handleReorderSong(song.id, 'up')}
+                    disabled={index === 0}
+                    title="Move Up"
                   >
-                    {featuredSongs.has(song.id) ? 'Added' : 'Add to New Music'}
+                    <ArrowUp size={16} />
                   </button>
 
-                  <div className="video-reorder-buttons">
-                    <button
-                      className="reorder-btn"
-                      onClick={() => handleReorderSong(song.id, 'up')}
-                      disabled={index === 0}
-                      title="Move Up"
-                    >
-                      <ArrowUp size={16} />
-                    </button>
-
-                    <button
-                      className="reorder-btn"
-                      onClick={() => handleReorderSong(song.id, 'down')}
-                      disabled={index === artist.songs.length - 1}
-                      title="Move Down"
-                    >
-                      <ArrowDown size={16} />
-                    </button>
-                  </div>
+                  <button
+                    className="reorder-btn"
+                    onClick={() => handleReorderSong(song.id, 'down')}
+                    disabled={index === artist.songs.length - 1}
+                    title="Move Down"
+                  >
+                    <ArrowDown size={16} />
+                  </button>
                 </div>
 
                 <div className="videos-card-footer">
@@ -662,6 +675,17 @@ const ArtistDetails = () => {
                       onClick={() => navigate(`/artists/${artistId}/songs/${song.id}/edit`)}
                     >
                       Edit Song
+                    </button>
+
+                    <button
+                      className="video-action-btn"
+                      onClick={() => handleFeatureSong(song.id)}
+                      disabled={saving}
+                      style={{
+                        background: featuredSongs.has(song.id) ? '#FFFFFF1A' : 'transparent'
+                      }}
+                    >
+                      {featuredSongs.has(song.id) ? 'Unadd' : 'Add to NM'}
                     </button>
 
                     <button
