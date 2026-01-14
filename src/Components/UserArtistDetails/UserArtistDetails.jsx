@@ -72,7 +72,7 @@ const UserArtistDetails = () => {
         </div>
 
         {artist.songs?.length ? (
-          <div className="videos-grid">
+          <div className="videos-grid" style={{marginRight: '2vw'}}>
             {artist.songs.map((song) => (
               <div key={song.id} className="music-card">
                 
