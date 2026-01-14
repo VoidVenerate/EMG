@@ -224,7 +224,12 @@
 /* Responsive Design */
 @media (max-width: 768px) {
   .add-videos {
-    padding: 20px 15px;
+    padding: 0px;
+  }
+  .add-videos-container {
+    margin-left: 0vw;
+    margin-top: 10vw;
+    padding: 1rem;
   }
 
   .add-videos h2 {
@@ -253,5 +258,11 @@
 
   .actions button {
     width: 100%;
+  }
+}
+@media (max-width: 480px) {
+  .add-videos-container {
+    margin-left: 0vw;
+    margin-top: 15vw;
   }
 }

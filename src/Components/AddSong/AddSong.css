@@ -273,7 +273,7 @@
 /* Responsive Design */
 @media (max-width: 768px) {
   .add-songs {
-    padding: 20px 15px;
+    padding: 0px;
   }
 
   .add-songs h2 {

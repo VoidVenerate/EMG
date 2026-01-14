@@ -114,7 +114,7 @@ const UserNavbar = () => {
           display: none;
           flex-direction: column;
           justify-content: center;
-          align-items: center;
+          align-items: flex-end;
           cursor: pointer;
           width: 25px;
           height: 25px;
