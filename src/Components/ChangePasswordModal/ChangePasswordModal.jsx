@@ -382,7 +382,7 @@ const ChangePasswordModal = ({ show, onClose }) => {
       {/* Change Password Modal */}
       {!showForgotPassword && (
         <div className="modal-overlay" onClick={handleClose} style={{fontFamily:'DM Sans'}}>
-          <div className="modal-container" onClick={e => e.stopPropagation()} style={{background:'#04060C', border:'1px solid #FFFFFF33', height:'590px', width:'400px', padding: '16px 32px'}}>
+          <div className="modal-container" onClick={e => e.stopPropagation()} style={{background:'#04060C', border:'1px solid #FFFFFF33', height:'600px', width:'400px', padding: '16px 32px'}}>
             {/* Header with Icon and Close Button */}
             <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', width: '100%', marginBottom: '16px' }}>
               {/* Icon Circle */}
@@ -394,15 +394,18 @@ const ChangePasswordModal = ({ show, onClose }) => {
               <button
                 onClick={handleClose}
                 style={{
-                  background: 'transparent',
-                  border: 'none',
+                  background: 'rgba(255, 255, 255, 0.06)',
+                  border: '4px solid rgba(255, 255, 255, 0.05)',
                   color: '#fff',
                   cursor: 'pointer',
                   padding: '4px',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  transition: 'all 0.2s ease'
+                  transition: 'all 0.2s ease',
+                  borderRadius:'50%',
+                  width:'48px',
+                  height:'48px',
                 }}
                 onMouseEnter={(e) => e.currentTarget.style.opacity = '0.7'}
                 onMouseLeave={(e) => e.currentTarget.style.opacity = '1'}

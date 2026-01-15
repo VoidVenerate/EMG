@@ -256,7 +256,7 @@ const NewMusic = () => {
                             }}
                             disabled={saving}
                           >
-                            <Trash2 size={16} />
+                            Unadd
                           </button>
                         </div>
                       )}
