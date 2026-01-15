@@ -27,6 +27,19 @@
   animation: scaleUp 0.25s ease;
 }
 
+.modal-container {
+  background: #0B0B0F;
+  border-radius: 12px;
+  padding: 25px 30px;
+  max-width: 475px;
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  border: 1px solid #FFFFFF33;
+  animation: scaleUp 0.25s ease;
+}
+
 /* ================= ICON CIRCLE ================= */
 
 .circle-wrapper {

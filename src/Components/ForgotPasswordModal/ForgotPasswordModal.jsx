@@ -195,7 +195,7 @@ const ForgotPasswordModal = ({ show, onClose }) => {
   return (
     <>
       <div className="modal-overlay" onClick={handleClose}>
-        <div className="modal-container-only" onClick={e => e.stopPropagation()} style={{background:'#04060C', border:'1px solid #FFFFFF33', padding: '16px 32px'}}>
+        <div className="modal-container" onClick={e => e.stopPropagation()} style={{background:'#04060C', border:'1px solid #FFFFFF33', padding: '16px 32px'}}>
           {/* Icon Circle */}
           <div className="circle-wrapper">
             {step === 1 ? (
@@ -211,7 +211,7 @@ const ForgotPasswordModal = ({ show, onClose }) => {
           </h2>
 
           {/* Message */}
-          <div className="modal-message">
+          <div className="modal-message" style={{fontSize:'16px'}}>
             {step === 1 
               ? "Enter your email address and we'll send you a code to reset your password."
               : `Enter the 6-digit code sent to ${email} and your new password.`
