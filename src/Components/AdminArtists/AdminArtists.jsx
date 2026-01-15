@@ -59,7 +59,7 @@ const AdminArtists = () => {
   return (
     <div className="roster-section" style={{marginLeft:'7vw', marginTop:'3rem'}}>
       <h1 className="roster-title" style={{fontFamily:'DM Sans', color: '#FFFFFF'}}>EMG Artists</h1>
-      <p style={{ fontSize: '16px', color: '#FFFFFFB2', textAlign: 'left', marginTop: '2rem', marginBottom: '3rem', fontFamily:'DM Sans'}}>
+      <p style={{ fontSize: '16px', color: '#FFFFFFB2', textAlign: 'left', marginTop: '0rem', marginBottom: '1rem', fontFamily:'DM Sans'}}>
         The Voices to our sound
       </p>
 

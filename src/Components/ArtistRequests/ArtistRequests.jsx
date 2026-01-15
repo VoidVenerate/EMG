@@ -115,7 +115,7 @@ const ArtistRequests = () => {
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState(null)
     const [currentPage, setCurrentPage] = useState(0)
-    const requestsPerPage = 4
+    const requestsPerPage = 8
     const navigate = useNavigate()
 
     // Modal states
