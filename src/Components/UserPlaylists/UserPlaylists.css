@@ -9,12 +9,14 @@
 }
 
 /* HEADER */
-.playlists-page-header{
+.playlists-page-header {
   width: 100%;
   background: #FFFFFF0D;
   border: 1px solid #FFFFFF33;
   text-align: center;
+  border-radius: 16px;
 }
+
 .playlists-title {
   font-size: 56px;
   font-weight: 600;
@@ -51,106 +53,41 @@
   position: relative;
   cursor: pointer;
   transition: transform 0.3s ease;
+  background: #FFFFFF0D;
+  border: 0px solid #FFFFFF33;
+  border-radius: 16px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
 
 .playlist-card:hover {
   transform: translateY(-8px);
+  border-color: #FFFFFF66;
 }
 
 /* =========================
-   DISC CONTAINER
+   PLAYLIST IMAGE
 ========================= */
-.disc-container {
+.playlist-image-wrapper {
   position: relative;
   width: 100%;
   aspect-ratio: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: visible;
-  background: url('/public/cd-bg.png');
+  overflow: hidden;
+  border-radius: 12px;
 }
 
-.disc-image {
+.playlist-image {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-radius: 8px;
-}
-
-/* DISC CENTER (VINYL HOLE) */
-.disc-center {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 60px;
-  height: 60px;
-  background: #fff;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
-  z-index: 5;
-}
-
-.spotify-icon-center {
-  width: 40px;
-  height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.spotify-icon-center svg {
-  width: 28px;
-  height: 28px;
-  color: #000;
-}
-
-/* =========================
-   PLAY/PAUSE BUTTON - TOP RIGHT
-========================= */
-.play-pause-btn {
-  position: absolute;
-  top: 240px;
-  right: 12px;
-  background: rgba(255, 255, 255, 0.15);
-  backdrop-filter: blur(10px);
-  padding: 6px 12px;
-  border-radius: 4px;
-  font-size: 11px;
-  font-weight: 500;
-  color: #fff;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  transition: all 0.3s ease;
-  z-index: 10;
-}
-
-.playlist-card:hover .play-pause-btn {
-  background: rgba(255, 255, 255, 0.25);
-  border-color: rgba(255, 255, 255, 0.3);
+  border-radius: 12px;
 }
 
 /* =========================
    BOTTOM OVERLAY
 ========================= */
-.bottom-overlay {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 50%;
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.3));
-  backdrop-filter: blur(11px);
-  border-radius: 0 0 8px 8px;
-  z-index: 8;
-  display: flex;
-  align-items: flex-end;
-  padding: 16px;
-}
-
 .overlay-content {
   width: 100%;
   display: flex;
@@ -159,43 +96,15 @@
   gap: 12px;
 }
 
-/* LEFT SIDE - PLAYLIST INFO */
+/* LEFT SIDE - SPOTIFY */
 .playlist-info-left {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
-.playlist-name {
-  font-size: 64px;
-  font-weight: 500;
-  margin: 0;
-  color: #fff;
-  line-height: 1.2;
-  font-family: 'Nimous-Daven';
-  text-shadow: 
-    0 2px 4px rgba(0, 0, 0, 0.5),
-    0 1px 2px rgba(0, 0, 0, 0.8);
-}
-
-.playlist-subtitle {
   display: flex;
   align-items: center;
-  gap: 6px;
-  font-size: 13px;
-  color: #fff;
-}
-
-.playlist-buttons{
-  display: flex;
-  justify-content: space-between;
-  flex-direction: row;
 }
 
 .spotify-badge {
-  width: 30px;
-  height: 30px;
+  width: 32px;
+  height: 32px;
   background: #000;
   border-radius: 50%;
   display: flex;
@@ -205,9 +114,9 @@
 }
 
 .spotify-badge svg {
-  width: 30px;
-  height: 30px;
-  color: #fff;
+  width: 20px;
+  height: 20px;
+  color: #1DB954;
 }
 
 /* RIGHT SIDE - BARCODE */
@@ -216,48 +125,64 @@
   display: flex;
   align-items: center;
   background: #fff;
-  width: 40px;
-  height: 12px;
+  padding: 0;
+  border-radius: 0px;
+  height: 10px;
 }
 
 .barcode-image {
-  height: 30px;
+  height: 24px;
   width: auto;
   opacity: 0.9;
 }
 
-.toggle-btn {
+/* =========================
+   PLAYLIST INFO ROW
+========================= */
+.playlist-info-row {
   display: flex;
+  justify-content: space-between;
+  align-items: center;
   gap: 12px;
-  margin-bottom: 32px;
 }
 
-.add-action-btn {
-  padding: 8px 12px;
+.playlist-name {
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0;
+  color: #fff;
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.open-playlist-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  background: #FFFFFF0D;
+  border: 1px solid #FFFFFF33;
+  border-radius: 8px;
+  color: #fff;
   font-size: 13px;
   font-weight: 500;
-  border-radius: 6px;
-  border: 1px solid #FFFFFF33;
-  background: #FFFFFF0D;
-  color: #fff;
   text-decoration: none;
   transition: all 0.2s ease;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
   white-space: nowrap;
-  width: 100%;
-  max-width: 100px;
-  height: 32px;
-  margin-right: 8px;
-  cursor: pointer;
-  font-family: 'DM Sans', sans-serif;
+  flex-shrink: 0;
 }
 
-.add-action-btn:hover {
-  background: rgba(255, 255, 255, 0.1);
-  border-color: rgba(255, 255, 255, 0.3);
+.open-playlist-btn:hover {
+  background: #FFFFFF1A;
+  border-color: #FFFFFF66;
+  transform: translateY(-2px);
+}
+
+.open-playlist-btn svg {
+  width: 16px;
+  height: 16px;
 }
 
 /* =========================
@@ -265,7 +190,7 @@
 ========================= */
 .playlist-card.skeleton {
   background: rgba(255, 255, 255, 0.08);
-  border-radius: 8px;
+  border-radius: 16px;
   pointer-events: none;
 }
 
@@ -298,52 +223,98 @@
 .pagination {
   display: flex;
   justify-content: flex-end;
-  margin-top: 2rem;
-  gap: 0.5rem;
+  margin-top: 3rem;
+  gap: 0.75rem;
+  list-style: none;
+  padding: 0;
 }
 
 .pagination li {
-  list-style: none;
-  padding: 0.4rem 0.7rem;
-  border-radius: 6px;
-  cursor: pointer;
+  border-radius: 8px;
+}
+
+.pagination li a {
+  padding: 12px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
   background: transparent;
-}
-
-.pagination li.active {
-  color: #000;
+  color: #fff;
   font-weight: 600;
+  cursor: pointer;
+  border: 1px solid #FFFFFF33;
+  transition: all 0.25s ease;
+  text-decoration: none;
+  font-size: 14px;
 }
 
-.pagination li.disabled {
-  opacity: 0.5;
+.pagination li a:hover {
+  transform: translateY(-3px);
+  background: #FFFFFF0D;
+}
+
+.pagination li.active a {
+  background: #FFFFFF0D;
+  border-color: #FFFFFF66;
+}
+
+.pagination li.disabled a {
+  opacity: 0.4;
   cursor: not-allowed;
 }
 
-.page-link {
-  color: #fff;
-  text-decoration: none;
+.pagination li.disabled a:hover {
+  transform: translateY(0);
+  background: transparent;
 }
 
-.pagination li.active .page-link {
-  color: #000;
+/* Hide page numbers */
+.pagination .page {
+  display: none;
 }
 
-/* RESPONSIVE */
+/* ============================= */
+/* TABLET RESPONSIVE (1024px and below) */
+/* ============================= */
 @media (max-width: 1024px) {
+  .playlists-page {
+    padding: 1.75rem;
+  }
+
+  .playlists-page-header {
+    padding: 36px 48px;
+  }
+
+  .playlists-title {
+    font-size: 48px;
+  }
+
+  .playlists-subtitle {
+    font-size: 18px;
+  }
+
   .playlists-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
+/* ============================= */
+/* MOBILE RESPONSIVE (768px and below) */
+/* ============================= */
 @media (max-width: 768px) {
   .playlists-page {
     margin-left: 0;
-    padding: 1.5rem;
+    padding: 16px 24px;
+    padding-top: 80px; /* Account for fixed navbar */
+  }
+
+  .playlists-page-header {
+    padding: 28px 32px;
   }
 
   .playlists-title {
-    font-size: 2rem;
+    font-size: 32px;
   }
 
   .playlists-subtitle {
@@ -352,46 +323,110 @@
 
   .playlists-grid {
     grid-template-columns: 1fr;
+    margin-top: 24px !important;
   }
 
-  .playlist-name {
-    font-size: 1.1rem;
-  }
-
-  .play-pause-btn {
-    font-size: 10px;
-    padding: 5px 10px;
-  }
-
-  .bottom-overlay {
+  .playlist-card {
     padding: 12px;
   }
 
+  .playlist-name {
+    font-size: 16px;
+  }
+
+  .open-playlist-btn {
+    padding: 6px 12px;
+    font-size: 12px;
+  }
+
+  .spotify-badge {
+    width: 28px;
+    height: 28px;
+  }
+
+  .spotify-badge svg {
+    width: 18px;
+    height: 18px;
+  }
+
   .barcode-image {
-    height: 25px;
+    height: 20px;
+  }
+
+  .pagination {
+    justify-content: center;
+    margin-top: 2rem;
   }
 }
-/* =====================================================
-   INFINITE VINYL ROLL ON HOVER
-===================================================== */
 
-/* REMOVE TRANSITION-BASED ROTATION */
-.disc-image {
-  transition: none;
-  transform-origin: 50% 50%;
-}
-
-/* CONTINUOUS SPIN WHEN CARD IS HOVERED */
-.playlist-card:hover .disc-image {
-  animation: vinylSpin 2.4s linear infinite;
-}
-
-/* VINYL SPIN KEYFRAMES */
-@keyframes vinylSpin {
-  from {
-    transform: rotate(0deg);
+/* ============================= */
+/* SMALL MOBILE (480px and below) */
+/* ============================= */
+@media (max-width: 480px) {
+  .playlists-page {
+    padding: 14px 20px;
+    padding-top: 75px;
   }
-  to {
-    transform: rotate(360deg);
+
+  .playlists-page-header {
+    padding: 24px;
+  }
+
+  .playlists-title {
+    font-size: 28px;
+  }
+
+  .playlists-subtitle {
+    font-size: 13px;
+  }
+
+  .playlist-info-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .open-playlist-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .playlist-name {
+    font-size: 15px;
+  }
+}
+
+/* ============================= */
+/* EXTRA SMALL MOBILE (375px and below) */
+/* ============================= */
+@media (max-width: 375px) {
+  .playlists-page {
+    padding: 12px 16px;
+    padding-top: 70px;
+  }
+
+  .playlists-page-header {
+    padding: 20px;
+  }
+
+  .playlists-title {
+    font-size: 24px;
+  }
+
+  .playlists-subtitle {
+    font-size: 12px;
+  }
+
+  .playlist-card {
+    padding: 10px;
+  }
+
+  .playlist-name {
+    font-size: 14px;
+  }
+
+  .open-playlist-btn {
+    font-size: 11px;
+    padding: 5px 10px;
   }
 }
