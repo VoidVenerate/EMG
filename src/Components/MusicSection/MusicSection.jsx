@@ -29,14 +29,14 @@ const MusicSection = () => {
             <img 
               src={isMobile ? "/production-mobile.png" : "/production.png"} 
               alt="Production" 
-              onClick={() => navigate('/spot')}
+              onClick={() => navigate('/confirmspot')}
             />
           </div>
           <div className="headset-girl-2">
             <img 
               src={isMobile ? "/publishing-mobile.png" : "/publishing.png"} 
               alt="Publishing"  
-              onClick={() => navigate('/spot')}
+              onClick={() => navigate('/confirmspot')}
             />
           </div>
         </div>
@@ -44,7 +44,7 @@ const MusicSection = () => {
           <img 
             src={isMobile ? "/engineering-mobile.png" : "/engineering.png"} 
             alt="Engineering"  
-            onClick={() => navigate('/spot')}
+            onClick={() => navigate('/confirmspot')}
           />
         </div>
       </div>
