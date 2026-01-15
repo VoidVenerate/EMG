@@ -33,6 +33,7 @@ import UserPlaylists from './Components/UserPlaylists/UserPlaylists';
 import UserArtistDetails from './Components/UserArtistDetails/UserArtistDetails';
 import UserNewMusicPage from './Pages/UserNewMusicPage/UserNewMusicPage';
 import UserPlaylistPage from './Pages/UserPlaylistPage/UserPlaylistPage';
+import EditPlaylist from './Components/EditPlaylist/EditPlaylist';
 
 const App = () => {
   const navigate = useNavigate();
@@ -98,6 +99,7 @@ const App = () => {
         <Route path='/me' element={<ProfileDark/>} />
         <Route path='/add-playlist' element={<AddPlaylist/>} />
         <Route path='/get-playlist' element={<GetPlaylist/>} />
+        <Route path='/edit-playlist/:playlistId' element={<EditPlaylist/>} />
       </Route>
 
     </Routes>

@@ -155,30 +155,6 @@
   padding: 0 4px;
 }
 
-.music-action-btn {
-  padding: 10px 16px;
-  font-size: 13px;
-  font-weight: 500;
-  border-radius: 8px;
-  border: 1px solid #FFFFFF33;
-  background: #FFFFFF0D;
-  color: #fff;
-  text-decoration: none;
-  transition: all 0.2s ease;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  font-family: 'DM Sans', sans-serif;
-  text-align: center;
-}
-
-.music-action-btn:hover {
-  background: #FFFFFF1A;
-  border-color: #FFFFFF66;
-  transform: translateY(-2px);
-}
-
 .music-delete-action {
   background: transparent;
   border-color: #ff444433;
@@ -198,22 +174,14 @@
   justify-content: space-between;
   flex-direction: row;
   align-items: center;
-  margin-bottom: 32px;
+  margin-top: 8px;
 }
 
 .toggle-btn {
   display: flex;
   gap: 0px;
-}
-
-.toggle-btn .music-action-btn {
-  border-radius: 8px 0 0 8px;
-  border-right: none;
-}
-
-.toggle-btn .music-action-btn:last-child {
-  border-radius: 0 8px 8px 0;
-  border-right: 1px solid #FFFFFF33;
+  margin-bottom: 12px;
+  width: 100%;
 }
 
 .add-action-btn {
@@ -227,6 +195,7 @@
   transition: all 0.2s ease;
   cursor: pointer;
   font-family: 'DM Sans', sans-serif;
+  width: 130px;
 }
 
 .add-action-btn:hover {
