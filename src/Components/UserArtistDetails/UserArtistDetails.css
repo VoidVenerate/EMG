@@ -790,7 +790,7 @@ button,
   /* Grids - single column */
   .songs-grid,
   .videos-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
     gap: 16px;
   }
 
@@ -887,11 +887,11 @@ button,
   }
 
   .artist-details {
-    margin-top: 15vw;
+    margin-top: 0vw;
   }
 
   .banner-section {
-    height: 180px;
+    height: 111px;
   }
 
   .section-header h3 {

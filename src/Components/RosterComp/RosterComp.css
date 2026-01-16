@@ -148,6 +148,10 @@
 }
 
 @media (max-width: 600px) {
+  .user-roster-section {
+    padding: 24px;
+    padding-top: 0px;
+  }
   .roster-grid {
     grid-template-columns: 1fr;
   }
@@ -186,7 +190,7 @@
 }
 @media (max-width: 400px) {
   .roster-card {
-    height: 238px;
+    height: 300px;
   }
 
   .roster-overlay p {

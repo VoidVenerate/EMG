@@ -241,6 +241,7 @@ const Media = () => {
             margin-bottom: 1rem;
             text-align: center;
             align-items: baseline;
+            padding-left: 24px;
           }
 
           .media-footer > p {

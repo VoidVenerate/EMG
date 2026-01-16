@@ -297,21 +297,24 @@ const Footer = () => {
           }
 
           .footer-container {
-            gap: 1.5rem;
+            gap: 0rem;
           }
 
           .footer-logo {
             margin-top: -60px;
+            margin-bottom: 0px;
           }
 
           .footer-logo img {
             width: 120px;
+            object-fit: inherit;
           }
 
           .info {
             grid-template-columns: repeat(1,1fr);
             gap: 0rem;
             padding-left: 20px;
+            margin-top: -2rem;
           }
           .footer-subscribe {
             padding-left: 20px;
@@ -320,9 +323,20 @@ const Footer = () => {
           .info > div {
             width: 100%;
           }
+          .media {
+            margin-top: 0.5rem;
+          }
+          .others {
+            margin-top: 0.5rem;
+          }
 
           .info p {
             font-size: 14px;
+          }
+
+          .footer-subscribe {
+            margin-top: 16px;
+            gap: 0.5rem;
           }
 
           .footer-subscribe p:first-child {
@@ -331,6 +345,10 @@ const Footer = () => {
 
           .footer-subscribe p:nth-child(2) {
             font-size: 12px;
+          }
+
+          .footer-copyright {
+            padding-top: 0rem;
           }
 
           .subscribe-form input {

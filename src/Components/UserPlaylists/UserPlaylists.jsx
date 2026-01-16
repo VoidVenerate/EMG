@@ -66,8 +66,8 @@ const UserPlaylists = () => {
   const pageCount = Math.ceil(allPlaylists.length / playlistsPerPage)
 
   return (
-    <div className="playlists-page" style={{marginLeft:'0px', padding:'46px', paddingTop:'24px'}}>
-      <div className="playlists-page-header" style={{padding:'44px 64px'}}>
+    <div className="playlists-page" style={{marginLeft:'0px'}}>
+      <div className="playlists-page-header">
         <h1 className="playlists-title">EMG Playlists 🎧</h1>
         <p className="playlists-subtitle">Our playlist is expertly curated just for you.</p>
       </div>
