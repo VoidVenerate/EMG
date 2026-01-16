@@ -111,7 +111,7 @@ const PublicArtistProfile = () => {
       <section className="content-section">
         <div className="section-header">
           <div>
-            <h3>Musics</h3>
+            <h3>Music</h3>
           </div>
         </div>
 
