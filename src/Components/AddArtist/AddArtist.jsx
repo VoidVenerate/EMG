@@ -37,8 +37,8 @@ const AddArtist = ({ onArtistCreated }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    if (!form.artist_name || !form.genres || !bannerImage || !profileImage) {
-      toast.error('Artist name, genres, banner & profile images are required')
+    if (!form.artist_name || !form.genres || !profileImage) {
+      toast.error('Artist name, genres & profile images are required')
       return
     }
 
@@ -103,7 +103,7 @@ const AddArtist = ({ onArtistCreated }) => {
                     {/* Banner Upload */}
                     <div className="upload-section">
                         <label>
-                            Banner Upload <span className="required">*</span>
+                            Banner Upload
                         </label>
                         <p>Upload the artist banner image: 1440px wide, 433px high.</p>
 
