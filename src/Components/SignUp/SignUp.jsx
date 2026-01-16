@@ -35,7 +35,7 @@ const Signup = ({ signUpKey }) => {
     /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+\-[\]{};':"\\|,.<>/?`~\-]).{8,}$/.test(password);
 
   const isTurnupEmail = (email) =>
-    /^[a-zA-Z0-9._%+-]+@exodusmusicgroup\.com$/.test(email);
+    /^[a-zA-Z0-9._%+-]+@exodusmg\.com$/.test(email);
 
   const validateSignUpFields = () => {
     const errors = {};
@@ -43,7 +43,7 @@ const Signup = ({ signUpKey }) => {
     if (!formData.last_name.trim()) errors.last_name = "Last name is required";
 
     if (!formData.email.trim()) errors.email = "Email is required";
-    else if (!isTurnupEmail(formData.email)) errors.email = "Only @exodusmusicgroup.com emails are allowed";
+    else if (!isTurnupEmail(formData.email)) errors.email = "Only @exodusmg.com emails are allowed";
 
     if (!formData.password) errors.password = "Password is required";
     else if (!isPasswordStrong(formData.password))
