@@ -81,7 +81,6 @@ const AddArtist = ({ onArtistCreated }) => {
 
   const isFormValid = form.artist_name.trim() &&
     form.genres.trim() &&
-    bannerImage &&
     profileImage
 
   return (
