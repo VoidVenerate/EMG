@@ -103,7 +103,7 @@
 }
 @media (max-width: 460px) {
   .IL-container {
-    border-radius: 44px;
+    border-radius: 0px;
   }
   .review-nimous p:first-child {
     font-size: 20px;
