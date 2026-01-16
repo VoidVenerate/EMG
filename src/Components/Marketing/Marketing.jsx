@@ -205,10 +205,6 @@ const Marketing = () => {
       <div className='marketing-section'>
         <div className="marketing-header">
           <p>Music Marketing</p>
-          <p>
-            A track without Exodus is a potential hit with no plan.
-            We make sure people actually hear it.
-          </p>
         </div>
         <div className="horizontal-list">
           <div className="icons">
