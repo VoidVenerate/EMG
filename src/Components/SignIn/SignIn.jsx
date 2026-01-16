@@ -27,7 +27,7 @@ const SignIn = () => {
   };
 
   const isTurnupEmail = (email) =>
-    /^[a-zA-Z0-9._%+-]+@exodusmusicgroup\.com$/.test(email);
+    /^[a-zA-Z0-9._%+-]+@exodusmg\.com$/.test(email);
 
   const extractErrorMessage = (err, fallback) => {
     if (!err.response) return "Network error. Please try again.";
