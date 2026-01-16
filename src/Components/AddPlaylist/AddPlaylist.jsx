@@ -13,7 +13,7 @@ const emptyPlaylist = {
 }
 
 const AddPlaylist = ({
-  redirectTo = '/admin/playlists'
+  redirectTo = '/get-playlist'
 }) => {
   const navigate = useNavigate()
   const token = localStorage.getItem('token')
