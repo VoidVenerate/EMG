@@ -102,6 +102,9 @@
   }
 }
 @media (max-width: 460px) {
+  .IL-container {
+    border-radius: 44px;
+  }
   .review-nimous p:first-child {
     font-size: 20px;
   }
