@@ -190,7 +190,7 @@
 }
 @media (max-width: 400px) {
   .roster-card {
-    height: 300px;
+    height: 280px;
   }
 
   .roster-overlay p {
