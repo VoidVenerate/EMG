@@ -1,33 +1,34 @@
 /* ===== IL Section ===== */
 .IL-section {
-  width: 100vw;
+  width: 100%;
   min-height: 62vh;
-  background: #0a0a0a; /* dark background */
+  background: #0a0a0a;
   color: #fff;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 0rem 5vw;
+  padding: 3rem 5vw;
   box-sizing: border-box;
-  font-family: 'DM Sans';
+  font-family: 'DM Sans', sans-serif;
 }
 
 .IL-container {
   width: 100%;
+  max-width: 1200px;
   text-align: center;
   border-radius: 44px;
   background: #FFFFFF05;
-  padding: 30px;
-  gap: 10px;
+  padding: 60px 40px;
 }
 
 /* ===== Header ===== */
 .IL-header {
-  font-family: 'DM Sans', cursive;
+  font-family: 'DM Sans', sans-serif;
   font-size: 3rem;
   font-weight: 400;
-  color: #fff; /* golden accent */
+  color: #fff;
   margin-bottom: 1rem;
+  line-height: 1.2;
 }
 
 .IL-normal-font {
@@ -49,73 +50,152 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  min-width: 120px;
-  margin-bottom: 1.5rem;
+  justify-content: center;
 }
 
 .review-nimous p:first-child {
   font-family: 'Nimous-Daven', cursive;
   font-size: 96px;
-  color: #fff; /* golden highlight */
+  color: #fff;
   margin: 0;
+  line-height: 1;
 }
 
 .review-nimous p:last-child {
-  font-family: 'Nimous-Daven', sans-serif;
+  font-family: 'DM Sans', sans-serif;
   font-size: 36px;
   color: #ccc;
-  margin-top: 0.5rem;
+  margin-top: 1rem;
   text-align: center;
-  line-height: 64px;
+  line-height: 1.4;
 }
 
-/* ===== Responsive ===== */
+/* ===== Tablet Responsive (1024px and below) ===== */
 @media (max-width: 1024px) {
+  .IL-section {
+    padding: 2.5rem 4vw;
+  }
+
+  .IL-container {
+    padding: 50px 35px;
+  }
+
   .IL-header {
     font-size: 2.5rem;
   }
+
   .IL-normal-font {
-    font-size: 1.025rem;
+    font-size: 1.125rem;
+    margin-bottom: 2.5rem;
   }
+
   .review-nimous p:first-child {
-    font-size: 2rem;
+    font-size: 80px;
+  }
+
+  .review-nimous p:last-child {
+    font-size: 32px;
   }
 }
 
+/* ===== Mobile Responsive (768px and below) ===== */
 @media (max-width: 768px) {
+  .IL-section {
+    padding: 2rem 0;
+    min-height: auto;
+  }
+
+  .IL-container {
+    padding: 40px 24px;
+    border-radius: 32px;
+  }
+
+  .IL-header {
+    font-size: 2rem;
+  }
+
+  .IL-normal-font {
+    font-size: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .IL-reviews {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    row-gap: 2.5rem;
+  }
+
+  /* Make third item span both columns to center it */
+  .review-nimous:nth-child(3) {
+    grid-column: 1 / -1;
+  }
+
+  .review-nimous p:first-child {
+    font-size: 64px;
+  }
+
+  .review-nimous p:last-child {
+    font-size: 24px;
+    line-height: 1.5;
+    max-width: 200px;
+  }
+}
+
+/* ===== Small Mobile (480px and below) ===== */
+@media (max-width: 480px) {
+  .IL-section {
+    padding: 1.5rem 0;
+  }
+
+  .IL-container {
+    border-radius: 0;
+    padding: 32px 20px;
+  }
+
   .IL-header {
     font-size: 1.5rem;
   }
-  .IL-section {
-    padding: 0rem 0vw;
+
+  .IL-normal-font {
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
   }
-  
+
   .IL-reviews {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1rem;
-    font-size: 24px;
+    gap: 1.5rem;
+    row-gap: 2rem;
   }
+
+  .review-nimous p:first-child {
+    font-size: 48px;
+  }
+
   .review-nimous p:last-child {
-    font-size: 24px;
-    line-height: 36px;
-    width: 194px;
+    font-size: 18px;
+    max-width: 180px;
   }
 }
-@media (max-width: 460px) {
+
+/* ===== Extra Small Mobile (375px and below) ===== */
+@media (max-width: 375px) {
   .IL-container {
-    border-radius: 0px;
+    padding: 28px 16px;
   }
+
+  .IL-header {
+    font-size: 1.3rem;
+  }
+
+  .IL-normal-font {
+    font-size: 0.85rem;
+  }
+
   .review-nimous p:first-child {
-    font-size: 20px;
+    font-size: 40px;
   }
+
   .review-nimous p:last-child {
-    font-size: 14px;
-    line-height: 36px;
-    width: 194px;
-  }
-  .IL-reviews {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 0rem;
-    font-size: 24px;
+    font-size: 16px;
+    max-width: 160px;
   }
 }
